@@ -32,27 +32,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JD_Crear_Cliente = new javax.swing.JDialog();
-        jLabel4 = new javax.swing.JLabel();
-        TF_Correo_CC = new javax.swing.JTextField();
-        TF_Nombre_CC = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        BT_Crear_CC = new javax.swing.JButton();
-        JD_Modificar_Cliente = new javax.swing.JDialog();
-        jLabel7 = new javax.swing.JLabel();
-        TF_Correo_MC = new javax.swing.JTextField();
-        TF_Nombre_MC = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        BT_Modificar_MC = new javax.swing.JButton();
-        CB_Tienda_MT1 = new javax.swing.JComboBox<>();
-        jLabel36 = new javax.swing.JLabel();
-        JD_Eliminar_Cliente = new javax.swing.JDialog();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        BT_Eliminar_EC = new javax.swing.JButton();
-        CB_Cliente_EC = new javax.swing.JComboBox<>();
         JD_Crear_Tienda = new javax.swing.JDialog();
         jLabel11 = new javax.swing.JLabel();
         TF_Nombre_CT = new javax.swing.JTextField();
@@ -64,6 +43,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         SP_HorarioApertura_CT = new javax.swing.JSpinner();
         SP_HorarioCierre_CT = new javax.swing.JSpinner();
         jLabel13 = new javax.swing.JLabel();
+        JD_Crear_Tienda_BG = new javax.swing.JLabel();
         JD_Modificar_Tienda = new javax.swing.JDialog();
         jLabel22 = new javax.swing.JLabel();
         TF_Nombre_MT = new javax.swing.JTextField();
@@ -77,11 +57,36 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         CB_Tienda_MT = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
+        JD_Modificar_Tienda_BG = new javax.swing.JLabel();
         JD_Eliminar_Tienda = new javax.swing.JDialog();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         BT_Eliminar_ET = new javax.swing.JButton();
         CB_Tienda_ET = new javax.swing.JComboBox<>();
+        JD_Eliminar_Tienda_BG = new javax.swing.JLabel();
+        JD_Crear_Cliente = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
+        TF_Correo_CC = new javax.swing.JTextField();
+        TF_Nombre_CC = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        BT_Crear_CC = new javax.swing.JButton();
+        JD_Crear_Cliente_BG = new javax.swing.JLabel();
+        JD_Modificar_Cliente = new javax.swing.JDialog();
+        jLabel7 = new javax.swing.JLabel();
+        TF_Correo_MC = new javax.swing.JTextField();
+        TF_Nombre_MC = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        BT_Modificar_MC = new javax.swing.JButton();
+        CB_Tienda_MT1 = new javax.swing.JComboBox<>();
+        jLabel36 = new javax.swing.JLabel();
+        JD_Modificar_Cliente_BG = new javax.swing.JLabel();
+        JD_Eliminar_Cliente = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        BT_Eliminar_EC = new javax.swing.JButton();
+        CB_Cliente_EC = new javax.swing.JComboBox<>();
         JD_Crear_Producto = new javax.swing.JDialog();
         jLabel17 = new javax.swing.JLabel();
         TF_Nombre_CP = new javax.swing.JTextField();
@@ -118,16 +123,22 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         A_BT_Crear_Productos = new javax.swing.JButton();
         A_BT_Modificar_Productos = new javax.swing.JButton();
         A_BT_Eliminar_Productos = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        A_Productos_BG = new javax.swing.JLabel();
         A_Tiendas = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         A_BT_Eliminar_Tiendas = new javax.swing.JButton();
         A_BT_Modificar_Tiendas = new javax.swing.JButton();
         A_BT_Crear_Tiendas = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        A_Tiendas_BG = new javax.swing.JLabel();
         A_Clientes = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         A_BT_Eliminar_Clientes = new javax.swing.JButton();
         A_BT_Crear_Clientes = new javax.swing.JButton();
         A_BT_Modificar_Clientes = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        A_Clientes_BG = new javax.swing.JLabel();
         Tab_Inventario = new javax.swing.JPanel();
         Decor_Panel_Inventario = new javax.swing.JLabel();
         Panel_Inventario = new javax.swing.JPanel();
@@ -153,15 +164,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         Decor_Panel_Ventas = new javax.swing.JLabel();
-        Tab_Cliente = new javax.swing.JPanel();
-        Panel_ComprasPorCliente = new javax.swing.JPanel();
-        TF_ComprasPorCliente1 = new javax.swing.JTextField();
-        jLabel44 = new javax.swing.JLabel();
-        CB_ComprasPorCliente_BuscarPor = new javax.swing.JComboBox<>();
-        TB_ComprasPorCliente_Scrollpane = new javax.swing.JScrollPane();
-        TB_ComprasPorCliente = new javax.swing.JTable();
-        jLabel47 = new javax.swing.JLabel();
-        Decor_Panel_Cliente = new javax.swing.JLabel();
         Tab_VentasPais = new javax.swing.JPanel();
         Panel_VentaPais = new javax.swing.JPanel();
         CB_VentaPais = new javax.swing.JComboBox<>();
@@ -170,73 +172,16 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel48 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         Decor_Panel_VentaPais = new javax.swing.JLabel();
+        Tab_Cliente = new javax.swing.JPanel();
+        Panel_ComprasPorCliente = new javax.swing.JPanel();
+        TF_ComprasPorCliente = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
+        CB_ComprasPorCliente_BuscarPor = new javax.swing.JComboBox<>();
+        TB_ComprasPorCliente_Scrollpane = new javax.swing.JScrollPane();
+        TB_ComprasPorCliente = new javax.swing.JTable();
+        jLabel47 = new javax.swing.JLabel();
+        Decor_Panel_Cliente = new javax.swing.JLabel();
 
-        JD_Crear_Cliente.setMinimumSize(new java.awt.Dimension(600, 300));
-        JD_Crear_Cliente.setResizable(false);
-        JD_Crear_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Crear Cliente");
-        JD_Crear_Cliente.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
-        JD_Crear_Cliente.getContentPane().add(TF_Correo_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 290, -1));
-        JD_Crear_Cliente.getContentPane().add(TF_Nombre_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 290, -1));
-
-        jLabel5.setText("Correo Electrónico");
-        JD_Crear_Cliente.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, 20));
-
-        jLabel6.setText("Nombre");
-        JD_Crear_Cliente.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, 20));
-
-        BT_Crear_CC.setText("Crear");
-        JD_Crear_Cliente.getContentPane().add(BT_Crear_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
-
-        JD_Modificar_Cliente.setMinimumSize(new java.awt.Dimension(600, 340));
-        JD_Modificar_Cliente.setResizable(false);
-        JD_Modificar_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Modificar Cliente");
-        JD_Modificar_Cliente.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
-        JD_Modificar_Cliente.getContentPane().add(TF_Correo_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
-        JD_Modificar_Cliente.getContentPane().add(TF_Nombre_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
-
-        jLabel8.setText("Correo Electrónico");
-        JD_Modificar_Cliente.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, 20));
-
-        jLabel9.setText("Nombre");
-        JD_Modificar_Cliente.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, 20));
-
-        BT_Modificar_MC.setText("Modificar");
-        JD_Modificar_Cliente.getContentPane().add(BT_Modificar_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 110, -1));
-
-        CB_Tienda_MT1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        JD_Modificar_Cliente.getContentPane().add(CB_Tienda_MT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
-
-        jLabel36.setText("Tienda");
-        JD_Modificar_Cliente.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, 20));
-
-        JD_Eliminar_Cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        JD_Eliminar_Cliente.setMinimumSize(new java.awt.Dimension(600, 300));
-        JD_Eliminar_Cliente.setResizable(false);
-        JD_Eliminar_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Eliminar Cliente");
-        JD_Eliminar_Cliente.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
-
-        jLabel12.setText("Cliente");
-        JD_Eliminar_Cliente.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, 20));
-
-        BT_Eliminar_EC.setText("Eliminar");
-        JD_Eliminar_Cliente.getContentPane().add(BT_Eliminar_EC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
-
-        CB_Cliente_EC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        JD_Eliminar_Cliente.getContentPane().add(CB_Cliente_EC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 220, -1));
-
-        JD_Crear_Tienda.setMinimumSize(new java.awt.Dimension(600, 340));
         JD_Crear_Tienda.setResizable(false);
         JD_Crear_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -276,7 +221,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel13.setText("-");
         JD_Crear_Tienda.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 40, 20));
 
-        JD_Modificar_Tienda.setMinimumSize(new java.awt.Dimension(600, 380));
+        JD_Crear_Tienda_BG.setIcon(new javax.swing.ImageIcon("C:\\Users\\emili\\OneDrive\\Desktop\\ProyectoPersonal_TDB\\IMGs\\JD_Crear_Tienda_BG.png")); // NOI18N
+        JD_Crear_Tienda.getContentPane().add(JD_Crear_Tienda_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
+
         JD_Modificar_Tienda.setResizable(false);
         JD_Modificar_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -322,6 +269,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel35.setText("Nombre");
         JD_Modificar_Tienda.getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, 20));
 
+        JD_Modificar_Tienda_BG.setIcon(new javax.swing.ImageIcon("C:\\Users\\emili\\OneDrive\\Desktop\\ProyectoPersonal_TDB\\IMGs\\JD_Modificar_Tienda_BG.png")); // NOI18N
+        JD_Modificar_Tienda.getContentPane().add(JD_Modificar_Tienda_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 380));
+
         JD_Eliminar_Tienda.setMinimumSize(new java.awt.Dimension(600, 300));
         JD_Eliminar_Tienda.setResizable(false);
         JD_Eliminar_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -339,6 +289,76 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         CB_Tienda_ET.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         JD_Eliminar_Tienda.getContentPane().add(CB_Tienda_ET, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 220, -1));
+        JD_Eliminar_Tienda.getContentPane().add(JD_Eliminar_Tienda_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
+
+        JD_Crear_Cliente.setResizable(false);
+        JD_Crear_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Crear Cliente");
+        JD_Crear_Cliente.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
+        JD_Crear_Cliente.getContentPane().add(TF_Correo_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 290, -1));
+        JD_Crear_Cliente.getContentPane().add(TF_Nombre_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 290, -1));
+
+        jLabel5.setText("Correo Electrónico");
+        JD_Crear_Cliente.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, 20));
+
+        jLabel6.setText("Nombre");
+        JD_Crear_Cliente.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, 20));
+
+        BT_Crear_CC.setText("Crear");
+        JD_Crear_Cliente.getContentPane().add(BT_Crear_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
+
+        JD_Crear_Cliente_BG.setIcon(new javax.swing.ImageIcon("C:\\Users\\emili\\OneDrive\\Desktop\\ProyectoPersonal_TDB\\IMGs\\JD_Crear_Cliente_BG.png")); // NOI18N
+        JD_Crear_Cliente.getContentPane().add(JD_Crear_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+
+        JD_Modificar_Cliente.setResizable(false);
+        JD_Modificar_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Modificar Cliente");
+        JD_Modificar_Cliente.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
+        JD_Modificar_Cliente.getContentPane().add(TF_Correo_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
+        JD_Modificar_Cliente.getContentPane().add(TF_Nombre_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
+
+        jLabel8.setText("Correo Electrónico");
+        JD_Modificar_Cliente.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, 20));
+
+        jLabel9.setText("Nombre");
+        JD_Modificar_Cliente.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, 20));
+
+        BT_Modificar_MC.setText("Modificar");
+        JD_Modificar_Cliente.getContentPane().add(BT_Modificar_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 110, -1));
+
+        CB_Tienda_MT1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JD_Modificar_Cliente.getContentPane().add(CB_Tienda_MT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
+
+        jLabel36.setText("Tienda");
+        JD_Modificar_Cliente.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, 20));
+
+        JD_Modificar_Cliente_BG.setIcon(new javax.swing.ImageIcon("C:\\Users\\emili\\OneDrive\\Desktop\\ProyectoPersonal_TDB\\IMGs\\JD_Crear_Cliente_BG.png")); // NOI18N
+        JD_Modificar_Cliente.getContentPane().add(JD_Modificar_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
+
+        JD_Eliminar_Cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        JD_Eliminar_Cliente.setMinimumSize(new java.awt.Dimension(600, 300));
+        JD_Eliminar_Cliente.setResizable(false);
+        JD_Eliminar_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Eliminar Cliente");
+        JD_Eliminar_Cliente.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
+
+        jLabel12.setText("Cliente");
+        JD_Eliminar_Cliente.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, 20));
+
+        BT_Eliminar_EC.setText("Eliminar");
+        JD_Eliminar_Cliente.getContentPane().add(BT_Eliminar_EC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
+
+        CB_Cliente_EC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JD_Eliminar_Cliente.getContentPane().add(CB_Cliente_EC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 220, -1));
 
         JD_Crear_Producto.setMinimumSize(new java.awt.Dimension(600, 390));
         JD_Crear_Producto.setResizable(false);
@@ -441,123 +461,162 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         A_Productos.setBackground(new java.awt.Color(153, 0, 0));
         A_Productos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 40)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 221, 170));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Productos");
         jLabel1.setToolTipText("");
-        A_Productos.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1350, -1));
+        A_Productos.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1350, 40));
 
-        A_BT_Crear_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        A_BT_Crear_Productos.setBackground(new java.awt.Color(29, 91, 49));
+        A_BT_Crear_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         A_BT_Crear_Productos.setText("Crear");
         A_BT_Crear_Productos.setBorderPainted(false);
+        A_BT_Crear_Productos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         A_BT_Crear_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 A_BT_Crear_ProductosMousePressed(evt);
             }
         });
-        A_Productos.add(A_BT_Crear_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 200, 130));
+        A_Productos.add(A_BT_Crear_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 280, 110));
 
-        A_BT_Modificar_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        A_BT_Modificar_Productos.setBackground(new java.awt.Color(40, 77, 119));
+        A_BT_Modificar_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         A_BT_Modificar_Productos.setText("Modificar");
         A_BT_Modificar_Productos.setBorderPainted(false);
+        A_BT_Modificar_Productos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         A_BT_Modificar_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 A_BT_Modificar_ProductosMousePressed(evt);
             }
         });
-        A_Productos.add(A_BT_Modificar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 200, 130));
+        A_Productos.add(A_BT_Modificar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 280, 110));
 
-        A_BT_Eliminar_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        A_BT_Eliminar_Productos.setBackground(new java.awt.Color(99, 32, 39));
+        A_BT_Eliminar_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         A_BT_Eliminar_Productos.setText("Eliminar");
         A_BT_Eliminar_Productos.setBorderPainted(false);
+        A_BT_Eliminar_Productos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         A_BT_Eliminar_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 A_BT_Eliminar_ProductosMousePressed(evt);
             }
         });
-        A_Productos.add(A_BT_Eliminar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, 200, 130));
+        A_Productos.add(A_BT_Eliminar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 280, 110));
+
+        jSeparator3.setBackground(new java.awt.Color(170, 86, 0));
+        jSeparator3.setForeground(new java.awt.Color(198, 144, 102));
+        jSeparator3.setOpaque(true);
+        A_Productos.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
+        A_Productos.add(A_Productos_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Tab_Administrar.add(A_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1360, 270));
 
         A_Tiendas.setBackground(new java.awt.Color(102, 102, 0));
         A_Tiendas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 40)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(187, 147, 147));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Tiendas");
         jLabel2.setToolTipText("");
         A_Tiendas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1350, -1));
 
-        A_BT_Eliminar_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        A_BT_Eliminar_Tiendas.setBackground(new java.awt.Color(99, 32, 39));
+        A_BT_Eliminar_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         A_BT_Eliminar_Tiendas.setText("Eliminar");
         A_BT_Eliminar_Tiendas.setBorderPainted(false);
+        A_BT_Eliminar_Tiendas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         A_BT_Eliminar_Tiendas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 A_BT_Eliminar_TiendasMousePressed(evt);
             }
         });
-        A_Tiendas.add(A_BT_Eliminar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, 200, 130));
+        A_Tiendas.add(A_BT_Eliminar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 280, 90));
 
-        A_BT_Modificar_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        A_BT_Modificar_Tiendas.setBackground(new java.awt.Color(40, 77, 119));
+        A_BT_Modificar_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         A_BT_Modificar_Tiendas.setText("Modificar");
         A_BT_Modificar_Tiendas.setBorderPainted(false);
+        A_BT_Modificar_Tiendas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         A_BT_Modificar_Tiendas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 A_BT_Modificar_TiendasMousePressed(evt);
             }
         });
-        A_Tiendas.add(A_BT_Modificar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 200, 130));
+        A_Tiendas.add(A_BT_Modificar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 280, 90));
 
-        A_BT_Crear_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        A_BT_Crear_Tiendas.setBackground(new java.awt.Color(29, 91, 49));
+        A_BT_Crear_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         A_BT_Crear_Tiendas.setText("Crear");
         A_BT_Crear_Tiendas.setBorderPainted(false);
+        A_BT_Crear_Tiendas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         A_BT_Crear_Tiendas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 A_BT_Crear_TiendasMousePressed(evt);
             }
         });
-        A_Tiendas.add(A_BT_Crear_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 200, 130));
+        A_Tiendas.add(A_BT_Crear_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 280, 90));
+
+        jSeparator2.setBackground(new java.awt.Color(86, 35, 35));
+        jSeparator2.setForeground(new java.awt.Color(198, 139, 139));
+        jSeparator2.setOpaque(true);
+        A_Tiendas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
+        A_Tiendas.add(A_Tiendas_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
 
         Tab_Administrar.add(A_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
 
         A_Clientes.setBackground(new java.awt.Color(0, 153, 0));
         A_Clientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 40)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Clientes");
         jLabel3.setToolTipText("");
         A_Clientes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1350, -1));
 
-        A_BT_Eliminar_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        A_BT_Eliminar_Clientes.setBackground(new java.awt.Color(99, 32, 39));
+        A_BT_Eliminar_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         A_BT_Eliminar_Clientes.setText("Eliminar");
         A_BT_Eliminar_Clientes.setBorderPainted(false);
+        A_BT_Eliminar_Clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         A_BT_Eliminar_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 A_BT_Eliminar_ClientesMousePressed(evt);
             }
         });
-        A_Clientes.add(A_BT_Eliminar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, 200, 130));
+        A_Clientes.add(A_BT_Eliminar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 280, 90));
 
-        A_BT_Crear_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        A_BT_Crear_Clientes.setBackground(new java.awt.Color(29, 91, 49));
+        A_BT_Crear_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         A_BT_Crear_Clientes.setText("Crear");
         A_BT_Crear_Clientes.setBorderPainted(false);
+        A_BT_Crear_Clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         A_BT_Crear_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 A_BT_Crear_ClientesMousePressed(evt);
             }
         });
-        A_Clientes.add(A_BT_Crear_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 200, 130));
+        A_Clientes.add(A_BT_Crear_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 280, 90));
 
-        A_BT_Modificar_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        A_BT_Modificar_Clientes.setBackground(new java.awt.Color(40, 77, 119));
+        A_BT_Modificar_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         A_BT_Modificar_Clientes.setText("Modificar");
         A_BT_Modificar_Clientes.setBorderPainted(false);
+        A_BT_Modificar_Clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         A_BT_Modificar_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 A_BT_Modificar_ClientesMousePressed(evt);
             }
         });
-        A_Clientes.add(A_BT_Modificar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 200, 130));
+        A_Clientes.add(A_BT_Modificar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 280, 90));
+
+        jSeparator1.setBackground(new java.awt.Color(45, 41, 32));
+        jSeparator1.setForeground(new java.awt.Color(198, 179, 139));
+        jSeparator1.setOpaque(true);
+        A_Clientes.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
+        A_Clientes.add(A_Clientes_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
 
         Tab_Administrar.add(A_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 1360, 270));
 
@@ -572,23 +631,38 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Panel_Inventario.setBackground(new java.awt.Color(69, 69, 86));
         Panel_Inventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CB_Inventario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Panel_Inventario.add(CB_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 380, -1));
 
         TB_Inventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "UPC", "Nombre", "Precio", "Cantidad", "Reorden"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         TB_Inventario.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
         TB_Inventario.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TB_Inventario.setShowGrid(true);
+        TB_Inventario.getTableHeader().setReorderingAllowed(false);
         TB_Inventario.setUpdateSelectionOnSort(false);
         TB_Inventario_Scrollpane.setViewportView(TB_Inventario);
 
@@ -602,12 +676,19 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "UPC", "Nombre", "Marca"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -664,7 +745,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Panel_HistorialVentas.setBackground(new java.awt.Color(153, 0, 51));
         Panel_HistorialVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CB_HistorialVentas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CB_HistorialVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CB_HistorialVentasActionPerformed(evt);
@@ -722,64 +802,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Tabs.addTab("Ventas", Tab_HistorialVentas);
 
-        Tab_Cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Panel_ComprasPorCliente.setBackground(new java.awt.Color(0, 102, 102));
-        Panel_ComprasPorCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Panel_ComprasPorCliente.add(TF_ComprasPorCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 280, -1));
-
-        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setText("Buscar por");
-        Panel_ComprasPorCliente.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 70, -1));
-
-        CB_ComprasPorCliente_BuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nombre" }));
-        CB_ComprasPorCliente_BuscarPor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_ComprasPorCliente_BuscarPorActionPerformed(evt);
-            }
-        });
-        Panel_ComprasPorCliente.add(CB_ComprasPorCliente_BuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
-
-        TB_ComprasPorCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        TB_ComprasPorCliente.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        TB_ComprasPorCliente.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        TB_ComprasPorCliente.setShowGrid(true);
-        TB_ComprasPorCliente.setUpdateSelectionOnSort(false);
-        TB_ComprasPorCliente_Scrollpane.setViewportView(TB_ComprasPorCliente);
-
-        Panel_ComprasPorCliente.add(TB_ComprasPorCliente_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1320, 550));
-
-        jLabel47.setBackground(new java.awt.Color(61, 72, 74));
-        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel47.setText("Compras");
-        jLabel47.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
-        jLabel47.setOpaque(true);
-        Panel_ComprasPorCliente.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 1320, 20));
-
-        Tab_Cliente.add(Panel_ComprasPorCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1360, 730));
-
-        Decor_Panel_Cliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Decor_Panel_Cliente.setText("Historial de compras por cliente");
-        Tab_Cliente.add(Decor_Panel_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 100));
-
-        Tabs.addTab("Cliente", Tab_Cliente);
-
         Tab_VentasPais.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_VentaPais.setBackground(new java.awt.Color(91, 79, 43));
         Panel_VentaPais.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CB_VentaPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "País 1", "País 2", "País 3" }));
         CB_VentaPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CB_VentaPaisActionPerformed(evt);
@@ -789,18 +816,34 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         TB_VentaPais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "UPC", "Nombre", "Tamaño", "Embalaje", "Marca"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         TB_VentaPais.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
         TB_VentaPais.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TB_VentaPais.setShowGrid(true);
+        TB_VentaPais.getTableHeader().setReorderingAllowed(false);
         TB_VentaPais.setUpdateSelectionOnSort(false);
         TB_VentaPais_Scrollpane.setViewportView(TB_VentaPais);
 
@@ -823,6 +866,74 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Tab_VentasPais.add(Decor_Panel_VentaPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 100));
 
         Tabs.addTab("País", Tab_VentasPais);
+
+        Tab_Cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Panel_ComprasPorCliente.setBackground(new java.awt.Color(0, 102, 102));
+        Panel_ComprasPorCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel_ComprasPorCliente.add(TF_ComprasPorCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 280, -1));
+
+        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel44.setText("Buscar por");
+        Panel_ComprasPorCliente.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 70, -1));
+
+        CB_ComprasPorCliente_BuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nombre" }));
+        CB_ComprasPorCliente_BuscarPor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_ComprasPorCliente_BuscarPorActionPerformed(evt);
+            }
+        });
+        Panel_ComprasPorCliente.add(CB_ComprasPorCliente_BuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+
+        TB_ComprasPorCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre Cliente", "Correo Electrónico", "Fecha Compra", "ISV", "Subtotal", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TB_ComprasPorCliente.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        TB_ComprasPorCliente.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TB_ComprasPorCliente.setShowGrid(true);
+        TB_ComprasPorCliente.getTableHeader().setReorderingAllowed(false);
+        TB_ComprasPorCliente.setUpdateSelectionOnSort(false);
+        TB_ComprasPorCliente_Scrollpane.setViewportView(TB_ComprasPorCliente);
+
+        Panel_ComprasPorCliente.add(TB_ComprasPorCliente_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1320, 550));
+
+        jLabel47.setBackground(new java.awt.Color(61, 72, 74));
+        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel47.setText("Compras");
+        jLabel47.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        jLabel47.setOpaque(true);
+        Panel_ComprasPorCliente.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 1320, 20));
+
+        Tab_Cliente.add(Panel_ComprasPorCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1360, 730));
+
+        Decor_Panel_Cliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Decor_Panel_Cliente.setText("Historial de compras por cliente");
+        Tab_Cliente.add(Decor_Panel_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 100));
+
+        Tabs.addTab("Cliente", Tab_Cliente);
 
         getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 830));
 
@@ -869,13 +980,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_HistorialVentasActionPerformed
 
-    private void CB_ComprasPorCliente_BuscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ComprasPorCliente_BuscarPorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CB_ComprasPorCliente_BuscarPorActionPerformed
-
     private void CB_VentaPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_VentaPaisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_VentaPaisActionPerformed
+
+    private void CB_ComprasPorCliente_BuscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ComprasPorCliente_BuscarPorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_ComprasPorCliente_BuscarPorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -892,8 +1003,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JButton A_BT_Modificar_Productos;
     private javax.swing.JButton A_BT_Modificar_Tiendas;
     private javax.swing.JPanel A_Clientes;
+    private javax.swing.JLabel A_Clientes_BG;
     private javax.swing.JPanel A_Productos;
+    private javax.swing.JLabel A_Productos_BG;
     private javax.swing.JPanel A_Tiendas;
+    private javax.swing.JLabel A_Tiendas_BG;
     private javax.swing.JButton BT_Crear_CC;
     private javax.swing.JButton BT_Crear_CC2;
     private javax.swing.JButton BT_Crear_CP;
@@ -922,14 +1036,19 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel Decor_Panel_VentaPais;
     private javax.swing.JLabel Decor_Panel_Ventas;
     private javax.swing.JDialog JD_Crear_Cliente;
+    private javax.swing.JLabel JD_Crear_Cliente_BG;
     private javax.swing.JDialog JD_Crear_Producto;
     private javax.swing.JDialog JD_Crear_Tienda;
+    private javax.swing.JLabel JD_Crear_Tienda_BG;
     private javax.swing.JDialog JD_Eliminar_Cliente;
     private javax.swing.JDialog JD_Eliminar_Producto;
     private javax.swing.JDialog JD_Eliminar_Tienda;
+    private javax.swing.JLabel JD_Eliminar_Tienda_BG;
     private javax.swing.JDialog JD_Modificar_Cliente;
+    private javax.swing.JLabel JD_Modificar_Cliente_BG;
     private javax.swing.JDialog JD_Modificar_Producto;
     private javax.swing.JDialog JD_Modificar_Tienda;
+    private javax.swing.JLabel JD_Modificar_Tienda_BG;
     private javax.swing.JList<String> JL_TiendasMasVentas;
     private javax.swing.JScrollPane JL_TiendasMasVentas_Scrollpane;
     private javax.swing.JList<String> JL_TiposMasVendidos;
@@ -952,7 +1071,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JScrollPane TB_ProdMasVendidos_Scrollpane;
     private javax.swing.JTable TB_VentaPais;
     private javax.swing.JScrollPane TB_VentaPais_Scrollpane;
-    private javax.swing.JTextField TF_ComprasPorCliente1;
+    private javax.swing.JTextField TF_ComprasPorCliente;
     private javax.swing.JTextField TF_Correo_CC;
     private javax.swing.JTextField TF_Correo_MC;
     private javax.swing.JTextField TF_Marca_CP;
@@ -1020,6 +1139,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 
     public void Abrir_JDialog(JDialog JD) {
