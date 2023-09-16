@@ -131,25 +131,25 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Tab_Inventario = new javax.swing.JPanel();
         Decor_Panel_Inventario = new javax.swing.JLabel();
         Panel_Inventario = new javax.swing.JPanel();
-        CB_Inventario1 = new javax.swing.JComboBox<>();
+        CB_Inventario = new javax.swing.JComboBox<>();
+        TB_Inventario_Scrollpane = new javax.swing.JScrollPane();
+        TB_Inventario = new javax.swing.JTable();
+        TB_ProdMasVendidos_Scrollpane = new javax.swing.JScrollPane();
+        TB_ProdMasVendidos = new javax.swing.JTable();
+        JL_TiposMasVendidos_Scrollpane = new javax.swing.JScrollPane();
+        JL_TiposMasVendidos = new javax.swing.JList<>();
         jLabel40 = new javax.swing.JLabel();
-        TB_Inventario_Scrollpane1 = new javax.swing.JScrollPane();
-        TB_Inventario1 = new javax.swing.JTable();
-        TB_Inventario_Scrollpane2 = new javax.swing.JScrollPane();
-        TB_Inventario2 = new javax.swing.JTable();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        JL_TiendasMasVentas_Scrollpane1 = new javax.swing.JScrollPane();
-        JL_TiendasMasVentas1 = new javax.swing.JList<>();
         jLabel43 = new javax.swing.JLabel();
         Tab_HistorialVentas = new javax.swing.JPanel();
         Panel_HistorialVentas = new javax.swing.JPanel();
-        jLabel45 = new javax.swing.JLabel();
         CB_HistorialVentas = new javax.swing.JComboBox<>();
         TB_HistorialVentas_Scrollpane = new javax.swing.JScrollPane();
         TB_HistorialVentas = new javax.swing.JTable();
         JL_TiendasMasVentas_Scrollpane = new javax.swing.JScrollPane();
         JL_TiendasMasVentas = new javax.swing.JList<>();
+        jLabel45 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         Decor_Panel_Ventas = new javax.swing.JLabel();
@@ -157,17 +157,17 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Panel_ComprasPorCliente = new javax.swing.JPanel();
         TF_ComprasPorCliente1 = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
-        CB_ComprasPorCliente_BuscarPor1 = new javax.swing.JComboBox<>();
-        TB_ComprasPorCliente_Scrollpane1 = new javax.swing.JScrollPane();
-        TB_ComprasPorCliente1 = new javax.swing.JTable();
+        CB_ComprasPorCliente_BuscarPor = new javax.swing.JComboBox<>();
+        TB_ComprasPorCliente_Scrollpane = new javax.swing.JScrollPane();
+        TB_ComprasPorCliente = new javax.swing.JTable();
         jLabel47 = new javax.swing.JLabel();
         Decor_Panel_Cliente = new javax.swing.JLabel();
         Tab_VentasPais = new javax.swing.JPanel();
         Panel_VentaPais = new javax.swing.JPanel();
-        jLabel48 = new javax.swing.JLabel();
         CB_VentaPais = new javax.swing.JComboBox<>();
         TB_VentaPais_Scrollpane = new javax.swing.JScrollPane();
         TB_VentaPais = new javax.swing.JTable();
+        jLabel48 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         Decor_Panel_VentaPais = new javax.swing.JLabel();
 
@@ -572,13 +572,29 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Panel_Inventario.setBackground(new java.awt.Color(69, 69, 86));
         Panel_Inventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CB_Inventario1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Panel_Inventario.add(CB_Inventario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 380, -1));
+        CB_Inventario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Panel_Inventario.add(CB_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 380, -1));
 
-        jLabel40.setText("Tienda");
-        Panel_Inventario.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 60, 20));
+        TB_Inventario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        TB_Inventario.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        TB_Inventario.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TB_Inventario.setShowGrid(true);
+        TB_Inventario.setUpdateSelectionOnSort(false);
+        TB_Inventario_Scrollpane.setViewportView(TB_Inventario);
 
-        TB_Inventario1.setModel(new javax.swing.table.DefaultTableModel(
+        Panel_Inventario.add(TB_Inventario_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 750, 580));
+
+        TB_ProdMasVendidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -597,32 +613,26 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TB_Inventario1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        TB_Inventario1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        TB_Inventario1.setShowGrid(true);
-        TB_Inventario1.setUpdateSelectionOnSort(false);
-        TB_Inventario_Scrollpane1.setViewportView(TB_Inventario1);
+        TB_ProdMasVendidos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        TB_ProdMasVendidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TB_ProdMasVendidos.setShowGrid(true);
+        TB_ProdMasVendidos.getTableHeader().setReorderingAllowed(false);
+        TB_ProdMasVendidos.setUpdateSelectionOnSort(false);
+        TB_ProdMasVendidos_Scrollpane.setViewportView(TB_ProdMasVendidos);
 
-        Panel_Inventario.add(TB_Inventario_Scrollpane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 340, 560));
+        Panel_Inventario.add(TB_ProdMasVendidos_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 340, 560));
 
-        TB_Inventario2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        TB_Inventario2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        TB_Inventario2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        TB_Inventario2.setShowGrid(true);
-        TB_Inventario2.setUpdateSelectionOnSort(false);
-        TB_Inventario_Scrollpane2.setViewportView(TB_Inventario2);
+        JL_TiposMasVendidos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Tipo Producto 1", "Tipo Producto 2", "Tipo Producto 3" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        JL_TiposMasVendidos_Scrollpane.setViewportView(JL_TiposMasVendidos);
 
-        Panel_Inventario.add(TB_Inventario_Scrollpane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 750, 580));
+        Panel_Inventario.add(JL_TiposMasVendidos_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 210, 140));
+
+        jLabel40.setText("Tienda");
+        Panel_Inventario.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 60, 20));
 
         jLabel41.setBackground(new java.awt.Color(61, 72, 74));
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -637,15 +647,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel42.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jLabel42.setOpaque(true);
         Panel_Inventario.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, 340, 20));
-
-        JL_TiendasMasVentas1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Tipo Producto 1", "Tipo Producto 2", "Tipo Producto 3" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        JL_TiendasMasVentas_Scrollpane1.setViewportView(JL_TiendasMasVentas1);
-
-        Panel_Inventario.add(JL_TiendasMasVentas_Scrollpane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 210, 140));
 
         jLabel43.setBackground(new java.awt.Color(61, 72, 74));
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -662,9 +663,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Panel_HistorialVentas.setBackground(new java.awt.Color(153, 0, 51));
         Panel_HistorialVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel45.setText("Tienda");
-        Panel_HistorialVentas.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 40, 20));
 
         CB_HistorialVentas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CB_HistorialVentas.addActionListener(new java.awt.event.ActionListener() {
@@ -702,6 +700,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Panel_HistorialVentas.add(JL_TiendasMasVentas_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(1112, 90, 220, 140));
 
+        jLabel45.setText("Tienda");
+        Panel_HistorialVentas.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 40, 20));
+
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel39.setText("Tiendas con más ventas en el año");
         Panel_HistorialVentas.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 70, 220, -1));
@@ -731,15 +732,15 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel44.setText("Buscar por");
         Panel_ComprasPorCliente.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 70, -1));
 
-        CB_ComprasPorCliente_BuscarPor1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nombre" }));
-        CB_ComprasPorCliente_BuscarPor1.addActionListener(new java.awt.event.ActionListener() {
+        CB_ComprasPorCliente_BuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nombre" }));
+        CB_ComprasPorCliente_BuscarPor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_ComprasPorCliente_BuscarPor1ActionPerformed(evt);
+                CB_ComprasPorCliente_BuscarPorActionPerformed(evt);
             }
         });
-        Panel_ComprasPorCliente.add(CB_ComprasPorCliente_BuscarPor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+        Panel_ComprasPorCliente.add(CB_ComprasPorCliente_BuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
-        TB_ComprasPorCliente1.setModel(new javax.swing.table.DefaultTableModel(
+        TB_ComprasPorCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -750,13 +751,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        TB_ComprasPorCliente1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        TB_ComprasPorCliente1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        TB_ComprasPorCliente1.setShowGrid(true);
-        TB_ComprasPorCliente1.setUpdateSelectionOnSort(false);
-        TB_ComprasPorCliente_Scrollpane1.setViewportView(TB_ComprasPorCliente1);
+        TB_ComprasPorCliente.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        TB_ComprasPorCliente.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TB_ComprasPorCliente.setShowGrid(true);
+        TB_ComprasPorCliente.setUpdateSelectionOnSort(false);
+        TB_ComprasPorCliente_Scrollpane.setViewportView(TB_ComprasPorCliente);
 
-        Panel_ComprasPorCliente.add(TB_ComprasPorCliente_Scrollpane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1320, 550));
+        Panel_ComprasPorCliente.add(TB_ComprasPorCliente_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1320, 550));
 
         jLabel47.setBackground(new java.awt.Color(61, 72, 74));
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -777,9 +778,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Panel_VentaPais.setBackground(new java.awt.Color(91, 79, 43));
         Panel_VentaPais.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel48.setText("País");
-        Panel_VentaPais.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 40, 20));
 
         CB_VentaPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "País 1", "País 2", "País 3" }));
         CB_VentaPais.addActionListener(new java.awt.event.ActionListener() {
@@ -807,6 +805,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         TB_VentaPais_Scrollpane.setViewportView(TB_VentaPais);
 
         Panel_VentaPais.add(TB_VentaPais_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 1320, 580));
+
+        jLabel48.setText("País");
+        Panel_VentaPais.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 40, 20));
 
         jLabel50.setBackground(new java.awt.Color(61, 72, 74));
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -868,9 +869,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_HistorialVentasActionPerformed
 
-    private void CB_ComprasPorCliente_BuscarPor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ComprasPorCliente_BuscarPor1ActionPerformed
+    private void CB_ComprasPorCliente_BuscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ComprasPorCliente_BuscarPorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CB_ComprasPorCliente_BuscarPor1ActionPerformed
+    }//GEN-LAST:event_CB_ComprasPorCliente_BuscarPorActionPerformed
 
     private void CB_VentaPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_VentaPaisActionPerformed
         // TODO add your handling code here:
@@ -903,11 +904,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JButton BT_Modificar_MC;
     private javax.swing.JButton BT_Modificar_MP;
     private javax.swing.JComboBox<String> CB_Cliente_EC;
-    private javax.swing.JComboBox<String> CB_ComprasPorCliente_BuscarPor1;
+    private javax.swing.JComboBox<String> CB_ComprasPorCliente_BuscarPor;
     private javax.swing.JComboBox<String> CB_Embalaje_CP;
     private javax.swing.JComboBox<String> CB_Embalaje_MP;
     private javax.swing.JComboBox<String> CB_HistorialVentas;
-    private javax.swing.JComboBox<String> CB_Inventario1;
+    private javax.swing.JComboBox<String> CB_Inventario;
     private javax.swing.JComboBox<String> CB_Producto_EP;
     private javax.swing.JComboBox<String> CB_Producto_MP;
     private javax.swing.JComboBox<String> CB_Tienda_ET;
@@ -930,9 +931,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JDialog JD_Modificar_Producto;
     private javax.swing.JDialog JD_Modificar_Tienda;
     private javax.swing.JList<String> JL_TiendasMasVentas;
-    private javax.swing.JList<String> JL_TiendasMasVentas1;
     private javax.swing.JScrollPane JL_TiendasMasVentas_Scrollpane;
-    private javax.swing.JScrollPane JL_TiendasMasVentas_Scrollpane1;
+    private javax.swing.JList<String> JL_TiposMasVendidos;
+    private javax.swing.JScrollPane JL_TiposMasVendidos_Scrollpane;
     private javax.swing.JPanel Panel_ComprasPorCliente;
     private javax.swing.JPanel Panel_HistorialVentas;
     private javax.swing.JPanel Panel_Inventario;
@@ -941,14 +942,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JSpinner SP_HorarioApertura_MT;
     private javax.swing.JSpinner SP_HorarioCierre_CT;
     private javax.swing.JSpinner SP_HorarioCierre_MT;
-    private javax.swing.JTable TB_ComprasPorCliente1;
-    private javax.swing.JScrollPane TB_ComprasPorCliente_Scrollpane1;
+    private javax.swing.JTable TB_ComprasPorCliente;
+    private javax.swing.JScrollPane TB_ComprasPorCliente_Scrollpane;
     private javax.swing.JTable TB_HistorialVentas;
     private javax.swing.JScrollPane TB_HistorialVentas_Scrollpane;
-    private javax.swing.JTable TB_Inventario1;
-    private javax.swing.JTable TB_Inventario2;
-    private javax.swing.JScrollPane TB_Inventario_Scrollpane1;
-    private javax.swing.JScrollPane TB_Inventario_Scrollpane2;
+    private javax.swing.JTable TB_Inventario;
+    private javax.swing.JScrollPane TB_Inventario_Scrollpane;
+    private javax.swing.JTable TB_ProdMasVendidos;
+    private javax.swing.JScrollPane TB_ProdMasVendidos_Scrollpane;
     private javax.swing.JTable TB_VentaPais;
     private javax.swing.JScrollPane TB_VentaPais_Scrollpane;
     private javax.swing.JTextField TF_ComprasPorCliente1;
