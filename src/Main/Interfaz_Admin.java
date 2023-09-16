@@ -139,6 +139,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         A_BT_Modificar_Clientes = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         A_Clientes_BG = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
         Tab_Inventario = new javax.swing.JPanel();
         Decor_Panel_Inventario = new javax.swing.JLabel();
         Panel_Inventario = new javax.swing.JPanel();
@@ -289,6 +290,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         CB_Tienda_ET.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         JD_Eliminar_Tienda.getContentPane().add(CB_Tienda_ET, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 220, -1));
+
+        JD_Eliminar_Tienda_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Eliminar_Tienda_BG.png"))); // NOI18N
         JD_Eliminar_Tienda.getContentPane().add(JD_Eliminar_Tienda_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
 
         JD_Crear_Cliente.setResizable(false);
@@ -309,8 +312,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         BT_Crear_CC.setText("Crear");
         JD_Crear_Cliente.getContentPane().add(BT_Crear_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
-
-        JD_Crear_Cliente_BG.setIcon(new javax.swing.ImageIcon("C:\\Users\\emili\\OneDrive\\Desktop\\ProyectoPersonal_TDB\\IMGs\\JD_Crear_Cliente_BG.png")); // NOI18N
         JD_Crear_Cliente.getContentPane().add(JD_Crear_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
         JD_Modificar_Cliente.setResizable(false);
@@ -337,8 +338,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         jLabel36.setText("Tienda");
         JD_Modificar_Cliente.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, 20));
-
-        JD_Modificar_Cliente_BG.setIcon(new javax.swing.ImageIcon("C:\\Users\\emili\\OneDrive\\Desktop\\ProyectoPersonal_TDB\\IMGs\\JD_Crear_Cliente_BG.png")); // NOI18N
         JD_Modificar_Cliente.getContentPane().add(JD_Modificar_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
 
         JD_Eliminar_Cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -448,10 +447,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(90, 50));
-        setMinimumSize(new java.awt.Dimension(1362, 830));
-        setPreferredSize(new java.awt.Dimension(1362, 830));
+        setMinimumSize(new java.awt.Dimension(1446, 830));
+        setPreferredSize(new java.awt.Dimension(1446, 830));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tabs.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         Tabs.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -466,7 +464,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Productos");
         jLabel1.setToolTipText("");
-        A_Productos.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1350, 40));
+        A_Productos.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1360, 50));
 
         A_BT_Crear_Productos.setBackground(new java.awt.Color(29, 91, 49));
         A_BT_Crear_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -478,7 +476,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Crear_ProductosMousePressed(evt);
             }
         });
-        A_Productos.add(A_BT_Crear_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 280, 110));
+        A_Productos.add(A_BT_Crear_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 280, 90));
 
         A_BT_Modificar_Productos.setBackground(new java.awt.Color(40, 77, 119));
         A_BT_Modificar_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -490,7 +488,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Modificar_ProductosMousePressed(evt);
             }
         });
-        A_Productos.add(A_BT_Modificar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 280, 110));
+        A_Productos.add(A_BT_Modificar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 280, 90));
 
         A_BT_Eliminar_Productos.setBackground(new java.awt.Color(99, 32, 39));
         A_BT_Eliminar_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -502,13 +500,15 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Eliminar_ProductosMousePressed(evt);
             }
         });
-        A_Productos.add(A_BT_Eliminar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 280, 110));
+        A_Productos.add(A_BT_Eliminar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 280, 90));
 
         jSeparator3.setBackground(new java.awt.Color(170, 86, 0));
         jSeparator3.setForeground(new java.awt.Color(198, 144, 102));
         jSeparator3.setOpaque(true);
         A_Productos.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
-        A_Productos.add(A_Productos_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        A_Productos_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Productos_BG.jpg"))); // NOI18N
+        A_Productos.add(A_Productos_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
 
         Tab_Administrar.add(A_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1360, 270));
 
@@ -516,11 +516,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         A_Tiendas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 40)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(187, 147, 147));
+        jLabel2.setForeground(new java.awt.Color(216, 170, 170));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Tiendas");
         jLabel2.setToolTipText("");
-        A_Tiendas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1350, -1));
+        A_Tiendas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1360, -1));
 
         A_BT_Eliminar_Tiendas.setBackground(new java.awt.Color(99, 32, 39));
         A_BT_Eliminar_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -532,7 +532,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Eliminar_TiendasMousePressed(evt);
             }
         });
-        A_Tiendas.add(A_BT_Eliminar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 280, 90));
+        A_Tiendas.add(A_BT_Eliminar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 280, 90));
 
         A_BT_Modificar_Tiendas.setBackground(new java.awt.Color(40, 77, 119));
         A_BT_Modificar_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -544,7 +544,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Modificar_TiendasMousePressed(evt);
             }
         });
-        A_Tiendas.add(A_BT_Modificar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 280, 90));
+        A_Tiendas.add(A_BT_Modificar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 280, 90));
 
         A_BT_Crear_Tiendas.setBackground(new java.awt.Color(29, 91, 49));
         A_BT_Crear_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -556,12 +556,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Crear_TiendasMousePressed(evt);
             }
         });
-        A_Tiendas.add(A_BT_Crear_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 280, 90));
+        A_Tiendas.add(A_BT_Crear_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 280, 90));
 
         jSeparator2.setBackground(new java.awt.Color(86, 35, 35));
         jSeparator2.setForeground(new java.awt.Color(198, 139, 139));
         jSeparator2.setOpaque(true);
         A_Tiendas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
+
+        A_Tiendas_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Tiendas_BG.jpg"))); // NOI18N
         A_Tiendas.add(A_Tiendas_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
 
         Tab_Administrar.add(A_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
@@ -586,7 +588,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Eliminar_ClientesMousePressed(evt);
             }
         });
-        A_Clientes.add(A_BT_Eliminar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 280, 90));
+        A_Clientes.add(A_BT_Eliminar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 280, 90));
 
         A_BT_Crear_Clientes.setBackground(new java.awt.Color(29, 91, 49));
         A_BT_Crear_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -598,7 +600,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Crear_ClientesMousePressed(evt);
             }
         });
-        A_Clientes.add(A_BT_Crear_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 280, 90));
+        A_Clientes.add(A_BT_Crear_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 280, 90));
 
         A_BT_Modificar_Clientes.setBackground(new java.awt.Color(40, 77, 119));
         A_BT_Modificar_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -610,15 +612,22 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Modificar_ClientesMousePressed(evt);
             }
         });
-        A_Clientes.add(A_BT_Modificar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 280, 90));
+        A_Clientes.add(A_BT_Modificar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 280, 90));
 
         jSeparator1.setBackground(new java.awt.Color(45, 41, 32));
         jSeparator1.setForeground(new java.awt.Color(198, 179, 139));
         jSeparator1.setOpaque(true);
         A_Clientes.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
+
+        A_Clientes_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Clientes_BG.jpg"))); // NOI18N
         A_Clientes.add(A_Clientes_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
 
         Tab_Administrar.add(A_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 1360, 270));
+
+        jLabel49.setBackground(new java.awt.Color(61, 26, 31));
+        jLabel49.setForeground(new java.awt.Color(151, 169, 187));
+        jLabel49.setOpaque(true);
+        Tab_Administrar.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1360, 310));
 
         Tabs.addTab("Administrar", Tab_Administrar);
 
@@ -935,7 +944,26 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Tabs.addTab("Cliente", Tab_Cliente);
 
-        getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 830));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1446, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(Tabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 830, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(Tabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1133,6 +1161,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel6;
