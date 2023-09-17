@@ -1,4 +1,4 @@
--- TABLA CLIENTES
+-- TABLA CLIENTES =================================================================================
 -- Creación de la tabla Clientes
 CREATE TABLE Clientes(
 	id	SERIAL PRIMARY KEY,
@@ -55,7 +55,7 @@ LANGUAGE SQL AS $$
 $$;
 
 
--- TABLA UBICACIONES
+-- TABLA UBICACIONES ==============================================================================
 -- Creación de las ubicaciones de las tiendas
 CREATE TABLE Ubicaciones(
 	id SERIAL PRIMARY KEY,
@@ -65,6 +65,9 @@ CREATE TABLE Ubicaciones(
   pais VARCHAR(255)
 );
 
+-- Funciones para la tabla "Ubicaciones"
+
+-- Esta función inserta una nueva ubicación en la tabla "Ubicaciones".
 CREATE OR REPLACE FUNCTION insert_ubicacion(
   p_direccion VARCHAR(255),
   p_ciudad VARCHAR(225),
@@ -78,6 +81,7 @@ LANGUAGE SQL AS $$
     (p_direccion, p_ciudad, p_estado, p_pais);
 $$;
 
+-- Esta función elimina una ubicación de la tabla "Ubicaciones" basada en su ID.
 CREATE OR REPLACE FUNCTION delete_ubicacion(
   p_id INT
 )
@@ -87,6 +91,7 @@ LANGUAGE SQL AS $$
   WHERE id = p_id;
 $$;
 
+-- Esta función actualiza la dirección de una ubicación en la tabla "Ubicaciones" basada en su ID.
 CREATE OR REPLACE FUNCTION update_ubicacion_direccion(
   p_id INT,
   p_direccion VARCHAR(255)
@@ -98,6 +103,7 @@ LANGUAGE SQL AS $$
   WHERE Ubicaciones.id = p_id;
 $$;
 
+-- Esta función actualiza la ciudad de una ubicación en la tabla "Ubicaciones" basada en su ID.
 CREATE OR REPLACE FUNCTION update_ubicacion_ciudad(
   p_id INT,
   p_ciudad VARCHAR(255)
@@ -109,6 +115,7 @@ LANGUAGE SQL AS $$
   WHERE Ubicaciones.id = p_id;
 $$;
 
+-- Esta función actualiza el estado de una ubicación en la tabla "Ubicaciones" basada en su ID.
 CREATE OR REPLACE FUNCTION update_ubicacion_estado(
   p_id INT,
   p_estado VARCHAR(255)
@@ -120,6 +127,7 @@ LANGUAGE SQL AS $$
   WHERE Ubicaciones.id = p_id;
 $$;
 
+-- Esta función actualiza el país de una ubicación en la tabla "Ubicaciones" basada en su ID.
 CREATE OR REPLACE FUNCTION update_ubicacion_pais(
   p_id INT,
   p_pais VARCHAR(255)
@@ -131,6 +139,7 @@ LANGUAGE SQL AS $$
   WHERE Ubicaciones.id = p_id;
 $$;
 
+-- Esta función actualiza múltiples campos de una ubicación en la tabla "Ubicaciones" basada en su ID.
 CREATE OR REPLACE FUNCTION update_ubicacion(
   p_id INT,
   p_direccion VARCHAR(255),
@@ -148,7 +157,9 @@ LANGUAGE SQL AS $$
   WHERE id = p_id;
 $$;
 
--- Creación de la tabla Tiendas
+
+-- TABLA TIENDAS ==================================================================================
+-- Creación de la tabla "Tiendas"
 CREATE TABLE Tiendas(
 	id SERIAL PRIMARY KEY,
   idUbicacion INT DEFAULT -1,
@@ -157,6 +168,7 @@ CREATE TABLE Tiendas(
 	FOREIGN KEY(idUbicacion) REFERENCES Ubicaciones(id) ON DELETE SET NULL
 );
 
+-- Esta función inserta una nueva tienda en la tabla "Tiendas".
 CREATE OR REPLACE FUNCTION insert_tienda(
   p_idUbicacion INT,
 	p_nombre VARCHAR(255),
@@ -169,6 +181,7 @@ LANGUAGE SQL AS $$
     (p_idUbicacion,p_nombre,p_horario);
 $$;
 
+-- Esta función elimina una tienda de la tabla "Tiendas" basada en su ID.
 CREATE OR REPLACE FUNCTION delete_tienda(
   p_id INT
 )
@@ -178,7 +191,8 @@ LANGUAGE SQL AS $$
   WHERE Tiendas.id = p_id;
 $$;
 
-CREATE OR REPLACE FUNCTION update_tienda(
+-- Esta función actualiza el nombre de una tienda en la tabla "Tiendas" basada en su ID.
+CREATE OR REPLACE FUNCTION update_tienda_nombre(
   p_id INT,
   p_nombre VARCHAR(255)
 )
@@ -186,10 +200,39 @@ RETURNS VOID
 LANGUAGE SQL AS $$
   UPDATE Tiendas
   SET nombre = p_nombre
-  WHERE Tiendas.nombre = p_nombre;
+  WHERE Tiendas.id = p_id;
 $$;
 
--- Creación de la tabla Productos
+-- Esta función actualiza el horario de una tienda en la tabla "Tiendas" basada en su ID.
+CREATE OR REPLACE FUNCTION update_tienda_nombre(
+  p_id INT,
+  p_horario VARCHAR(255)
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Tiendas
+  SET horario = p_horario
+  WHERE Tiendas.id = p_id;
+$$;
+
+
+-- Esta función actualiza el nombre y horario de una tienda en la tabla "Tiendas" basada en su ID.
+CREATE OR REPLACE FUNCTION update_tienda(
+  p_id INT,
+  p_nombre VARCHAR(255),
+  p_horario VARCHAR(255)
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Tiendas
+  SET nombre = p_nombre,
+      horario = p_horario
+  WHERE Tiendas.id = p_id;
+$$;
+
+
+-- TABLA PRODUCTOS ================================================================================
+-- Creación de la tabla "Productos"
 CREATE TABLE Productos(
 	ucp VARCHAR(255) PRIMARY KEY,
 	tamaño INT,
@@ -197,6 +240,7 @@ CREATE TABLE Productos(
 	marca VARCHAR(255)
 );
 
+-- Esta función inserta un nuevo producto en la tabla "Productos".
 CREATE OR REPLACE FUNCTION insert_producto(
   p_ucp VARCHAR(255),
   p_tamaño INT,
@@ -210,6 +254,7 @@ LANGUAGE SQL AS $$
     (p_ucp, p_tamaño, p_embalaje, p_marca);
 $$;
 
+-- Esta función elimina un producto de la tabla "Productos" basado en su UCP (Código de Producto Único).
 CREATE OR REPLACE FUNCTION delete_producto(
   p_ucp VARCHAR(255)
 )
@@ -219,6 +264,7 @@ LANGUAGE SQL AS $$
   WHERE Productos.ucp = p_ucp;
 $$;
 
+-- Esta función actualiza el tamaño de un producto en la tabla "Productos" basado en su UCP.
 CREATE OR REPLACE FUNCTION update_producto_tamano(
   p_ucp VARCHAR(255),
   p_tamaño INT
@@ -230,6 +276,7 @@ LANGUAGE SQL AS $$
   WHERE Productos.ucp = p_ucp;
 $$;
 
+-- Esta función actualiza el embalaje de un producto en la tabla "Productos" basado en su UCP.
 CREATE OR REPLACE FUNCTION update_producto_embalaje(
   p_ucp VARCHAR(255),
   p_embalaje VARCHAR(255)
@@ -241,6 +288,7 @@ LANGUAGE SQL AS $$
   WHERE Productos.ucp = p_ucp;
 $$;
 
+-- Esta función actualiza la marca de un producto en la tabla "Productos" basado en su UCP.
 CREATE OR REPLACE FUNCTION update_producto_marca(
   p_ucp VARCHAR(255),
   p_marca VARCHAR(255)
@@ -252,11 +300,61 @@ LANGUAGE SQL AS $$
   WHERE Productos.ucp = p_ucp;
 $$;
 
+CREATE OR REPLACE FUNCTION update_producto(
+  p_ucp VARCHAR(255),
+  p_tamaño INT,
+  p_embalaje VARCHAR(255),
+  p_marca VARCHAR(255)
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Productos
+  SET tamaño = p_tamaño,
+      embalaje = p_embalaje,
+      marca = p_marca
+  WHERE Productos.ucp = p_ucp;
+$$;
+
+
+-- TABLA CATEGORIAS ===============================================================================
 -- Creación de la tabla Categorías
 CREATE TABLE Categorias(
 	id INT PRIMARY KEY,
 	categoria VARCHAR(255)
 );
+
+-- Esta función se utiliza para insertar una nueva categoría en la tabla "Categoria".
+CREATE OR REPLACE FUNCTION insert_categoria(
+  p_categoria VARCHAR(255)  -- El nombre de la categoría que se va a insertar.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  INSERT INTO Categorias(categoria)
+  VALUES
+    (p_categoria);
+$$;
+
+-- Esta función se utiliza para eliminar una categoría de la tabla "Categorias" basada en su ID.
+CREATE OR REPLACE FUNCTION delete_categoria(
+  p_id INT  -- El ID de la categoría que se va a eliminar.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  DELETE FROM Categorias
+  WHERE Categorias.id = p_id;
+$$;
+
+-- Esta función se utiliza para actualizar el nombre de una categoría en la tabla "Categorias" basada en su ID.
+CREATE OR REPLACE FUNCTION update_categoria(
+  p_id INT,  -- El ID de la categoría que se va a actualizar.
+  p_categoria VARCHAR(255)  -- El nuevo nombre de la categoría.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Categorias
+  SET categoria = p_categoria
+  WHERE Categorias.id = p_id;
+$$;
 
 CREATE TABLE ProductoCategorizado(
 	ucpProducto VARCHAR(255),
@@ -265,12 +363,47 @@ CREATE TABLE ProductoCategorizado(
 	FOREIGN KEY(idcategoria) REFERENCES Categorias(id) ON DELETE CASCADE
 );
 
+-- TABLA PROVEEDORES ==============================================================================
 -- Creación de la tabla Proveedor
 CREATE TABLE Proveedores(
 	id SERIAL PRIMARY KEY,
 	nombre VARCHAR(255)
 );
 
+-- Esta función se utiliza para insertar un nuevo proveedor en la tabla "Proveedores".
+CREATE OR REPLACE FUNCTION insert_proveedor(
+	p_nombre VARCHAR(255)  -- El nombre del proveedor que se va a insertar.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  INSERT INTO Proveedores(nombre)
+  VALUES
+    (p_nombre);  -- Inserta el nombre del proveedor en la tabla "Proveedores".
+$$;
+
+-- Esta función se utiliza para eliminar un proveedor de la tabla "Proveedores" basado en su ID.
+CREATE OR REPLACE FUNCTION delete_proveedor(
+  p_id INT  -- El ID del proveedor que se va a eliminar.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  DELETE FROM Proveedores
+  WHERE Proveedores.id = p_id;  -- Elimina el proveedor con el ID proporcionado.
+$$;
+
+-- Esta función se utiliza para actualizar el nombre de un proveedor en la tabla "Proveedores" basado en su ID.
+CREATE OR REPLACE FUNCTION update_proveedor(
+  p_id INT,  -- El ID del proveedor que se va a actualizar.
+  p_nombre VARCHAR(255)  -- El nuevo nombre del proveedor.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Proveedores
+  SET nombre = p_nombre
+  WHERE Proveedores.id = p_id;  -- Actualiza el nombre del proveedor con el ID proporcionado.
+$$;
+
+-- TABLA FACTURAS =================================================================================
 -- Creación de la tabla de facturas
 CREATE TABLE Facturas(
 	numeroFactura SERIAL PRIMARY KEY,
@@ -283,6 +416,43 @@ CREATE TABLE Facturas(
 	FOREIGN KEY(idCliente) REFERENCES Clientes(id),
 	FOREIGN KEY(idTienda) REFERENCES Tiendas(id) ON DELETE CASCADE
 );
+
+-- Esta función se utiliza para insertar una nueva factura en la tabla "Facturas".
+CREATE OR REPLACE FUNCTION insert_factura(
+  p_idCliente INT,  -- El ID del cliente asociado a la factura.
+  p_idTienda INT,   -- El ID de la tienda donde se generó la factura.
+  p_fecha date      -- La fecha de la factura.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  INSERT INTO Facturas(idCliente, idTienda, fecha)
+  VALUES
+    (p_idCliente, p_idTienda, p_fecha);  -- Inserta una nueva factura con los datos proporcionados.
+$$;
+
+-- Esta función se utiliza para eliminar una factura de la tabla "Facturas" basada en su número de factura.
+CREATE OR REPLACE FUNCTION delete_factura(
+  p_numeroFactura INT  -- El número de factura que se va a eliminar.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  DELETE FROM Facturas
+  WHERE Facturas.numeroFactura = p_numeroFactura;  -- Elimina la factura con el número de factura proporcionado.
+$$;
+
+-- Esta función se utiliza para actualizar la fecha de una factura en la tabla "Facturas" basada en su número de factura.
+CREATE OR REPLACE FUNCTION update_factura_fecha(
+  p_numeroFactura INT,  -- El número de factura de la factura que se va a actualizar.
+  p_fecha date         -- La nueva fecha de la factura.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Facturas
+  SET fecha = p_fecha
+  WHERE Facturas.numeroFactura = p_numeroFactura;  -- Actualiza la fecha de la factura con el número de factura proporcionado.
+$$;
+
+
 -- Creación de la tabla de InventarioPorTienda
 CREATE TABLE InventarioPorTienda(
 	idTienda INT,
