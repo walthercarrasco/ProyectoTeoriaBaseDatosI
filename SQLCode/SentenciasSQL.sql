@@ -452,7 +452,7 @@ LANGUAGE SQL AS $$
   WHERE Facturas.numeroFactura = p_numeroFactura;  -- Actualiza la fecha de la factura con el número de factura proporcionado.
 $$;
 
-
+-- TABLA INVENTARIO_POR_TIENDA ====================================================================
 -- Creación de la tabla de InventarioPorTienda
 CREATE TABLE InventarioPorTienda(
 	idTienda INT,
@@ -464,6 +464,101 @@ CREATE TABLE InventarioPorTienda(
 	FOREIGN KEY(idTienda) REFERENCES Tiendas(id) ON DELETE CASCADE,
 	FOREIGN KEY(ucpProducto) REFERENCES Productos(ucp) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+-- Esta función se utiliza para insertar un nuevo registro en la tabla "InventarioPorTienda" que representa el inventario de un producto en una tienda específica.
+CREATE OR REPLACE FUNCTION insert_inventario_por_tienda(
+  p_idTienda INT,            -- El ID de la tienda.
+  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_precio numeric(9,2),     -- El precio del producto en la tienda.
+  p_cantidad INT,            -- La cantidad de unidades disponibles en el inventario.
+  p_reorden INT              -- El nivel de reorden del producto en el inventario.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  INSERT INTO InventarioPorTienda(idTienda, ucpProducto, precio, cantidad, reorden)
+  VALUES
+    (p_idTienda, p_ucpProducto, p_precio, p_cantidad, p_reorden);  -- Inserta un nuevo registro en el inventario de la tienda.
+$$;
+
+-- Esta función se utiliza para eliminar un registro de la tabla "InventarioPorTienda" basado en el ID de la tienda y el UCP del producto.
+CREATE OR REPLACE FUNCTION delete_inventario_por_tienda(
+  p_idTienda INT,            -- El ID de la tienda.
+  p_ucpProducto VARCHAR(255)  -- El Código de Producto Único (UCP) del producto.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  DELETE FROM InventarioPorTienda
+  WHERE 
+    InventarioPorTienda.idTienda = p_idTienda AND 
+    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Elimina un registro del inventario de la tienda.
+$$;
+
+-- Esta función se utiliza para actualizar el precio de un producto en el inventario de una tienda específica.
+CREATE OR REPLACE FUNCTION update_inventario_por_tienda_precio(
+  p_idTienda INT,            -- El ID de la tienda.
+  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_precio numeric(9,2)      -- El nuevo precio del producto.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE InventarioPorTienda
+  SET precio = p_precio
+  WHERE
+    InventarioPorTienda.idTienda = p_idTienda AND 
+    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Actualiza el precio del producto en el inventario de la tienda.
+$$;
+
+-- Esta función se utiliza para actualizar la cantidad de unidades disponibles de un producto en el inventario de una tienda específica.
+CREATE OR REPLACE FUNCTION update_inventario_por_tienda_cantidad(
+  p_idTienda INT,            -- El ID de la tienda.
+  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_cantidad INT             -- La nueva cantidad de unidades disponibles.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE InventarioPorTienda
+  SET cantidad = p_cantidad
+  WHERE
+    InventarioPorTienda.idTienda = p_idTienda AND 
+    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Actualiza la cantidad de unidades disponibles del producto en el inventario de la tienda.
+$$;
+
+-- Esta función se utiliza para actualizar el nivel de reorden de un producto en el inventario de una tienda específica.
+CREATE OR REPLACE FUNCTION update_inventario_por_tienda_reorden(
+  p_idTienda INT,            -- El ID de la tienda.
+  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_reorden INT              -- El nuevo nivel de reorden del producto.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE InventarioPorTienda
+  SET reorden = p_reorden
+  WHERE
+    InventarioPorTienda.idTienda = p_idTienda AND 
+    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Actualiza el nivel de reorden del producto en el inventario de la tienda.
+$$;
+
+-- Esta función se utiliza para actualizar el precio, la cantidad y el nivel de reorden de un producto en el inventario de una tienda específica.
+CREATE OR REPLACE FUNCTION update_inventario_por_tienda_precio_cantidad_reorden(
+  p_idTienda INT,            -- El ID de la tienda.
+  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_precio numeric(9,2),     -- El nuevo precio del producto.
+  p_cantidad INT,            -- La nueva cantidad de unidades disponibles.
+  p_reorden INT              -- El nuevo nivel de reorden del producto.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE InventarioPorTienda
+  SET precio = p_precio,
+      cantidad = p_cantidad,
+      reorden = p_reorden
+  WHERE
+    InventarioPorTienda.idTienda = p_idTienda AND 
+    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Actualiza el precio, cantidad y nivel de reorden del producto en el inventario de la tienda.
+$$;
+
+
+
 
 -- Creación de tabla DetalleFactura
 CREATE TABLE DetalleFactura(
