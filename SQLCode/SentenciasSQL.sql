@@ -15,23 +15,23 @@ CREATE OR REPLACE FUNCTION insert_cliente(
 RETURNS VOID
 LANGUAGE SQL AS $$
     INSERT INTO Clientes (nombre, correoElectronico) VALUES (p_nombre, p_correoElectronico);
-$$
+$$;
 
 -- Esta función elimina un Cliente de la tabla "Clientes" basado en su ID.
 -- Toma un ID como parámetro y elimina el registro correspondiente de la tabla.
 CREATE OR REPLACE FUNCTION delete_cliente(
-  p_id int
+  p_id INT
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
     DELETE FROM Clientes
     WHERE Clientes.id = p_id;
-$$ 
+$$;
 
 -- Esta función actualiza el nombre de un Cliente en la tabla "Clientes".
 -- Toma un ID y un nuevo nombre como parámetros y actualiza el nombre del registro correspondiente.
 CREATE OR REPLACE FUNCTION update_cliente_nombre(
-  p_id int,
+  p_id INT,
   p_nombreCliente VARCHAR(255)
 )
 RETURNS VOID
@@ -39,12 +39,12 @@ LANGUAGE SQL AS $$
   UPDATE Clientes
   SET nombre = p_nombreCliente
   WHERE Clientes.id = p_id;
-$$
+$$;
 
 -- Esta función actualiza la dirección de correo electrónico de un Cliente en la tabla "Clientes".
 -- Toma un ID y una nueva dirección de correo electrónico como parámetros y actualiza el correo electrónico del registro correspondiente.
 CREATE OR REPLACE FUNCTION update_cliente_correoElectronico(
-  p_id int,
+  p_id INT,
   p_correoElectronico VARCHAR(255)
 )
 RETURNS VOID
@@ -52,7 +52,7 @@ LANGUAGE SQL AS $$
   UPDATE Clientes
   SET correoElectronico = p_correoElectronico
   WHERE Clientes.id = p_id;
-$$
+$$;
 
 
 -- TABLA UBICACIONES
@@ -76,19 +76,19 @@ LANGUAGE SQL AS $$
   INSERT INTO Ubicaciones(direccion, ciudad, estado, pais) 
   VALUES
     (p_direccion, p_ciudad, p_estado, p_pais);
-$$
+$$;
 
 CREATE OR REPLACE FUNCTION delete_ubicacion(
-  p_id int
+  p_id INT
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   DELETE FROM Ubicaciones
   WHERE id = p_id;
-$$
+$$;
 
 CREATE OR REPLACE FUNCTION update_ubicacion_direccion(
-  p_id int,
+  p_id INT,
   p_direccion VARCHAR(255)
 )
 RETURNS VOID
@@ -96,10 +96,10 @@ LANGUAGE SQL AS $$
   UPDATE Ubicaciones
   SET direccion = p_direccion
   WHERE Ubicaciones.id = p_id;
-$$
+$$;
 
 CREATE OR REPLACE FUNCTION update_ubicacion_ciudad(
-  p_id int,
+  p_id INT,
   p_ciudad VARCHAR(255)
 )
 RETURNS VOID
@@ -107,10 +107,10 @@ LANGUAGE SQL AS $$
   UPDATE Ubicaciones
   SET ciudad = p_ciudad
   WHERE Ubicaciones.id = p_id;
-$$
+$$;
 
 CREATE OR REPLACE FUNCTION update_ubicacion_estado(
-  p_id int,
+  p_id INT,
   p_estado VARCHAR(255)
 )
 RETURNS VOID
@@ -118,10 +118,10 @@ LANGUAGE SQL AS $$
   UPDATE Ubicaciones
   SET estado = p_estado
   WHERE Ubicaciones.id = p_id;
-$$
+$$;
 
 CREATE OR REPLACE FUNCTION update_ubicacion_pais(
-  p_id int,
+  p_id INT,
   p_pais VARCHAR(255)
 )
 RETURNS VOID
@@ -129,7 +129,7 @@ LANGUAGE SQL AS $$
   UPDATE Ubicaciones
   SET pais = p_pais
   WHERE Ubicaciones.id = p_id;
-$$
+$$;
 
 CREATE OR REPLACE FUNCTION update_ubicacion(
   p_id INT,
@@ -146,14 +146,14 @@ LANGUAGE SQL AS $$
       estado = p_estado,
       pais = p_pais
   WHERE id = p_id;
-$$
+$$;
 
 -- Creación de la tabla Tiendas
 CREATE TABLE Tiendas(
 	id SERIAL PRIMARY KEY,
-  idUbicacion int DEFAULT -1,
+  idUbicacion INT DEFAULT -1,
 	nombre VARCHAR(255),
-	horario VARCHAR(255)
+	horario VARCHAR(255),
 	FOREIGN KEY(idUbicacion) REFERENCES Ubicaciones(id) ON DELETE SET NULL
 );
 
@@ -163,31 +163,105 @@ CREATE OR REPLACE FUNCTION insert_tienda(
 	p_horario VARCHAR(255)
 )
 RETURNS VOID 
-LANGUAGE SQL AS &&
+LANGUAGE SQL AS $$
   INSERT INTO Tiendas(idUbicacion, nombre, horario)
   VALUES 
     (p_idUbicacion,p_nombre,p_horario);
-$$
+$$;
 
+CREATE OR REPLACE FUNCTION delete_tienda(
+  p_id INT
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  DELETE FROM Tiendas
+  WHERE Tiendas.id = p_id;
+$$;
+
+CREATE OR REPLACE FUNCTION update_tienda(
+  p_id INT,
+  p_nombre VARCHAR(255)
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Tiendas
+  SET nombre = p_nombre
+  WHERE Tiendas.nombre = p_nombre;
+$$;
 
 -- Creación de la tabla Productos
 CREATE TABLE Productos(
 	ucp VARCHAR(255) PRIMARY KEY,
-	tamaño int,
+	tamaño INT,
 	embalaje VARCHAR(255),
 	marca VARCHAR(255)
 );
 
+CREATE OR REPLACE FUNCTION insert_producto(
+  p_ucp VARCHAR(255),
+  p_tamaño INT,
+  p_embalaje VARCHAR(255),
+  p_marca VARCHAR(255)
+)
+RETURNS VOID
+LANGUAGE SQL AS $$ 
+  INSERT INTO Productos(ucp, tamaño, embalaje, marca)
+  VALUES
+    (p_ucp, p_tamaño, p_embalaje, p_marca);
+$$;
+
+CREATE OR REPLACE FUNCTION delete_producto(
+  p_ucp VARCHAR(255)
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  DELETE FROM Productos
+  WHERE Productos.ucp = p_ucp;
+$$;
+
+CREATE OR REPLACE FUNCTION update_producto_tamano(
+  p_ucp VARCHAR(255),
+  p_tamaño INT
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Productos
+  SET tamaño = p_tamaño 
+  WHERE Productos.ucp = p_ucp;
+$$;
+
+CREATE OR REPLACE FUNCTION update_producto_embalaje(
+  p_ucp VARCHAR(255),
+  p_embalaje VARCHAR(255)
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Productos
+  SET embalaje = p_embalaje 
+  WHERE Productos.ucp = p_ucp;
+$$;
+
+CREATE OR REPLACE FUNCTION update_producto_marca(
+  p_ucp VARCHAR(255),
+  p_marca VARCHAR(255)
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Productos
+  SET marca = p_marca 
+  WHERE Productos.ucp = p_ucp;
+$$;
+
 -- Creación de la tabla Categorías
 CREATE TABLE Categorias(
-	id int PRIMARY KEY,
+	id INT PRIMARY KEY,
 	categoria VARCHAR(255)
 );
 
 CREATE TABLE ProductoCategorizado(
 	ucpProducto VARCHAR(255),
-	idcategoria int,
-	FOREIGN KEY(ucpProducto) REFERENCES Productos(id) ON DELETE CASCADE
+	idcategoria INT,
+	FOREIGN KEY(ucpProducto) REFERENCES Productos(ucp) ON DELETE CASCADE,
 	FOREIGN KEY(idcategoria) REFERENCES Categorias(id) ON DELETE CASCADE
 );
 
@@ -200,8 +274,8 @@ CREATE TABLE Proveedores(
 -- Creación de la tabla de facturas
 CREATE TABLE Facturas(
 	numeroFactura SERIAL PRIMARY KEY,
-	idCliente int,
-	idTienda int,
+	idCliente INT,
+	idTienda INT,
 	fecha date,
 	isv numeric(10,2),
 	subtotal numeric(10,2),
@@ -211,33 +285,33 @@ CREATE TABLE Facturas(
 );
 -- Creación de la tabla de InventarioPorTienda
 CREATE TABLE InventarioPorTienda(
-	idTienda int,
-	ucp Producto VARCHAR(255),
+	idTienda INT,
+	ucpProducto VARCHAR(255),
 	precio numeric(9,2),
-	cantidad int,
-	reorden int,
-	PRIMARY KEY (idTienda,idProducto) ON DELETE CASCADE,
+	cantidad INT,
+	reorden INT,
+	PRIMARY KEY (idTienda,ucpProducto),
 	FOREIGN KEY(idTienda) REFERENCES Tiendas(id) ON DELETE CASCADE,
-	FOREIGN KEY(idProducto) REFERENCES Productos(ucp) ON UPDATE CASCADE
+	FOREIGN KEY(ucpProducto) REFERENCES Productos(ucp) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Creación de tabla DetalleFactura
 CREATE TABLE DetalleFactura(
-	numeroFactura int,
+	numeroFactura INT,
 	ucpProducto VARCHAR(255),
 	precio numeric(9,2),
-	cantidad int,
+	cantidad INT,
 	FOREIGN KEY (numeroFactura) REFERENCES Facturas(numeroFactura),
 	FOREIGN KEY (ucpProducto) REFERENCES Productos(ucp)
 );
 
 -- Creación de la tabla Vende (Productos que vende cada Proveedor)
 CREATE TABLE Vende(
-	idProveedor int,
+	idProveedor INT,
   ucpProducto VARCHAR(225),
   FOREIGN KEY (idProveedor) REFERENCES Proveedores(id) ON DELETE CASCADE,
   FOREIGN KEY (ucpProducto) REFERENCES Productos(ucp) ON DELETE CASCADE
-)
+);
 
 INSERT INTO Clientes (nombre, correoElectronico) VALUES
   ('John Doe', 'john.doe@example.com'),
