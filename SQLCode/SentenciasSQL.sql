@@ -559,7 +559,7 @@ $$;
 
 
 
-
+-- TABLA DETALLE_FACTURA ==========================================================================
 -- Creación de tabla DetalleFactura
 CREATE TABLE DetalleFactura(
 	numeroFactura INT,
@@ -569,6 +569,69 @@ CREATE TABLE DetalleFactura(
 	FOREIGN KEY (numeroFactura) REFERENCES Facturas(numeroFactura),
 	FOREIGN KEY (ucpProducto) REFERENCES Productos(ucp)
 );
+
+
+CREATE TYPE type_DetalleFactura AS (
+	numeroFactura INT,
+	ucpProducto VARCHAR(255),
+	precio numeric(9,2),
+	cantidad INT
+);
+
+CREATE OR REPLACE FUNCTION insert_detalleFactura(
+	p_numeroFactura INT,
+	p_ucpProducto VARCHAR(255),
+	p_precio numeric(9,2),
+	p_cantidad INT
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  INSERT INTO DetalleFactura(numeroFactura, ucpProducto, precio, cantidad)
+  VALUES
+    (p_numeroFactura, p_ucpProducto, p_precio, p_cantidad);
+$$;
+
+CREATE TYPE type_DetalleFactura AS (
+	numeroFactura INT,
+	ucpProducto VARCHAR(255),
+	precio numeric(9,2),
+	cantidad INT
+);
+
+CREATE OR REPLACE FUNCTION insert_detalleFactura(
+	p_numeroFactura INT,
+	p_ucpProducto VARCHAR(255),
+	p_precio numeric(9,2),
+	p_cantidad INT
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  INSERT INTO DetalleFactura(numeroFactura, ucpProducto, precio, cantidad)
+  VALUES
+    (p_numeroFactura, p_ucpProducto, p_precio, p_cantidad);
+$$;
+
+CREATE OR REPLACE FUNCTION insert_multiple_detalleFactura(
+  detalles type_DetalleFactura[]
+)
+RETURNS BOOLEAN
+LANGUAGE PLPGSQL AS $$
+DECLARE 
+  resultado BOOLEAN;
+  detalle type_DetalleFactura;
+BEGIN
+  resultado := FALSE;
+  FOREACH detalle IN ARRAY detalles
+  LOOP
+    INSERT INTO DetalleFactura(numeroFactura, ucpProducto, precio, cantidad)
+    VALUES (detalle.numeroFactura, detalle.ucpProducto, detalle.precio, detalle.cantidad);
+  END LOOP;
+  resultado := TRUE;
+  RETURN resultado;
+END;
+$$;
+
+
 
 -- Creación de la tabla Vende (Productos que vende cada Proveedor)
 CREATE TABLE Vende(
