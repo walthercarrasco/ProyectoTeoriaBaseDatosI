@@ -561,7 +561,7 @@ $$;
 
 -- TABLA DETALLE_FACTURA ==========================================================================
 -- Creación de tabla DetalleFactura
-CREATE TABLE DetalleFactura(
+CREATE TABLE DetalleFacturas(
 	numeroFactura INT,
 	ucpProducto VARCHAR(255),
 	precio numeric(9,2),
@@ -571,48 +571,30 @@ CREATE TABLE DetalleFactura(
 );
 
 
+-- Definición del tipo de datos "type_DetalleFactura" que representa los detalles de una factura.
 CREATE TYPE type_DetalleFactura AS (
-	numeroFactura INT,
-	ucpProducto VARCHAR(255),
-	precio numeric(9,2),
-	cantidad INT
+	numeroFactura INT,            -- El número de la factura.
+	ucpProducto VARCHAR(255),     -- El Código de Producto Único (UCP) del producto.
+	precio numeric(9,2),          -- El precio del producto.
+	cantidad INT                  -- La cantidad de unidades del producto.
 );
 
+-- Esta función se utiliza para insertar un nuevo detalle de factura en la tabla "DetalleFacturas".
 CREATE OR REPLACE FUNCTION insert_detalleFactura(
-	p_numeroFactura INT,
-	p_ucpProducto VARCHAR(255),
-	p_precio numeric(9,2),
-	p_cantidad INT
+	p_numeroFactura INT,         -- El número de factura.
+	p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+	p_precio numeric(9,2),      -- El precio del producto.
+	p_cantidad INT              -- La cantidad de unidades del producto.
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
-  INSERT INTO DetalleFactura(numeroFactura, ucpProducto, precio, cantidad)
+  INSERT INTO DetalleFacturas(numeroFactura, ucpProducto, precio, cantidad)
   VALUES
-    (p_numeroFactura, p_ucpProducto, p_precio, p_cantidad);
-$$;
+    (p_numeroFactura, p_ucpProducto, p_precio, p_cantidad);  -- Inserta un nuevo detalle de factura.
 
-CREATE TYPE type_DetalleFactura AS (
-	numeroFactura INT,
-	ucpProducto VARCHAR(255),
-	precio numeric(9,2),
-	cantidad INT
-);
-
-CREATE OR REPLACE FUNCTION insert_detalleFactura(
-	p_numeroFactura INT,
-	p_ucpProducto VARCHAR(255),
-	p_precio numeric(9,2),
-	p_cantidad INT
-)
-RETURNS VOID
-LANGUAGE SQL AS $$
-  INSERT INTO DetalleFactura(numeroFactura, ucpProducto, precio, cantidad)
-  VALUES
-    (p_numeroFactura, p_ucpProducto, p_precio, p_cantidad);
-$$;
-
+-- Esta función se utiliza para insertar múltiples detalles de factura en la tabla "DetalleFacturas" utilizando el tipo de datos personalizado.
 CREATE OR REPLACE FUNCTION insert_multiple_detalleFactura(
-  detalles type_DetalleFactura[]
+  detalles type_DetalleFactura[]  -- Un arreglo de detalles de factura.
 )
 RETURNS BOOLEAN
 LANGUAGE PLPGSQL AS $$
@@ -623,16 +605,34 @@ BEGIN
   resultado := FALSE;
   FOREACH detalle IN ARRAY detalles
   LOOP
-    INSERT INTO DetalleFactura(numeroFactura, ucpProducto, precio, cantidad)
-    VALUES (detalle.numeroFactura, detalle.ucpProducto, detalle.precio, detalle.cantidad);
+    CALL insert_detalleFactura(detalle.numeroFactura, detalle.ucpProducto, detalle.precio, detalle.cantidad);  -- Llama a la función para insertar un detalle de factura.
   END LOOP;
   resultado := TRUE;
   RETURN resultado;
 END;
+
+-- Esta función se utiliza para eliminar un detalle de factura específico basado en el número de factura y el Código de Producto Único (UCP) del producto.
+CREATE OR REPLACE FUNCTION delete_detalleFactura_productoIndividual(
+  p_numeroFactura INT,        -- El número de factura.
+  p_ucpProducto VARCHAR(255)  -- El Código de Producto Único (UCP) del producto.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  DELETE FROM DetalleFacturas as F
+  WHERE F.numeroFactura = p_numeroFactura AND F.ucpProducto = p_ucpProducto;  -- Elimina un detalle de factura específico.
+
+-- Esta función se utiliza para eliminar todos los detalles de factura asociados a un número de factura específico.
+CREATE OR REPLACE FUNCTION delete_detalleFactura_completo(
+  p_numeroFactura INT  -- El número de factura.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  DELETE FROM DetalleFacturas as DF
+  WHERE DF.numeroFactura = p_numeroFactura;  -- Elimina todos los detalles de factura asociados a un número de factura.
 $$;
 
 
-
+-- TABLA VENDE ====================================================================================
 -- Creación de la tabla Vende (Productos que vende cada Proveedor)
 CREATE TABLE Vende(
 	idProveedor INT,
@@ -640,6 +640,46 @@ CREATE TABLE Vende(
   FOREIGN KEY (idProveedor) REFERENCES Proveedores(id) ON DELETE CASCADE,
   FOREIGN KEY (ucpProducto) REFERENCES Productos(ucp) ON DELETE CASCADE
 );
+
+-- Esta función se utiliza para registrar que un proveedor vende un producto específico.
+CREATE OR REPLACE FUNCTION insert_vende(
+  p_idProveedor INT,          -- El ID del proveedor.
+  p_ucpProducto VARCHAR(225)  -- El Código de Producto Único (UCP) del producto.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  INSERT INTO Vende(idProveedor, ucpProducto)
+  VALUES (p_idProveedor, p_ucpProducto);  -- Registra la relación entre el proveedor y el producto que vende.
+$$;
+
+-- Esta función se utiliza para eliminar la relación entre un proveedor y un producto que vendía.
+CREATE OR REPLACE FUNCTION delete_vende(
+  p_idProveedor INT,          -- El ID del proveedor.
+  p_ucpProducto VARCHAR(225)  -- El Código de Producto Único (UCP) del producto.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  DELETE FROM Vende
+  WHERE 
+    idProveedor = p_idProveedor AND
+    ucpProducto = p_ucpProducto;  -- Elimina la relación de venta entre el proveedor y el producto.
+$$;
+
+-- Esta función se utiliza para actualizar el producto que un proveedor vende.
+CREATE OR REPLACE FUNCTION update_vende_producto(
+  p_idProveedor INT,                  -- El ID del proveedor.
+  p_ucpProductoAnterior VARCHAR(255),  -- El Código de Producto Único (UCP) anterior.
+  p_ucpProductoNuevo VARCHAR(225)     -- El nuevo Código de Producto Único (UCP) del producto que se vende.
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Vende
+  SET ucpProducto = p_ucpProductoNuevo
+  WHERE 
+    Vende.idProveedor = p_idProveedor AND
+    ucpProducto = p_ucpProductoAnterior;  -- Actualiza el producto que el proveedor vende.
+$$;
+
 
 INSERT INTO Clientes (nombre, correoElectronico) VALUES
   ('John Doe', 'john.doe@example.com'),
