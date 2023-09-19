@@ -865,7 +865,7 @@ GROUP BY F.fecha, F.idTienda
 ORDER BY F.fecha DESC
 
 -- FUNCION QUE RETORNA EL HISTORIAL DE VENTAS DIARIAS =============================================
-CREATE OR REPLACE FUNCTION historial_ventas_diarias(
+CREATE OR REPLACE FUNCTION historial_ventas_diarias_por_tienda(
   p_id INT
 )
 RETURNS TABLE(
@@ -880,8 +880,62 @@ BEGIN
 END;
 $$;
 
--- FUCNION QUE RETORNA EL HISTORIAL DE VENTAS ENTRE UN RANGO DE FECHAS POR TIENDA =================
+-- FUNCION QUE RETORNA EL HISTORIAL DE VENTAS ENTRE UN RANGO DE FECHAS POR TIENDA =================
+CREATE OR REPLACE FUNCTION historial_ventas_diarias_entre_fechas_por_tienda(
+  fechaInicio DATE,
+  fechaFinal DATE,
+  p_id INT
+)
+RETURNS TABLE(
+  fecha DATE,
+  Ventas numeric(13,2)
+)
+LANGUAGE PLPGSQL AS $$
+BEGIN
+  RETURN QUERY
+    SELECT fecha, Ventas
+    FROM ventas_diarias_tiendas
+    WHERE idTienda = p_id 
+      AND fecha BETWEEN fechaInicio AND fechaFinal;
+END;
+$$;
 
+-- FUNCION QUE RETORNA EL HISTORIAL DE VENTAS ENTRE UN RANGO DE FECHAS POR TIENDA =================
+CREATE OR REPLACE FUNCTION historial_ventas_diarias_todas_tienda(
+  fechaInicio DATE,
+  fechaFinal DATE
+)
+RETURNS TABLE(
+  fecha DATE,
+  Ventas numeric(13,2)
+)
+LANGUAGE PLPGSQL AS $$
+BEGIN
+  RETURN QUERY
+    SELECT fecha, SUM(Ventas)
+    FROM ventas_diarias_tiendas
+    GROUP BY fecha;
+END;
+$$;
+
+-- FUNCION QUE RETORNA EL HISTORIAL DE VENTAS ENTRE UN RANGO DE FECHAS DE TODAS LAS TIENDA ========
+CREATE OR REPLACE FUNCTION historial_ventas_diarias_entre_fechas_todas_tiendas(
+  fechaInicio DATE,
+  fechaFinal DATE
+)
+RETURNS TABLE(
+  fecha DATE,
+  Ventas numeric(13,2)
+)
+LANGUAGE PLPGSQL AS $$
+BEGIN
+  RETURN QUERY
+    SELECT fecha, SUM(Ventas)
+    FROM ventas_diarias_tiendas
+    WHERE fecha BETWEEN fechaInicio AND fechaFinal
+    GROUP BY fecha;
+END;
+$$;
 
 
 INSERT INTO Clientes (nombre, correoElectronico) VALUES
