@@ -944,7 +944,7 @@ BEGIN
 END;
 $$;
 
--- FUNCION QUE RETORNA LAS CINCO MEJORES TIENDAS EN LO QUE VA DEL AÑO
+-- FUNCION QUE RETORNA LAS CINCO MEJORES TIENDAS EN LO QUE VA DEL AÑO =============================
 CREATE OR REPLACE FUNCTION cinco_mejores_tiendas()
 RETURNS TABLE(
   Numero INT,
@@ -958,11 +958,13 @@ BEGIN
   FROM ventas_diarias_tiendas
   WHERE fecha BETWEEN  date_trunc('year',CURRENT_DATE) AND CURRENT_DATE
   GROUP BY idTienda
-  LIMIT 5
+  LIMIT 5;
 END;
 $$;
 
-CREATE VIEW productos_mas_vendidos AS
+
+-- VISTA QUE PERMITE VER VERLOS PRODUCTOS ORDENADOS POR EL QUE MAS VALOR TIENE ====================
+CREATE VIEW productos_mas_ventas AS
 SELECT DF.upcProducto, P.nombre, SUM(DF.cantidad) as cantidad, SUM(DF.precio*DF.cantidad) AS importe 
 FROM 
   DetalleFacturas DF 
@@ -970,4 +972,28 @@ FROM
   Productos P
     ON DF.upcProducto = P.upc
 GROUP BY DF.upcProducto, P.nombre
-ORDER BY importe;
+ORDER BY importe DESC;
+
+CREATE OR REPLACE FUNCTION tres_categorias_con_mas_ventas()
+RETURNS TABLE(
+  idcategoria INT,
+  nombreCategoria VARCHAR(255),
+  ventas numeric(13,2)
+)
+LANGUAGE PLPGSQL AS $$
+BEGIN
+  RETURN QUERY
+  SELECT C.id, C.nombreCategoria, SUM(importe) as Ventas
+  FROM
+    Categorias C
+    LEFT JOIN
+    ProductoCategorizado PC
+      ON C.id = PC.idcategoria
+    LEFT JOIN
+    productos_mas_ventas PM
+      ON PC.upcProducto = PM.upcProducto
+  GROUP BY C.idcategoria, C.nombreCategoria
+  ORDER BY Ventas DESC
+  LIMIT 3;
+END;
+$$;
