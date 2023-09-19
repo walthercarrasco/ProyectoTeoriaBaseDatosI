@@ -204,7 +204,7 @@ LANGUAGE SQL AS $$
 $$;
 
 -- Esta función actualiza el horario de una tienda en la tabla "Tiendas" basada en su ID.
-CREATE OR REPLACE FUNCTION update_tienda_nombre(
+CREATE OR REPLACE FUNCTION update_tienda_horario(
   p_id INT,
   p_horario VARCHAR(255)
 )
@@ -236,7 +236,7 @@ $$;
 CREATE TABLE Productos(
 	ucp VARCHAR(255) PRIMARY KEY,
   nombre VARCHAR(255),
-	tamaño INT,
+	tamaño VARCHAR(255),
 	embalaje VARCHAR(255),
 	marca VARCHAR(255)
 );
@@ -245,7 +245,7 @@ CREATE TABLE Productos(
 CREATE OR REPLACE FUNCTION insert_producto(
   p_ucp VARCHAR(255),
   nombre VARCHAR(255),
-  p_tamaño INT,
+  p_tamaño VARCHAR(255),
   p_embalaje VARCHAR(255),
   p_marca VARCHAR(255)
 )
@@ -253,7 +253,7 @@ RETURNS VOID
 LANGUAGE SQL AS $$ 
   INSERT INTO Productos(ucp, nombre, tamaño, embalaje, marca)
   VALUES
-    (p_ucp, p_tamaño, p_embalaje, p_marca);
+    (p_ucp, nombre, p_tamaño, p_embalaje, p_marca);
 $$;
 
 -- Esta función elimina un producto de la tabla "Productos" basado en su UCP (Código de Producto Único).
@@ -282,7 +282,7 @@ $$;
 -- Esta función actualiza el tamaño de un producto en la tabla "Productos" basado en su UCP.
 CREATE OR REPLACE FUNCTION update_producto_tamano(
   p_ucp VARCHAR(255),
-  p_tamaño INT
+  p_tamaño VARCHAR(255)
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
@@ -318,7 +318,7 @@ $$;
 CREATE OR REPLACE FUNCTION update_producto(
   p_ucp VARCHAR(255),
   p_nombre VARCHAR(255),
-  p_tamaño INT,
+  p_tamaño VARCHAR(255),
   p_embalaje VARCHAR(255),
   p_marca VARCHAR(255)
 )
@@ -608,6 +608,7 @@ LANGUAGE SQL AS $$
   INSERT INTO DetalleFacturas(numeroFactura, ucpProducto, precio, cantidad)
   VALUES
     (p_numeroFactura, p_ucpProducto, p_precio, p_cantidad);  -- Inserta un nuevo detalle de factura.
+$$;
 
 -- Esta función se utiliza para insertar múltiples detalles de factura en la tabla "DetalleFacturas" utilizando el tipo de datos personalizado.
 CREATE OR REPLACE FUNCTION insert_multiple_detalleFactura(
@@ -615,7 +616,7 @@ CREATE OR REPLACE FUNCTION insert_multiple_detalleFactura(
 )
 RETURNS BOOLEAN
 LANGUAGE PLPGSQL AS $$
-DECLARE 
+DECLARE
   resultado BOOLEAN;
   detalle type_DetalleFactura;
 BEGIN
@@ -627,6 +628,7 @@ BEGIN
   resultado := TRUE;
   RETURN resultado;
 END;
+$$;
 
 -- Esta función se utiliza para eliminar un detalle de factura específico basado en el número de factura y el Código de Producto Único (UCP) del producto.
 CREATE OR REPLACE FUNCTION delete_detalleFactura_productoIndividual(
@@ -637,7 +639,7 @@ RETURNS VOID
 LANGUAGE SQL AS $$
   DELETE FROM DetalleFacturas as F
   WHERE F.numeroFactura = p_numeroFactura AND F.ucpProducto = p_ucpProducto;  -- Elimina un detalle de factura específico.
-
+$$;
 -- Esta función se utiliza para eliminar todos los detalles de factura asociados a un número de factura específico.
 CREATE OR REPLACE FUNCTION delete_detalleFactura_completo(
   p_numeroFactura INT  -- El número de factura.
@@ -740,14 +742,23 @@ END;
 $$;
 
 CREATE OR REPLACE FUNCTION detalle_productos_por_factura(
-  numeroFactura INT
+  p_numeroFactura INT
 )
 RETURNS TABLE(
-	ucp VARCHAR(255) PRIMARY KEY,
+  ucp VARCHAR(255),
   nombre VARCHAR(255),
   cantidad INT,
-  precio 
+  precioUnitario numeric(10,2),
+  importe numeric(10,2)
 )
+LANGUAGE SQL AS $$
+  SELECT DF.ucpProducto, P.nombre, DF.cantidad, DF.precio as precioUnitario, DF.precio*DF.cantidad as importe
+  FROM DetalleFacturas DF INNER JOIN Productos P
+    ON DF.ucpProducto = P.ucp
+  WHERE DF.numeroFactura = p_numeroFactura;
+$$;
+
+
 
 -- FUNCION QUE PERMITE OBTENER LOS 20 PRODUCTOS MAS VENDIDOS POR UNA TIENDA ========================
 CREATE OR REPLACE FUNCTION mejore_viente_productos_tienda(
@@ -845,6 +856,31 @@ LANGUAGE PLPGSQL AS $$
 	END;
 $$;
 
+CREATE VIEW ventas_diarias_tiendas AS
+SELECT F.fecha, F.idTienda, SUM(DF.precio * DF.cantidad) AS Ventas
+FROM 
+  DetalleFacturas DF INNER JOIN Facturas F 
+  ON DF.numeroFactura = F.numeroFactura
+GROUP BY F.fecha, F.idTienda
+ORDER BY F.fecha DESC
+
+-- FUNCION QUE RETORNA EL HISTORIAL DE VENTAS DIARIAS =============================================
+CREATE OR REPLACE FUNCTION historial_ventas_diarias(
+  p_id INT
+)
+RETURNS TABLE(
+  fecha DATE,
+  Ventas numeric(13,2)
+)
+LANGUAGE PLPGSQL AS $$
+BEGIN
+  SELECT fecha, Ventas
+  FROM ventas_diarias_tiendas
+  WHERE idTienda = p_id;
+END;
+$$;
+
+-- FUCNION QUE RETORNA EL HISTORIAL DE VENTAS ENTRE UN RANGO DE FECHAS POR TIENDA =================
 
 
 
