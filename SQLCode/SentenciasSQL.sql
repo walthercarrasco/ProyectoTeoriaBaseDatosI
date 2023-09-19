@@ -74,11 +74,17 @@ CREATE OR REPLACE FUNCTION insert_ubicacion(
   p_estado VARCHAR(255),
   p_pais VARCHAR(255)
 ) 
-RETURNS VOID
-LANGUAGE SQL AS $$
+RETURNS TABLE(
+  idUbicacion INT
+)
+LANGUAGE PLPGSQL AS $$
   INSERT INTO Ubicaciones(direccion, ciudad, estado, pais) 
   VALUES
     (p_direccion, p_ciudad, p_estado, p_pais);
+  RETURN QUERY
+  SELECT id
+  FROM Ubicaciones
+  WHERE direccion = p_direccion AND ciudad = p_ciudad AND estado = p_estado AND pais = p_pais
 $$;
 
 -- Esta función elimina una ubicación de la tabla "Ubicaciones" basada en su ID.
