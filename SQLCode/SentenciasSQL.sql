@@ -234,7 +234,7 @@ $$;
 -- TABLA PRODUCTOS ================================================================================
 -- Creación de la tabla "Productos"
 CREATE TABLE Productos(
-	ucp VARCHAR(255) PRIMARY KEY,
+	upc VARCHAR(255) PRIMARY KEY,
   nombre VARCHAR(255),
 	tamaño VARCHAR(255),
 	embalaje VARCHAR(255),
@@ -243,7 +243,7 @@ CREATE TABLE Productos(
 
 -- Esta función inserta un nuevo producto en la tabla "Productos".
 CREATE OR REPLACE FUNCTION insert_producto(
-  p_ucp VARCHAR(255),
+  p_upc VARCHAR(255),
   nombre VARCHAR(255),
   p_tamaño VARCHAR(255),
   p_embalaje VARCHAR(255),
@@ -251,72 +251,72 @@ CREATE OR REPLACE FUNCTION insert_producto(
 )
 RETURNS VOID
 LANGUAGE SQL AS $$ 
-  INSERT INTO Productos(ucp, nombre, tamaño, embalaje, marca)
+  INSERT INTO Productos(upc, nombre, tamaño, embalaje, marca)
   VALUES
-    (p_ucp, nombre, p_tamaño, p_embalaje, p_marca);
+    (p_upc, nombre, p_tamaño, p_embalaje, p_marca);
 $$;
 
--- Esta función elimina un producto de la tabla "Productos" basado en su UCP (Código de Producto Único).
+-- Esta función elimina un producto de la tabla "Productos" basado en su upc (Código de Producto Único).
 CREATE OR REPLACE FUNCTION delete_producto(
-  p_ucp VARCHAR(255)
+  p_upc VARCHAR(255)
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   DELETE FROM Productos
-  WHERE Productos.ucp = p_ucp;
+  WHERE Productos.upc = p_upc;
 $$;
 
--- Esta función actualiza el nombre de un producto en la tabla "Productos" basado en su UCP.
+-- Esta función actualiza el nombre de un producto en la tabla "Productos" basado en su upc.
 CREATE OR REPLACE FUNCTION update_producto_nombre(
-  p_ucp VARCHAR(255),
+  p_upc VARCHAR(255),
   p_nombre VARCHAR(255)
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   UPDATE Productos
   SET nombre = p_nombre 
-  WHERE Productos.ucp = p_ucp;
+  WHERE Productos.upc = p_upc;
 $$;
 
 
--- Esta función actualiza el tamaño de un producto en la tabla "Productos" basado en su UCP.
+-- Esta función actualiza el tamaño de un producto en la tabla "Productos" basado en su upc.
 CREATE OR REPLACE FUNCTION update_producto_tamano(
-  p_ucp VARCHAR(255),
+  p_upc VARCHAR(255),
   p_tamaño VARCHAR(255)
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   UPDATE Productos
   SET tamaño = p_tamaño 
-  WHERE Productos.ucp = p_ucp;
+  WHERE Productos.upc = p_upc;
 $$;
 
--- Esta función actualiza el embalaje de un producto en la tabla "Productos" basado en su UCP.
+-- Esta función actualiza el embalaje de un producto en la tabla "Productos" basado en su upc.
 CREATE OR REPLACE FUNCTION update_producto_embalaje(
-  p_ucp VARCHAR(255),
+  p_upc VARCHAR(255),
   p_embalaje VARCHAR(255)
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   UPDATE Productos
   SET embalaje = p_embalaje 
-  WHERE Productos.ucp = p_ucp;
+  WHERE Productos.upc = p_upc;
 $$;
 
--- Esta función actualiza la marca de un producto en la tabla "Productos" basado en su UCP.
+-- Esta función actualiza la marca de un producto en la tabla "Productos" basado en su upc.
 CREATE OR REPLACE FUNCTION update_producto_marca(
-  p_ucp VARCHAR(255),
+  p_upc VARCHAR(255),
   p_marca VARCHAR(255)
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   UPDATE Productos
   SET marca = p_marca 
-  WHERE Productos.ucp = p_ucp;
+  WHERE Productos.upc = p_upc;
 $$;
 
 CREATE OR REPLACE FUNCTION update_producto(
-  p_ucp VARCHAR(255),
+  p_upc VARCHAR(255),
   p_nombre VARCHAR(255),
   p_tamaño VARCHAR(255),
   p_embalaje VARCHAR(255),
@@ -329,7 +329,7 @@ LANGUAGE SQL AS $$
       tamaño = p_tamaño,
       embalaje = p_embalaje,
       marca = p_marca
-  WHERE Productos.ucp = p_ucp;
+  WHERE Productos.upc = p_upc;
 $$;
 
 
@@ -374,9 +374,9 @@ LANGUAGE SQL AS $$
 $$;
 
 CREATE TABLE ProductoCategorizado(
-	ucpProducto VARCHAR(255),
+	upcProducto VARCHAR(255),
 	idcategoria INT,
-	FOREIGN KEY(ucpProducto) REFERENCES Productos(ucp) ON DELETE CASCADE,
+	FOREIGN KEY(upcProducto) REFERENCES Productos(upc) ON DELETE CASCADE,
 	FOREIGN KEY(idcategoria) REFERENCES Categorias(id) ON DELETE CASCADE
 );
 
@@ -473,47 +473,47 @@ $$;
 -- Creación de la tabla de InventarioPorTienda
 CREATE TABLE InventarioPorTienda(
 	idTienda INT,
-	ucpProducto VARCHAR(255),
+	upcProducto VARCHAR(255),
 	precio numeric(9,2),
 	cantidad INT,
 	reorden INT,
-	PRIMARY KEY (idTienda,ucpProducto),
+	PRIMARY KEY (idTienda,upcProducto),
 	FOREIGN KEY(idTienda) REFERENCES Tiendas(id) ON DELETE CASCADE,
-	FOREIGN KEY(ucpProducto) REFERENCES Productos(ucp) ON UPDATE CASCADE ON DELETE CASCADE
+	FOREIGN KEY(upcProducto) REFERENCES Productos(upc) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Esta función se utiliza para insertar un nuevo registro en la tabla "InventarioPorTienda" que representa el inventario de un producto en una tienda específica.
 CREATE OR REPLACE FUNCTION insert_inventario_por_tienda(
   p_idTienda INT,            -- El ID de la tienda.
-  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_upcProducto VARCHAR(255),  -- El Código de Producto Único (upc) del producto.
   p_precio numeric(9,2),     -- El precio del producto en la tienda.
   p_cantidad INT,            -- La cantidad de unidades disponibles en el inventario.
   p_reorden INT              -- El nivel de reorden del producto en el inventario.
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
-  INSERT INTO InventarioPorTienda(idTienda, ucpProducto, precio, cantidad, reorden)
+  INSERT INTO InventarioPorTienda(idTienda, upcProducto, precio, cantidad, reorden)
   VALUES
-    (p_idTienda, p_ucpProducto, p_precio, p_cantidad, p_reorden);  -- Inserta un nuevo registro en el inventario de la tienda.
+    (p_idTienda, p_upcProducto, p_precio, p_cantidad, p_reorden);  -- Inserta un nuevo registro en el inventario de la tienda.
 $$;
 
--- Esta función se utiliza para eliminar un registro de la tabla "InventarioPorTienda" basado en el ID de la tienda y el UCP del producto.
+-- Esta función se utiliza para eliminar un registro de la tabla "InventarioPorTienda" basado en el ID de la tienda y el upc del producto.
 CREATE OR REPLACE FUNCTION delete_inventario_por_tienda(
   p_idTienda INT,            -- El ID de la tienda.
-  p_ucpProducto VARCHAR(255)  -- El Código de Producto Único (UCP) del producto.
+  p_upcProducto VARCHAR(255)  -- El Código de Producto Único (upc) del producto.
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   DELETE FROM InventarioPorTienda
   WHERE 
     InventarioPorTienda.idTienda = p_idTienda AND 
-    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Elimina un registro del inventario de la tienda.
+    InventarioPorTienda.upcProducto = p_upcProducto;  -- Elimina un registro del inventario de la tienda.
 $$;
 
 -- Esta función se utiliza para actualizar el precio de un producto en el inventario de una tienda específica.
 CREATE OR REPLACE FUNCTION update_inventario_por_tienda_precio(
   p_idTienda INT,            -- El ID de la tienda.
-  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_upcProducto VARCHAR(255),  -- El Código de Producto Único (upc) del producto.
   p_precio numeric(9,2)      -- El nuevo precio del producto.
 )
 RETURNS VOID
@@ -522,13 +522,13 @@ LANGUAGE SQL AS $$
   SET precio = p_precio
   WHERE
     InventarioPorTienda.idTienda = p_idTienda AND 
-    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Actualiza el precio del producto en el inventario de la tienda.
+    InventarioPorTienda.upcProducto = p_upcProducto;  -- Actualiza el precio del producto en el inventario de la tienda.
 $$;
 
 -- Esta función se utiliza para actualizar la cantidad de unidades disponibles de un producto en el inventario de una tienda específica.
 CREATE OR REPLACE FUNCTION update_inventario_por_tienda_cantidad(
   p_idTienda INT,            -- El ID de la tienda.
-  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_upcProducto VARCHAR(255),  -- El Código de Producto Único (upc) del producto.
   p_cantidad INT             -- La nueva cantidad de unidades disponibles.
 )
 RETURNS VOID
@@ -537,13 +537,13 @@ LANGUAGE SQL AS $$
   SET cantidad = p_cantidad
   WHERE
     InventarioPorTienda.idTienda = p_idTienda AND 
-    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Actualiza la cantidad de unidades disponibles del producto en el inventario de la tienda.
+    InventarioPorTienda.upcProducto = p_upcProducto;  -- Actualiza la cantidad de unidades disponibles del producto en el inventario de la tienda.
 $$;
 
 -- Esta función se utiliza para actualizar el nivel de reorden de un producto en el inventario de una tienda específica.
 CREATE OR REPLACE FUNCTION update_inventario_por_tienda_reorden(
   p_idTienda INT,            -- El ID de la tienda.
-  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_upcProducto VARCHAR(255),  -- El Código de Producto Único (upc) del producto.
   p_reorden INT              -- El nuevo nivel de reorden del producto.
 )
 RETURNS VOID
@@ -552,13 +552,13 @@ LANGUAGE SQL AS $$
   SET reorden = p_reorden
   WHERE
     InventarioPorTienda.idTienda = p_idTienda AND 
-    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Actualiza el nivel de reorden del producto en el inventario de la tienda.
+    InventarioPorTienda.upcProducto = p_upcProducto;  -- Actualiza el nivel de reorden del producto en el inventario de la tienda.
 $$;
 
 -- Esta función se utiliza para actualizar el precio, la cantidad y el nivel de reorden de un producto en el inventario de una tienda específica.
 CREATE OR REPLACE FUNCTION update_inventario_por_tienda_precio_cantidad_reorden(
   p_idTienda INT,            -- El ID de la tienda.
-  p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+  p_upcProducto VARCHAR(255),  -- El Código de Producto Único (upc) del producto.
   p_precio numeric(9,2),     -- El nuevo precio del producto.
   p_cantidad INT,            -- La nueva cantidad de unidades disponibles.
   p_reorden INT              -- El nuevo nivel de reorden del producto.
@@ -571,7 +571,7 @@ LANGUAGE SQL AS $$
       reorden = p_reorden
   WHERE
     InventarioPorTienda.idTienda = p_idTienda AND 
-    InventarioPorTienda.ucpProducto = p_ucpProducto;  -- Actualiza el precio, cantidad y nivel de reorden del producto en el inventario de la tienda.
+    InventarioPorTienda.upcProducto = p_upcProducto;  -- Actualiza el precio, cantidad y nivel de reorden del producto en el inventario de la tienda.
 $$;
 
 
@@ -580,18 +580,18 @@ $$;
 -- Creación de tabla DetalleFacturas
 CREATE TABLE DetalleFacturas(
 	numeroFactura INT,
-	ucpProducto VARCHAR(255),
+	upcProducto VARCHAR(255),
 	precio numeric(9,2),
 	cantidad INT,
 	FOREIGN KEY (numeroFactura) REFERENCES Facturas(numeroFactura) ON DELETE CASCADE,
-	FOREIGN KEY (ucpProducto) REFERENCES Productos(ucp) ON DELETE CASCADE
+	FOREIGN KEY (upcProducto) REFERENCES Productos(upc) ON DELETE CASCADE
 );
 
 
 -- Definición del tipo de datos "type_DetalleFactura" que representa los detalles de una factura.
 CREATE TYPE type_DetalleFactura AS (
 	numeroFactura INT,            -- El número de la factura.
-	ucpProducto VARCHAR(255),     -- El Código de Producto Único (UCP) del producto.
+	upcProducto VARCHAR(255),     -- El Código de Producto Único (upc) del producto.
 	precio numeric(9,2),          -- El precio del producto.
 	cantidad INT                  -- La cantidad de unidades del producto.
 );
@@ -599,15 +599,15 @@ CREATE TYPE type_DetalleFactura AS (
 -- Esta función se utiliza para insertar un nuevo detalle de factura en la tabla "DetalleFacturas".
 CREATE OR REPLACE FUNCTION insert_detalleFactura(
 	p_numeroFactura INT,         -- El número de factura.
-	p_ucpProducto VARCHAR(255),  -- El Código de Producto Único (UCP) del producto.
+	p_upcProducto VARCHAR(255),  -- El Código de Producto Único (upc) del producto.
 	p_precio numeric(9,2),      -- El precio del producto.
 	p_cantidad INT              -- La cantidad de unidades del producto.
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
-  INSERT INTO DetalleFacturas(numeroFactura, ucpProducto, precio, cantidad)
+  INSERT INTO DetalleFacturas(numeroFactura, upcProducto, precio, cantidad)
   VALUES
-    (p_numeroFactura, p_ucpProducto, p_precio, p_cantidad);  -- Inserta un nuevo detalle de factura.
+    (p_numeroFactura, p_upcProducto, p_precio, p_cantidad);  -- Inserta un nuevo detalle de factura.
 $$;
 
 -- Esta función se utiliza para insertar múltiples detalles de factura en la tabla "DetalleFacturas" utilizando el tipo de datos personalizado.
@@ -623,22 +623,22 @@ BEGIN
   resultado := FALSE;
   FOREACH detalle IN ARRAY detalles
   LOOP
-    CALL insert_detalleFactura(detalle.numeroFactura, detalle.ucpProducto, detalle.precio, detalle.cantidad);  -- Llama a la función para insertar un detalle de factura.
+    CALL insert_detalleFactura(detalle.numeroFactura, detalle.upcProducto, detalle.precio, detalle.cantidad);  -- Llama a la función para insertar un detalle de factura.
   END LOOP;
   resultado := TRUE;
   RETURN resultado;
 END;
 $$;
 
--- Esta función se utiliza para eliminar un detalle de factura específico basado en el número de factura y el Código de Producto Único (UCP) del producto.
+-- Esta función se utiliza para eliminar un detalle de factura específico basado en el número de factura y el Código de Producto Único (upc) del producto.
 CREATE OR REPLACE FUNCTION delete_detalleFactura_productoIndividual(
   p_numeroFactura INT,        -- El número de factura.
-  p_ucpProducto VARCHAR(255)  -- El Código de Producto Único (UCP) del producto.
+  p_upcProducto VARCHAR(255)  -- El Código de Producto Único (upc) del producto.
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   DELETE FROM DetalleFacturas as F
-  WHERE F.numeroFactura = p_numeroFactura AND F.ucpProducto = p_ucpProducto;  -- Elimina un detalle de factura específico.
+  WHERE F.numeroFactura = p_numeroFactura AND F.upcProducto = p_upcProducto;  -- Elimina un detalle de factura específico.
 $$;
 -- Esta función se utiliza para eliminar todos los detalles de factura asociados a un número de factura específico.
 CREATE OR REPLACE FUNCTION delete_detalleFactura_completo(
@@ -655,48 +655,48 @@ $$;
 -- Creación de la tabla Vende (Productos que vende cada Proveedor)
 CREATE TABLE Vende(
 	idProveedor INT,
-  ucpProducto VARCHAR(225),
+  upcProducto VARCHAR(225),
   FOREIGN KEY (idProveedor) REFERENCES Proveedores(id) ON DELETE CASCADE,
-  FOREIGN KEY (ucpProducto) REFERENCES Productos(ucp) ON DELETE CASCADE
+  FOREIGN KEY (upcProducto) REFERENCES Productos(upc) ON DELETE CASCADE
 );
 
 -- Esta función se utiliza para registrar que un proveedor vende un producto específico.
 CREATE OR REPLACE FUNCTION insert_vende(
   p_idProveedor INT,          -- El ID del proveedor.
-  p_ucpProducto VARCHAR(225)  -- El Código de Producto Único (UCP) del producto.
+  p_upcProducto VARCHAR(225)  -- El Código de Producto Único (upc) del producto.
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
-  INSERT INTO Vende(idProveedor, ucpProducto)
-  VALUES (p_idProveedor, p_ucpProducto);  -- Registra la relación entre el proveedor y el producto que vende.
+  INSERT INTO Vende(idProveedor, upcProducto)
+  VALUES (p_idProveedor, p_upcProducto);  -- Registra la relación entre el proveedor y el producto que vende.
 $$;
 
 -- Esta función se utiliza para eliminar la relación entre un proveedor y un producto que vendía.
 CREATE OR REPLACE FUNCTION delete_vende(
   p_idProveedor INT,          -- El ID del proveedor.
-  p_ucpProducto VARCHAR(225)  -- El Código de Producto Único (UCP) del producto.
+  p_upcProducto VARCHAR(225)  -- El Código de Producto Único (upc) del producto.
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   DELETE FROM Vende
   WHERE 
     idProveedor = p_idProveedor AND
-    ucpProducto = p_ucpProducto;  -- Elimina la relación de venta entre el proveedor y el producto.
+    upcProducto = p_upcProducto;  -- Elimina la relación de venta entre el proveedor y el producto.
 $$;
 
 -- Esta función se utiliza para actualizar el producto que un proveedor vende.
 CREATE OR REPLACE FUNCTION update_vende_producto(
   p_idProveedor INT,                  -- El ID del proveedor.
-  p_ucpProductoAnterior VARCHAR(255),  -- El Código de Producto Único (UCP) anterior.
-  p_ucpProductoNuevo VARCHAR(225)     -- El nuevo Código de Producto Único (UCP) del producto que se vende.
+  p_upcProductoAnterior VARCHAR(255),  -- El Código de Producto Único (upc) anterior.
+  p_upcProductoNuevo VARCHAR(225)     -- El nuevo Código de Producto Único (upc) del producto que se vende.
 )
 RETURNS VOID
 LANGUAGE SQL AS $$
   UPDATE Vende
-  SET ucpProducto = p_ucpProductoNuevo
+  SET upcProducto = p_upcProductoNuevo
   WHERE 
     Vende.idProveedor = p_idProveedor AND
-    ucpProducto = p_ucpProductoAnterior;  -- Actualiza el producto que el proveedor vende.
+    upcProducto = p_upcProductoAnterior;  -- Actualiza el producto que el proveedor vende.
 $$;
 
 
@@ -745,16 +745,16 @@ CREATE OR REPLACE FUNCTION detalle_productos_por_factura(
   p_numeroFactura INT
 )
 RETURNS TABLE(
-  ucp VARCHAR(255),
+  upc VARCHAR(255),
   nombre VARCHAR(255),
   cantidad INT,
   precioUnitario numeric(10,2),
   importe numeric(10,2)
 )
 LANGUAGE SQL AS $$
-  SELECT DF.ucpProducto, P.nombre, DF.cantidad, DF.precio as precioUnitario, DF.precio*DF.cantidad as importe
+  SELECT DF.upcProducto, P.nombre, DF.cantidad, DF.precio as precioUnitario, DF.precio*DF.cantidad as importe
   FROM DetalleFacturas DF INNER JOIN Productos P
-    ON DF.ucpProducto = P.ucp
+    ON DF.upcProducto = P.upc
   WHERE DF.numeroFactura = p_numeroFactura;
 $$;
 
@@ -765,22 +765,22 @@ CREATE OR REPLACE FUNCTION mejore_viente_productos_tienda(
   p_id INT
 )
 RETURNS TABLE(
-  ucp VARCHAR(255),
+  upc VARCHAR(255),
   nombre VARCHAR(255),
   cantidadVendida INT
 )
 LANGUAGE PLPGSQL AS $$
 BEGIN
   RETURN QUERY
-  SELECT DF.ucpProducto, P.nombre, COUNT(DF.ucpProducto)
+  SELECT DF.upcProducto, P.nombre, COUNT(DF.upcProducto)
   FROM
     DetalleFacturas DF 
     INNER JOIN Facturas F
       ON DF.numeroFactura = F.numeroFactura 
     INNER JOIN Productos P 
-      ON DF.ucpProducto = P.ucp
+      ON DF.upcProducto = P.upc
   WHERE F.idTienda = p_id
-  GROUP BY DF.ucpProducto
+  GROUP BY DF.upcProducto
   LIMIT 20;
 END;
 $$;
@@ -791,7 +791,7 @@ CREATE OR REPLACE VIEW MejoresProductosPorPais AS
 WITH RECURSIVE VentasDeProductos AS (
   -- Calcular las ventas totales de cada producto por país
   SELECT
-    DF.ucpProducto,
+    DF.upcProducto,
     U.pais AS pais,
     SUM(DF.precio * DF.cantidad) AS ventas_totales,
     ROW_NUMBER() OVER (PARTITION BY U.pais ORDER BY SUM(DF.precio * DF.cantidad) DESC) AS ranking_ventas
@@ -801,13 +801,13 @@ WITH RECURSIVE VentasDeProductos AS (
     JOIN Tiendas T ON F.idTienda = T.id
     JOIN Ubicaciones U ON T.idUbicacion = U.id
   GROUP BY
-    DF.ucpProducto,
+    DF.upcProducto,
     U.pais
 ),
 RankingRecursivo AS (
   -- Utilizar CTE recursivo para clasificar los productos
   SELECT
-    vdp.ucpProducto,
+    vdp.upcProducto,
     vdp.pais,
     vdp.ventas_totales,
     vdp.ranking_ventas
@@ -817,7 +817,7 @@ RankingRecursivo AS (
     vdp.ranking_ventas <= 20 -- Seleccionar inicialmente los 20 mejores productos
   UNION ALL
   SELECT
-    vdp2.ucpProducto,
+    vdp2.upcProducto,
     vdp2.pais,
     vdp2.ventas_totales,
     vdp2.ranking_ventas
@@ -829,7 +829,7 @@ RankingRecursivo AS (
 )
 -- Selección final de los 20 mejores productos por país
 SELECT
-  rr.ucpProducto,
+  rr.upcProducto,
   rr.pais,
   rr.ventas_totales,
   rr.ranking_ventas
@@ -844,13 +844,13 @@ CREATE OR REPLACE FUNCTION mejores_veinte_producto_vendidos_pais(
   p_pais VARCHAR(255)
 )
 RETURNS TABLE (
-    ucpProducto VARCHAR(255),
+    upcProducto VARCHAR(255),
     ventas_totales numeric(10,2)
 )
 LANGUAGE PLPGSQL AS $$
 	BEGIN
 		RETURN QUERY 
-		SELECT ucpProducto, ventas_totales
+		SELECT upcProducto, ventas_totales
 		FROM MejoresProductosPorPais
 		WHERE pais = p_pais;
 	END;
@@ -908,7 +908,7 @@ INSERT INTO Tiendas (nombre, ubicacion, horario) VALUES
   ('Tienda I', 'Danlí, El Paraíso', '8:30 AM - 6:30 PM'),
   ('Tienda J', 'Juticalpa, Olancho', '9:30 AM - 7:30 PM');
 
-INSERT INTO Productos (ucp, tamaño, embalaje, marca) VALUES
+INSERT INTO Productos (upc, tamaño, embalaje, marca) VALUES
   ('DESKTOP001', 1000, 'Caja', 'TechCo'),
   ('MONITOR001', 27, 'Caja', 'DisplayTech'),
   ('LAPTOP001', 15, 'Caja', 'TechZone'),
