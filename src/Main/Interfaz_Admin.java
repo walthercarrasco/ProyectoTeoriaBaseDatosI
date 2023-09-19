@@ -38,12 +38,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         BT_Crear_CT = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        CB_Ubicacion_CT = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
         SP_HorarioApertura_CT = new javax.swing.JSpinner();
         SP_HorarioCierre_CT = new javax.swing.JSpinner();
         jLabel13 = new javax.swing.JLabel();
-        JD_Crear_Tienda_BG = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         JD_Modificar_Tienda = new javax.swing.JDialog();
         jLabel22 = new javax.swing.JLabel();
         TF_Nombre_MT = new javax.swing.JTextField();
@@ -193,37 +195,53 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Crear_Tienda.getContentPane().add(TF_Nombre_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 290, -1));
 
         jLabel14.setText("Horario");
-        JD_Crear_Tienda.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, 20));
+        JD_Crear_Tienda.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, 20));
 
         BT_Crear_CT.setText("Crear");
-        JD_Crear_Tienda.getContentPane().add(BT_Crear_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 110, -1));
+        JD_Crear_Tienda.getContentPane().add(BT_Crear_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 110, -1));
 
         jLabel20.setText("Nombre");
         JD_Crear_Tienda.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, 20));
 
-        CB_Ubicacion_CT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        JD_Crear_Tienda.getContentPane().add(CB_Ubicacion_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 190, -1));
-
-        jLabel21.setText("Ubicación");
-        JD_Crear_Tienda.getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, 20));
+        jLabel21.setText("Direccion:");
+        JD_Crear_Tienda.getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, 20));
 
         SP_HorarioApertura_CT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672552800000L), null, null, java.util.Calendar.HOUR));
         SP_HorarioApertura_CT.setToolTipText("");
         SP_HorarioApertura_CT.setEditor(new JSpinner.DateEditor(SP_HorarioApertura_CT, "hh:mm a"));
-        JD_Crear_Tienda.getContentPane().add(SP_HorarioApertura_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 90, -1));
+        JD_Crear_Tienda.getContentPane().add(SP_HorarioApertura_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 90, -1));
         new SpinnerDateModel(new java.util.Date(), null, null, Calendar.HOUR);
 
         SP_HorarioCierre_CT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672596000000L), null, null, java.util.Calendar.DAY_OF_MONTH));
         SP_HorarioCierre_CT.setEditor(new JSpinner.DateEditor(SP_HorarioCierre_CT, "hh:mm a")
         );
-        JD_Crear_Tienda.getContentPane().add(SP_HorarioCierre_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 90, -1));
+        JD_Crear_Tienda.getContentPane().add(SP_HorarioCierre_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 90, -1));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("-");
-        JD_Crear_Tienda.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 40, 20));
+        JD_Crear_Tienda.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 40, 20));
 
-        JD_Crear_Tienda_BG.setIcon(new javax.swing.ImageIcon("C:\\Users\\emili\\OneDrive\\Desktop\\ProyectoPersonal_TDB\\IMGs\\JD_Crear_Tienda_BG.png")); // NOI18N
-        JD_Crear_Tienda.getContentPane().add(JD_Crear_Tienda_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
+        jLabel51.setText("País:");
+        JD_Crear_Tienda.getContentPane().add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, 20));
+
+        jLabel52.setText("Ciudad:");
+        JD_Crear_Tienda.getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, 20));
+
+        jLabel53.setText("Estado:");
+        JD_Crear_Tienda.getContentPane().add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, 20));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+
+        JD_Crear_Tienda.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 440));
 
         JD_Modificar_Tienda.setResizable(false);
         JD_Modificar_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -269,8 +287,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         jLabel35.setText("Nombre");
         JD_Modificar_Tienda.getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, 20));
-
-        JD_Modificar_Tienda_BG.setIcon(new javax.swing.ImageIcon("C:\\Users\\emili\\OneDrive\\Desktop\\ProyectoPersonal_TDB\\IMGs\\JD_Modificar_Tienda_BG.png")); // NOI18N
         JD_Modificar_Tienda.getContentPane().add(JD_Modificar_Tienda_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 380));
 
         JD_Eliminar_Tienda.setMinimumSize(new java.awt.Dimension(600, 300));
@@ -1056,7 +1072,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CB_Tienda_ET;
     private javax.swing.JComboBox<String> CB_Tienda_MT;
     private javax.swing.JComboBox<String> CB_Tienda_MT1;
-    private javax.swing.JComboBox<String> CB_Ubicacion_CT;
     private javax.swing.JComboBox<String> CB_Ubicacion_MT;
     private javax.swing.JComboBox<String> CB_VentaPais;
     private javax.swing.JLabel Decor_Panel_Cliente;
@@ -1067,7 +1082,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel JD_Crear_Cliente_BG;
     private javax.swing.JDialog JD_Crear_Producto;
     private javax.swing.JDialog JD_Crear_Tienda;
-    private javax.swing.JLabel JD_Crear_Tienda_BG;
     private javax.swing.JDialog JD_Eliminar_Cliente;
     private javax.swing.JDialog JD_Eliminar_Producto;
     private javax.swing.JDialog JD_Eliminar_Tienda;
@@ -1164,10 +1178,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
