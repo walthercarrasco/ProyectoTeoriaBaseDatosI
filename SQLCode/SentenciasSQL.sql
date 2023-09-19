@@ -380,6 +380,8 @@ CREATE TABLE ProductoCategorizado(
 	FOREIGN KEY(idcategoria) REFERENCES Categorias(id) ON DELETE CASCADE
 );
 
+-- TODO: Pendientes CRUD con Funciones
+
 -- TABLA PROVEEDORES ==============================================================================
 -- Creación de la tabla Proveedor
 CREATE TABLE Proveedores(
@@ -857,12 +859,17 @@ LANGUAGE PLPGSQL AS $$
 $$;
 
 CREATE VIEW ventas_diarias_tiendas AS
-SELECT F.fecha, F.idTienda, SUM(DF.precio * DF.cantidad) AS Ventas
+SELECT F.fecha, F.idTienda, T.nombre, SUM(DF.precio * DF.cantidad) AS Ventas
 FROM 
-  DetalleFacturas DF INNER JOIN Facturas F 
-  ON DF.numeroFactura = F.numeroFactura
-GROUP BY F.fecha, F.idTienda
-ORDER BY F.fecha DESC
+  DetalleFacturas DF 
+  INNER JOIN 
+  Facturas F 
+    ON DF.numeroFactura = F.numeroFactura
+  INNER JOIN 
+  Tiendas T
+    ON F.idTienda = T.id
+GROUP BY F.fecha, F.idTienda, T.nombre
+ORDER BY F.fecha DESC;
 
 -- FUNCION QUE RETORNA EL HISTORIAL DE VENTAS DIARIAS =============================================
 CREATE OR REPLACE FUNCTION historial_ventas_diarias_por_tienda(
@@ -937,102 +944,30 @@ BEGIN
 END;
 $$;
 
+-- FUNCION QUE RETORNA LAS CINCO MEJORES TIENDAS EN LO QUE VA DEL AÑO
+CREATE OR REPLACE FUNCTION cinco_mejores_tiendas()
+RETURNS TABLE(
+  Numero INT,
+  idTienda INT,
+  VentasTotales numeric(13,2)
+)
+LANGUAGE PLPGSQL AS $$
+BEGIN
+  RETURN QUERY
+  SELECT ROW_NUMBER() OVER (ORDER BY VentasTotales DESC) AS Numero, idTienda, SUM(Ventas) as VentasTotales
+  FROM ventas_diarias_tiendas
+  WHERE fecha BETWEEN  date_trunc('year',CURRENT_DATE) AND CURRENT_DATE
+  GROUP BY idTienda
+  LIMIT 5
+END;
+$$;
 
-INSERT INTO Clientes (nombre, correoElectronico) VALUES
-  ('John Doe', 'john.doe@example.com'),
-  ('Alice Smith', 'alice.smith@example.com'),
-  ('Bob Johnson', 'bob.johnson@example.com'),
-  ('Eva Williams', 'eva.williams@example.com'),
-  ('Michael Brown', 'michael.brown@example.com'),
-  ('Olivia Jones', 'olivia.jones@example.com'),
-  ('William Davis', 'william.davis@example.com'),
-  ('Sophia Wilson', 'sophia.wilson@example.com'),
-  ('James Miller', 'james.miller@example.com'),
-  ('Lily Anderson', 'lily.anderson@example.com');
-
-INSERT INTO Tiendas (nombre, ubicacion, horario) VALUES
-  ('Tienda A', 'Tegucigalpa, Francisco Morazán', '9:00 AM - 7:00 PM'),
-  ('Tienda B', 'San Pedro Sula, Cortés', '8:30 AM - 6:30 PM'),
-  ('Tienda C', 'La Ceiba, Atlántida', '10:00 AM - 8:00 PM'),
-  ('Tienda D', 'Comayagua, Comayagua', '8:00 AM - 6:00 PM'),
-  ('Tienda E', 'Santa Rosa de Copán, Copán', '9:30 AM - 7:30 PM'),
-  ('Tienda F', 'Choluteca, Choluteca', '8:30 AM - 6:30 PM'),
-  ('Tienda G', 'La Lima, Cortés', '10:00 AM - 8:00 PM'),
-  ('Tienda H', 'Puerto Cortés, Cortés', '9:00 AM - 7:00 PM'),
-  ('Tienda I', 'Danlí, El Paraíso', '8:30 AM - 6:30 PM'),
-  ('Tienda J', 'Juticalpa, Olancho', '9:30 AM - 7:30 PM');
-
-INSERT INTO Productos (upc, tamaño, embalaje, marca) VALUES
-  ('DESKTOP001', 1000, 'Caja', 'TechCo'),
-  ('MONITOR001', 27, 'Caja', 'DisplayTech'),
-  ('LAPTOP001', 15, 'Caja', 'TechZone'),
-  ('KEYBOARD001', NULL, 'Paquete', 'InputTech'),
-  ('MOUSE001', NULL, 'Paquete', 'InputTech'),
-  ('PRINTER001', NULL, 'Caja', 'PrintMasters'),
-  ('SCANNER001', NULL, 'Caja', 'ScanTech'),
-  ('ROUTER001', NULL, 'Caja', 'NetConnect'),
-  ('SPEAKERS001', NULL, 'Paquete', 'SoundTech'),
-  ('HEADPHONES001', NULL, 'Paquete', 'SoundTech'),
-  ('TABLET001', 10, 'Caja', 'TechGadgets'),
-  ('SMARTPHONE001', NULL, 'Caja', 'TechGadgets'),
-  ('CAMERA001', NULL, 'Caja', 'PhotoTech'),
-  ('EXTERNALHD001', NULL, 'Caja', 'StorageTech'),
-  ('GRAPHICSCARD001', NULL, 'Caja', 'TechBoost'),
-  ('POWERBANK001', NULL, 'Caja', 'MobilePower'),
-  ('SSD001', 500, 'Caja', 'StorageTech'),
-  ('HEADSET001', NULL, 'Paquete', 'SoundTech'),
-  ('WEBCAM001', NULL, 'Caja', 'VideoTech'),
-  ('PROJECTOR001', NULL, 'Caja', 'ProjectorPro'),
-  ('DESKTOP002', 800, 'Caja', 'TechCo'),
-  ('MONITOR002', 32, 'Caja', 'DisplayTech'),
-  ('LAPTOP002', 14, 'Caja', 'TechZone'),
-  ('KEYBOARD002', NULL, 'Paquete', 'InputTech'),
-  ('MOUSE002', NULL, 'Paquete', 'InputTech'),
-  ('PRINTER002', NULL, 'Caja', 'PrintMasters'),
-  ('SCANNER002', NULL, 'Caja', 'ScanTech'),
-  ('ROUTER002', NULL, 'Caja', 'NetConnect'),
-  ('SPEAKERS002', NULL, 'Paquete', 'SoundTech'),
-  ('HEADPHONES002', NULL, 'Paquete', 'SoundTech'),
-  ('TABLET002', 11, 'Caja', 'TechGadgets'),
-  ('SMARTPHONE002', NULL, 'Caja', 'TechGadgets'),
-  ('CAMERA002', NULL, 'Caja', 'PhotoTech'),
-  ('EXTERNALHD002', NULL, 'Caja', 'StorageTech'),
-  ('GRAPHICSCARD002', NULL, 'Caja', 'TechBoost'),
-  ('POWERBANK002', NULL, 'Caja', 'MobilePower'),
-  ('SSD002', 512, 'Caja', 'StorageTech'),
-  ('HEADSET002', NULL, 'Paquete', 'SoundTech'),
-  ('WEBCAM002', NULL, 'Caja', 'VideoTech'),
-  ('PROJECTOR002', NULL, 'Caja', 'ProjectorPro'),
-  ('DESKTOP003', 1200, 'Caja', 'TechCo'),
-  ('MONITOR003', 28, 'Caja', 'DisplayTech'),
-  ('LAPTOP003', 13, 'Caja', 'TechZone'),
-  ('KEYBOARD003', NULL, 'Paquete', 'InputTech'),
-  ('MOUSE003', NULL, 'Paquete', 'InputTech'),
-  ('PRINTER003', NULL, 'Caja', 'PrintMasters'),
-  ('SCANNER003', NULL, 'Caja', 'ScanTech'),
-  ('ROUTER003', NULL, 'Caja', 'NetConnect'),
-  ('SPEAKERS003', NULL, 'Paquete', 'SoundTech'),
-  ('HEADPHONES003', NULL, 'Paquete', 'SoundTech'),
-  ('TABLET003', 9, 'Caja', 'TechGadgets'),
-  ('SMARTPHONE003', NULL, 'Caja', 'TechGadgets'),
-  ('CAMERA003', NULL, 'Caja', 'PhotoTech'),
-  ('EXTERNALHD003', NULL, 'Caja', 'StorageTech'),
-  ('GRAPHICSCARD003', NULL, 'Caja', 'TechBoost'),
-  ('POWERBANK003', NULL, 'Caja', 'MobilePower'),
-  ('SSD003', 256, 'Caja', 'StorageTech'),
-  ('HEADSET003', NULL, 'Paquete', 'SoundTech'),
-  ('WEBCAM003', NULL, 'Caja', 'VideoTech'),
-  ('PROJECTOR003', NULL, 'Caja', 'ProjectorPro');
-
-INSERT INTO Proveedores (nombre) VALUES
-    ('Tecnología Latina S.A.'),
-    ('Electrónica Innovadora LATAM'),
-    ('Soluciones TecnoLatinas'),
-    ('LatinoTech Solutions'),
-    ('Suministros Electrónicos Hispanos'),
-    ('LatinIT Servicios Tecnológicos'),
-    ('Innovación Digital Latinoamericana'),
-    ('TechLatino Hardware y Software'),
-    ('DesarrolloTech Solutions'),
-    ('Ciberseguridad Latina');
-
+CREATE VIEW productos_mas_vendidos AS
+SELECT DF.upcProducto, P.nombre, SUM(DF.cantidad) as cantidad, SUM(DF.precio*DF.cantidad) AS importe 
+FROM 
+  DetalleFacturas DF 
+  INNER JOIN 
+  Productos P
+    ON DF.upcProducto = P.upc
+GROUP BY DF.upcProducto, P.nombre
+ORDER BY importe;
