@@ -235,6 +235,7 @@ $$;
 -- Creación de la tabla "Productos"
 CREATE TABLE Productos(
 	ucp VARCHAR(255) PRIMARY KEY,
+  nombre VARCHAR(255),
 	tamaño INT,
 	embalaje VARCHAR(255),
 	marca VARCHAR(255)
@@ -243,13 +244,14 @@ CREATE TABLE Productos(
 -- Esta función inserta un nuevo producto en la tabla "Productos".
 CREATE OR REPLACE FUNCTION insert_producto(
   p_ucp VARCHAR(255),
+  nombre VARCHAR(255),
   p_tamaño INT,
   p_embalaje VARCHAR(255),
   p_marca VARCHAR(255)
 )
 RETURNS VOID
 LANGUAGE SQL AS $$ 
-  INSERT INTO Productos(ucp, tamaño, embalaje, marca)
+  INSERT INTO Productos(ucp, nombre, tamaño, embalaje, marca)
   VALUES
     (p_ucp, p_tamaño, p_embalaje, p_marca);
 $$;
@@ -263,6 +265,19 @@ LANGUAGE SQL AS $$
   DELETE FROM Productos
   WHERE Productos.ucp = p_ucp;
 $$;
+
+-- Esta función actualiza el nombre de un producto en la tabla "Productos" basado en su UCP.
+CREATE OR REPLACE FUNCTION update_producto_nombre(
+  p_ucp VARCHAR(255),
+  p_nombre VARCHAR(255)
+)
+RETURNS VOID
+LANGUAGE SQL AS $$
+  UPDATE Productos
+  SET nombre = p_nombre 
+  WHERE Productos.ucp = p_ucp;
+$$;
+
 
 -- Esta función actualiza el tamaño de un producto en la tabla "Productos" basado en su UCP.
 CREATE OR REPLACE FUNCTION update_producto_tamano(
@@ -302,6 +317,7 @@ $$;
 
 CREATE OR REPLACE FUNCTION update_producto(
   p_ucp VARCHAR(255),
+  p_nombre VARCHAR(255),
   p_tamaño INT,
   p_embalaje VARCHAR(255),
   p_marca VARCHAR(255)
@@ -309,7 +325,8 @@ CREATE OR REPLACE FUNCTION update_producto(
 RETURNS VOID
 LANGUAGE SQL AS $$
   UPDATE Productos
-  SET tamaño = p_tamaño,
+  SET nombre = p_nombre,
+      tamaño = p_tamaño,
       embalaje = p_embalaje,
       marca = p_marca
   WHERE Productos.ucp = p_ucp;
@@ -566,8 +583,8 @@ CREATE TABLE DetalleFacturas(
 	ucpProducto VARCHAR(255),
 	precio numeric(9,2),
 	cantidad INT,
-	FOREIGN KEY (numeroFactura) REFERENCES Facturas(numeroFactura),
-	FOREIGN KEY (ucpProducto) REFERENCES Productos(ucp)
+	FOREIGN KEY (numeroFactura) REFERENCES Facturas(numeroFactura) ON DELETE CASCADE,
+	FOREIGN KEY (ucpProducto) REFERENCES Productos(ucp) ON DELETE CASCADE
 );
 
 
@@ -722,8 +739,18 @@ BEGIN
 END;
 $$;
 
+CREATE OR REPLACE FUNCTION detalle_productos_por_factura(
+  numeroFactura INT
+)
+RETURNS TABLE(
+	ucp VARCHAR(255) PRIMARY KEY,
+  nombre VARCHAR(255),
+  cantidad INT,
+  precio 
+)
+
 -- FUNCION QUE PERMITE OBTENER LOS 20 PRODUCTOS MAS VENDIDOS POR UNA TIENDA ========================
-CREATE OR REPLACE FUNCTION mejore_viente_prodcutos_tienda(
+CREATE OR REPLACE FUNCTION mejore_viente_productos_tienda(
   p_id INT
 )
 RETURNS TABLE(
@@ -817,6 +844,8 @@ LANGUAGE PLPGSQL AS $$
 		WHERE pais = p_pais;
 	END;
 $$;
+
+
 
 
 INSERT INTO Clientes (nombre, correoElectronico) VALUES
