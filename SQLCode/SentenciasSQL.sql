@@ -748,18 +748,75 @@ END;
 $$;
 
 
+-- VISTA DE MEJORES PRODUCTOS POR PAIS ============================================================
+CREATE OR REPLACE VIEW MejoresProductosPorPais AS
+WITH RECURSIVE VentasDeProductos AS (
+  -- Calcular las ventas totales de cada producto por país
+  SELECT
+    DF.ucpProducto,
+    U.pais AS pais,
+    SUM(DF.precio * DF.cantidad) AS ventas_totales,
+    ROW_NUMBER() OVER (PARTITION BY U.pais ORDER BY SUM(DF.precio * DF.cantidad) DESC) AS ranking_ventas
+  FROM
+    DetalleFacturas DF
+    JOIN Facturas F ON DF.numeroFactura = F.numeroFactura
+    JOIN Tiendas T ON F.idTienda = T.id
+    JOIN Ubicaciones U ON T.idUbicacion = U.id
+  GROUP BY
+    DF.ucpProducto,
+    U.pais
+),
+RankingRecursivo AS (
+  -- Utilizar CTE recursivo para clasificar los productos
+  SELECT
+    vdp.ucpProducto,
+    vdp.pais,
+    vdp.ventas_totales,
+    vdp.ranking_ventas
+  FROM
+    VentasDeProductos vdp
+  WHERE
+    vdp.ranking_ventas <= 20 -- Seleccionar inicialmente los 20 mejores productos
+  UNION ALL
+  SELECT
+    vdp2.ucpProducto,
+    vdp2.pais,
+    vdp2.ventas_totales,
+    vdp2.ranking_ventas
+  FROM
+    VentasDeProductos vdp2
+    JOIN RankingRecursivo rr ON vdp2.pais = rr.pais AND vdp2.ranking_ventas = rr.ranking_ventas + 1
+  WHERE
+    rr.ranking_ventas < 20 -- Continuar la recursión hasta que se seleccionen 20 productos
+)
+-- Selección final de los 20 mejores productos por país
+SELECT
+  rr.ucpProducto,
+  rr.pais,
+  rr.ventas_totales,
+  rr.ranking_ventas
+FROM
+  RankingRecursivo rr
+ORDER BY
+  rr.pais,
+  rr.ranking_ventas;
 
-
---  VISTAS ========================================================================================
-
-
-
-
-
-
--- 
-
-CREATE VIEW 
+-- FUNCION QUE RETORNA LOS MEJORES 20 PRODUCTOS POR PAIS SELECCIONADO
+CREATE OR REPLACE FUNCTION mejores_veinte_producto_vendidos_pais(
+  p_pais VARCHAR(255)
+)
+RETURNS TABLE (
+    ucpProducto VARCHAR(255),
+    ventas_totales numeric(10,2)
+)
+LANGUAGE PLPGSQL AS $$
+	BEGIN
+		RETURN QUERY 
+		SELECT ucpProducto, ventas_totales
+		FROM MejoresProductosPorPais
+		WHERE pais = p_pais;
+	END;
+$$;
 
 
 INSERT INTO Clientes (nombre, correoElectronico) VALUES
