@@ -560,7 +560,7 @@ $$;
 
 
 -- TABLA DETALLE_FACTURA ==========================================================================
--- Creación de tabla DetalleFactura
+-- Creación de tabla DetalleFacturas
 CREATE TABLE DetalleFacturas(
 	numeroFactura INT,
 	ucpProducto VARCHAR(255),
@@ -679,6 +679,87 @@ LANGUAGE SQL AS $$
     Vende.idProveedor = p_idProveedor AND
     ucpProducto = p_ucpProductoAnterior;  -- Actualiza el producto que el proveedor vende.
 $$;
+
+
+-- FUNCION QUE RETORNA EL HISTORIAL DE COMPRA DE UN CLIENTE ========================================
+CREATE OR REPLACE FUNCTION historial_facturas_cliente(
+  p_id INT
+)
+RETURNS TABLE(
+    fecha DATE,
+    numeroFactura INT,
+    nombreTienda VARCHAR(255),
+    total numeric(13,2)
+)
+LANGUAGE plpgsql  AS $$
+BEGIN
+  RETURN QUERY
+    SELECT F.fecha, F.numeroFactura, T.nombre, F.total
+    FROM Facturas F
+    INNER JOIN Tiendas T ON F.idTienda = T.id
+    WHERE F.idCliente = p_id;
+END;
+$$;
+
+-- FUNCION QUE PERMITE VISUALIZAR LOS MEJORES 20 PRODUCTOS VENDIDOS POR UNA TIENDA ================
+CREATE OR REPLACE FUNCTION historial_facturas_cliente(
+  p_id INT
+)
+RETURNS TABLE(
+    fecha DATE,
+    numeroFactura INT,
+    nombreTienda VARCHAR(255),
+    total numeric(13,2)
+)
+LANGUAGE PLPGSQL  AS $$
+BEGIN
+  RETURN QUERY
+    SELECT F.fecha, F.numeroFactura, T.nombre, F.total
+    FROM 
+      Facturas F INNER JOIN Tiendas T 
+      ON F.idTienda = T.id
+    WHERE F.idCliente = p_id;
+END;
+$$;
+
+-- FUNCION QUE PERMITE OBTENER LOS 20 PRODUCTOS MAS VENDIDOS POR UNA TIENDA ========================
+CREATE OR REPLACE FUNCTION mejore_viente_prodcutos_tienda(
+  p_id INT
+)
+RETURNS TABLE(
+  ucp VARCHAR(255),
+  nombre VARCHAR(255),
+  cantidadVendida INT
+)
+LANGUAGE PLPGSQL AS $$
+BEGIN
+  RETURN QUERY
+  SELECT DF.ucpProducto, P.nombre, COUNT(DF.ucpProducto)
+  FROM
+    DetalleFacturas DF 
+    INNER JOIN Facturas F
+      ON DF.numeroFactura = F.numeroFactura 
+    INNER JOIN Productos P 
+      ON DF.ucpProducto = P.ucp
+  WHERE F.idTienda = p_id
+  GROUP BY DF.ucpProducto
+  LIMIT 20;
+END;
+$$;
+
+
+
+
+--  VISTAS ========================================================================================
+
+
+
+
+
+
+-- 
+
+CREATE VIEW 
 
 
 INSERT INTO Clientes (nombre, correoElectronico) VALUES
