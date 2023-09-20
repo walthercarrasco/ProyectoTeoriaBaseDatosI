@@ -95,7 +95,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         BT_Modificar_MC = new javax.swing.JButton();
-        CB_Tienda_MT1 = new javax.swing.JComboBox<>();
+        CB_Cliente_MC = new javax.swing.JComboBox<>();
         jLabel36 = new javax.swing.JLabel();
         JD_Modificar_Cliente_BG = new javax.swing.JLabel();
         JD_Eliminar_Cliente = new javax.swing.JDialog();
@@ -382,12 +382,22 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Modificar_Cliente.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, 20));
 
         BT_Modificar_MC.setText("Modificar");
+        BT_Modificar_MC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_Modificar_MCMousePressed(evt);
+            }
+        });
         JD_Modificar_Cliente.getContentPane().add(BT_Modificar_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 110, -1));
 
-        CB_Tienda_MT1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        JD_Modificar_Cliente.getContentPane().add(CB_Tienda_MT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
+        CB_Cliente_MC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CB_Cliente_MC.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_Cliente_MCItemStateChanged(evt);
+            }
+        });
+        JD_Modificar_Cliente.getContentPane().add(CB_Cliente_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
 
-        jLabel36.setText("Tienda");
+        jLabel36.setText("Cliente");
         JD_Modificar_Cliente.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, 20));
         JD_Modificar_Cliente.getContentPane().add(JD_Modificar_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
 
@@ -470,6 +480,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Modificar_Producto.getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, 20));
 
         BT_Modificar_MP.setText("Modificar");
+        BT_Modificar_MP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_Modificar_MPMousePressed(evt);
+            }
+        });
         JD_Modificar_Producto.getContentPane().add(BT_Modificar_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 110, -1));
 
         jLabel31.setText("Producto");
@@ -478,7 +493,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel32.setText("Tamaño");
         JD_Modificar_Producto.getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, 20));
 
-        CB_Embalaje_MP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CB_Embalaje_MP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Papel", "Carton", "Metal", "Plastico", "Vidrio" }));
         JD_Modificar_Producto.getContentPane().add(CB_Embalaje_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 190, -1));
         JD_Modificar_Producto.getContentPane().add(TF_Size_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 190, -1));
         JD_Modificar_Producto.getContentPane().add(TF_Marca_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 190, -1));
@@ -487,6 +502,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Modificar_Producto.getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, 20));
 
         CB_Producto_MP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CB_Producto_MP.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_Producto_MPItemStateChanged(evt);
+            }
+        });
         JD_Modificar_Producto.getContentPane().add(CB_Producto_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
 
         jLabel34.setText("Nombre");
@@ -1043,13 +1063,20 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_A_BT_Crear_ProductosMousePressed
 
     private void A_BT_Modificar_ProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Modificar_ProductosMousePressed
+        try{
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT upc as id,nombre FROM productos");
+            ActualizarCB(CB_Producto_MP, ps);
+            CB_Producto_MP.setSelectedIndex(1);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         Abrir_JDialog(JD_Modificar_Producto);
     }//GEN-LAST:event_A_BT_Modificar_ProductosMousePressed
 
     private void A_BT_Eliminar_ProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Eliminar_ProductosMousePressed
         try{
             PreparedStatement ps = db.getConexion().prepareStatement("SELECT upc as id,nombre FROM productos");
-            Actualizar_CB_Eliminar(CB_Producto_EP, ps);
+            ActualizarCB(CB_Producto_EP, ps);
         }catch(Exception e){
             e.printStackTrace();
         }        
@@ -1059,7 +1086,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private void A_BT_Eliminar_TiendasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Eliminar_TiendasMousePressed
         try{
            PreparedStatement ps = db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas");
-            Actualizar_CB_Eliminar(CB_Tienda_ET, ps);
+            ActualizarCB(CB_Tienda_ET, ps);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -1077,7 +1104,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private void A_BT_Eliminar_ClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Eliminar_ClientesMousePressed
         try{
             PreparedStatement ps = db.getConexion().prepareStatement("SELECT id,nombre FROM clientes");
-            Actualizar_CB_Eliminar(CB_Cliente_EC, ps);
+            ActualizarCB(CB_Cliente_EC, ps);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -1089,6 +1116,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_A_BT_Crear_ClientesMousePressed
 
     private void A_BT_Modificar_ClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Modificar_ClientesMousePressed
+        try{
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT id,nombre FROM clientes");
+            ActualizarCB(CB_Cliente_MC, ps);
+            CB_Cliente_MC.setSelectedIndex(0);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         Abrir_JDialog(JD_Modificar_Cliente);
     }//GEN-LAST:event_A_BT_Modificar_ClientesMousePressed
 
@@ -1191,7 +1225,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 ps.executeQuery();
                 JOptionPane.showMessageDialog(JD_Eliminar_Tienda, "Se elimino con exito");
                 PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas");
-                Actualizar_CB_Eliminar(CB_Tienda_ET, ps2);                   
+                ActualizarCB(CB_Tienda_ET, ps2);                   
             }       
         }catch(Exception e){
             e.printStackTrace();
@@ -1208,7 +1242,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 ps.executeQuery();
                 JOptionPane.showMessageDialog(JD_Eliminar_Producto, "Se elimino con exito");
                 PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT upc as id,nombre FROM productos");
-                Actualizar_CB_Eliminar(CB_Producto_EP, ps2);
+                ActualizarCB(CB_Producto_EP, ps2);
             }           
         }catch(Exception e){
             e.printStackTrace();
@@ -1225,12 +1259,94 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 ps.executeQuery();
                 JOptionPane.showMessageDialog(JD_Eliminar_Tienda, "Se elimino con exito");
                 PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT id,nombre FROM clientes");
-                Actualizar_CB_Eliminar(CB_Cliente_EC, ps2);                   
+                ActualizarCB(CB_Cliente_EC, ps2);                   
             }       
         }catch(Exception e){
             e.printStackTrace();
         }        
     }//GEN-LAST:event_BT_Eliminar_ECMousePressed
+
+    private void BT_Modificar_MCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Modificar_MCMousePressed
+        try{
+            if(CB_Cliente_MC.getItemCount() > 0){
+                String si = CB_Cliente_MC.getItemAt(CB_Cliente_MC.getSelectedIndex());
+                int idcliente = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT update_cliente(?,?,?)");
+                ps.setInt(1, idcliente);
+                ps.setString(2, TF_Nombre_MC.getText());
+                ps.setString(3, TF_Correo_MC.getText());
+                ps.executeQuery();
+                TF_Nombre_MC.setText("");
+                TF_Correo_MC.setText("");
+                CB_Cliente_MC.setSelectedIndex(-1);
+                JOptionPane.showMessageDialog(JD_Modificar_Cliente_BG, "Se modifico con exito");
+                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT id,nombre FROM clientes");
+                ActualizarCB(CB_Cliente_MC, ps2);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BT_Modificar_MCMousePressed
+
+    private void CB_Cliente_MCItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_Cliente_MCItemStateChanged
+        try{
+            if(CB_Cliente_MC.getItemCount() > 0){
+                String si = CB_Cliente_MC.getItemAt(CB_Cliente_MC.getSelectedIndex());
+                int idcliente = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT nombre,correoelectronico FROM clientes"
+                        + " WHERE id=" + idcliente);
+                ResultSet rs = ps.executeQuery();
+                rs.next();
+                TF_Nombre_MC.setText(rs.getString(1));
+                TF_Correo_MC.setText(rs.getString(2));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
+    }//GEN-LAST:event_CB_Cliente_MCItemStateChanged
+
+    private void CB_Producto_MPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_Producto_MPItemStateChanged
+        try{
+            if(CB_Producto_MP.getItemCount() > 0){
+                String si = CB_Producto_MP.getItemAt(CB_Producto_MP.getSelectedIndex());
+                String upc = (si.substring(0, si.indexOf('|')-1));
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT * FROM productos WHERE upc=?");
+                ps.setString(1, upc);
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                    TF_Nombre_MP.setText(rs.getString("nombre"));
+                    TF_Size_MP.setText(rs.getString("tamaño"));
+                    TF_Marca_MP.setText(rs.getString("marca"));
+                    CB_Embalaje_MP.setSelectedItem(rs.getString("embalaje"));
+                }
+            }           
+        }catch(Exception e){
+            e.printStackTrace();
+        } 
+    }//GEN-LAST:event_CB_Producto_MPItemStateChanged
+
+    private void BT_Modificar_MPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Modificar_MPMousePressed
+        try{
+            if(CB_Producto_MP.getItemCount() > 0){
+                String si = CB_Producto_MP.getItemAt(CB_Producto_MP.getSelectedIndex());
+                String upc = (si.substring(0, si.indexOf('|')-1));
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT update_producto(?,?,?,?,?)");
+                ps.setString(1, upc);
+                ps.setString(2, TF_Nombre_MP.getText());
+                ps.setString(3, TF_Size_MP.getText());
+                ps.setString(4, CB_Embalaje_MP.getSelectedItem().toString());
+                ps.setString(5, TF_Marca_MP.getText());
+                ps.executeQuery();
+                CB_Producto_MP.setSelectedItem(CB_Producto_MP.getSelectedIndex());
+                JOptionPane.showMessageDialog(JD_Modificar_Producto, "Se modifico exitosamente");
+                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT upc as id,nombre FROM productos");
+                ps2.executeQuery();
+                ActualizarCB(CB_Producto_MP, ps2);
+            }           
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BT_Modificar_MPMousePressed
 
     /**
      * @param args the command line arguments
@@ -1262,6 +1378,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JButton BT_Modificar_MC;
     private javax.swing.JButton BT_Modificar_MP;
     private javax.swing.JComboBox<String> CB_Cliente_EC;
+    private javax.swing.JComboBox<String> CB_Cliente_MC;
     private javax.swing.JComboBox<String> CB_ComprasPorCliente_BuscarPor;
     private javax.swing.JComboBox<String> CB_Embalaje_CP;
     private javax.swing.JComboBox<String> CB_Embalaje_MP;
@@ -1271,7 +1388,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CB_Producto_MP;
     private javax.swing.JComboBox<String> CB_Tienda_ET;
     private javax.swing.JComboBox<String> CB_Tienda_MT;
-    private javax.swing.JComboBox<String> CB_Tienda_MT1;
     private javax.swing.JComboBox<String> CB_Ubicacion_MT;
     private javax.swing.JComboBox<String> CB_VentaPais;
     private javax.swing.JLabel Decor_Panel_Cliente;
@@ -1404,12 +1520,12 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD.setVisible(true);
     }
     
-    private void Actualizar_CB_Eliminar(JComboBox jc, PreparedStatement ps){
+    private void ActualizarCB(JComboBox jc, PreparedStatement ps){
         try{
             jc.removeAllItems();
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                jc.addItem(rs.getInt("id") + " | " + rs.getString("nombre"));
+                jc.addItem(rs.getString("id") + " | " + rs.getString("nombre"));
             }
         }catch(Exception e){
             e.printStackTrace();
