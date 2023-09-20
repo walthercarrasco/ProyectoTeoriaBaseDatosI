@@ -78,13 +78,15 @@ RETURNS TABLE(
   idUbicacion INT
 )
 LANGUAGE PLPGSQL AS $$
+BEGIN
   INSERT INTO Ubicaciones(direccion, ciudad, estado, pais) 
   VALUES
     (p_direccion, p_ciudad, p_estado, p_pais);
   RETURN QUERY
   SELECT id
   FROM Ubicaciones
-  WHERE direccion = p_direccion AND ciudad = p_ciudad AND estado = p_estado AND pais = p_pais
+  WHERE direccion = p_direccion AND ciudad = p_ciudad AND estado = p_estado AND pais = p_pais;
+END;
 $$;
 
 -- Esta función elimina una ubicación de la tabla "Ubicaciones" basada en su ID.
