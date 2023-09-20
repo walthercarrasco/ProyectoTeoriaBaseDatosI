@@ -16,6 +16,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,6 +32,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public Interfaz_Admin() {
         db.conectar();
         initComponents();
+        try{
+            cinco_mejores_tiendas();
+            ActualizarCB(CB_Inventario, db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas"));
+            ActualizarCB(CB_ComprasCliente, db.getConexion().prepareStatement("SELECT id,nombre FROM clientes"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -177,11 +185,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         CB_HistorialVentas = new javax.swing.JComboBox<>();
         TB_HistorialVentas_Scrollpane = new javax.swing.JScrollPane();
         TB_HistorialVentas = new javax.swing.JTable();
-        JL_TiendasMasVentas_Scrollpane = new javax.swing.JScrollPane();
-        JL_TiendasMasVentas = new javax.swing.JList<>();
         jLabel45 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        T_MejoresTiendas = new javax.swing.JTable();
         Decor_Panel_Ventas = new javax.swing.JLabel();
         Tab_VentasPais = new javax.swing.JPanel();
         Panel_VentaPais = new javax.swing.JPanel();
@@ -193,12 +201,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Decor_Panel_VentaPais = new javax.swing.JLabel();
         Tab_Cliente = new javax.swing.JPanel();
         Panel_ComprasPorCliente = new javax.swing.JPanel();
-        TF_ComprasPorCliente = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
-        CB_ComprasPorCliente_BuscarPor = new javax.swing.JComboBox<>();
         TB_ComprasPorCliente_Scrollpane = new javax.swing.JScrollPane();
         TB_ComprasPorCliente = new javax.swing.JTable();
         jLabel47 = new javax.swing.JLabel();
+        CB_ComprasCliente = new javax.swing.JComboBox<>();
         Decor_Panel_Cliente = new javax.swing.JLabel();
 
         JD_Crear_Tienda.setResizable(false);
@@ -723,6 +730,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Tab_Inventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Decor_Panel_Inventario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         Decor_Panel_Inventario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Decor_Panel_Inventario.setText("Inventario");
         Tab_Inventario.add(Decor_Panel_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 100));
@@ -854,7 +862,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 CB_HistorialVentasActionPerformed(evt);
             }
         });
-        Panel_HistorialVentas.add(CB_HistorialVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 380, -1));
+        Panel_HistorialVentas.add(CB_HistorialVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 380, -1));
 
         TB_HistorialVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -873,33 +881,42 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         TB_HistorialVentas.setUpdateSelectionOnSort(false);
         TB_HistorialVentas_Scrollpane.setViewportView(TB_HistorialVentas);
 
-        Panel_HistorialVentas.add(TB_HistorialVentas_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 1070, 580));
-
-        JL_TiendasMasVentas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Tienda 1", "Tienda 2", "Tienda 3", "Tienda 4", "Tienda 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        JL_TiendasMasVentas_Scrollpane.setViewportView(JL_TiendasMasVentas);
-
-        Panel_HistorialVentas.add(JL_TiendasMasVentas_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(1112, 90, 220, 140));
+        Panel_HistorialVentas.add(TB_HistorialVentas_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 930, 580));
 
         jLabel45.setText("Tienda");
-        Panel_HistorialVentas.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 40, 20));
+        Panel_HistorialVentas.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 40, 20));
 
+        jLabel39.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel39.setText("Tiendas con más ventas en el año");
-        Panel_HistorialVentas.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 70, 220, -1));
+        Panel_HistorialVentas.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 90, 220, -1));
 
         jLabel46.setBackground(new java.awt.Color(61, 72, 74));
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("Ventas");
         jLabel46.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jLabel46.setOpaque(true);
-        Panel_HistorialVentas.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 1070, 20));
+        Panel_HistorialVentas.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 930, 20));
+
+        T_MejoresTiendas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        T_MejoresTiendas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        jScrollPane1.setViewportView(T_MejoresTiendas);
+
+        Panel_HistorialVentas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 110, 340, -1));
 
         Tab_HistorialVentas.add(Panel_HistorialVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1360, 730));
 
+        Decor_Panel_Ventas.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         Decor_Panel_Ventas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Decor_Panel_Ventas.setText("Historial de ventas por tienda");
         Tab_HistorialVentas.add(Decor_Panel_Ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 100));
@@ -965,6 +982,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Tab_VentasPais.add(Panel_VentaPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1360, 730));
 
+        Decor_Panel_VentaPais.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         Decor_Panel_VentaPais.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Decor_Panel_VentaPais.setText("Productos más vendidos por país");
         Tab_VentasPais.add(Decor_Panel_VentaPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 100));
@@ -975,19 +993,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Panel_ComprasPorCliente.setBackground(new java.awt.Color(0, 102, 102));
         Panel_ComprasPorCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Panel_ComprasPorCliente.add(TF_ComprasPorCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 280, -1));
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setText("Buscar por");
-        Panel_ComprasPorCliente.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 70, -1));
-
-        CB_ComprasPorCliente_BuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nombre" }));
-        CB_ComprasPorCliente_BuscarPor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_ComprasPorCliente_BuscarPorActionPerformed(evt);
-            }
-        });
-        Panel_ComprasPorCliente.add(CB_ComprasPorCliente_BuscarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+        jLabel44.setText("Cliente:");
+        Panel_ComprasPorCliente.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 70, 30));
 
         TB_ComprasPorCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1031,8 +1040,17 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel47.setOpaque(true);
         Panel_ComprasPorCliente.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 1320, 20));
 
+        CB_ComprasCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CB_ComprasCliente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_ComprasClienteItemStateChanged(evt);
+            }
+        });
+        Panel_ComprasPorCliente.add(CB_ComprasCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 230, -1));
+
         Tab_Cliente.add(Panel_ComprasPorCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1360, 730));
 
+        Decor_Panel_Cliente.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         Decor_Panel_Cliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Decor_Panel_Cliente.setText("Historial de compras por cliente");
         Tab_Cliente.add(Decor_Panel_Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 100));
@@ -1052,7 +1070,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
+            .addGap(0, 834, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1139,10 +1157,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_VentaPaisActionPerformed
 
-    private void CB_ComprasPorCliente_BuscarPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ComprasPorCliente_BuscarPorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CB_ComprasPorCliente_BuscarPorActionPerformed
-
     private void BT_Crear_CTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Crear_CTMousePressed
         try{
             if(TF_Nombre_CT.getText().isBlank() || TF_Nombre_CT.getText().isEmpty()){
@@ -1170,6 +1184,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             TF_PAIS_CT.setText("");
             JOptionPane.showMessageDialog(JD_Crear_Tienda, "Se agrego la Tienda!",
                     "Exitoso", JOptionPane.INFORMATION_MESSAGE);
+            ActualizarCB(CB_Inventario, db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas"));
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -1189,6 +1204,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             TF_Correo_CC.setText("");
             JOptionPane.showMessageDialog(JD_Crear_Cliente, "Cliente creado!", 
                     "Existoso", JOptionPane.INFORMATION_MESSAGE);
+            ActualizarCB(CB_ComprasCliente, db.getConexion().prepareStatement("SELECT id,nombre FROM clientes"));
         }catch(Exception e){
             e.printStackTrace();
         }        
@@ -1230,7 +1246,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 ps.executeQuery();
                 JOptionPane.showMessageDialog(JD_Eliminar_Tienda, "Se elimino con exito");
                 PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas");
-                ActualizarCB(CB_Tienda_ET, ps2);                   
+                ActualizarCB(CB_Tienda_ET, ps2); 
+                ActualizarCB(CB_Inventario, db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas"));
             }       
         }catch(Exception e){
             e.printStackTrace();
@@ -1264,7 +1281,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 ps.executeQuery();
                 JOptionPane.showMessageDialog(JD_Eliminar_Tienda, "Se elimino con exito");
                 PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT id,nombre FROM clientes");
-                ActualizarCB(CB_Cliente_EC, ps2);                   
+                ActualizarCB(CB_Cliente_EC, ps2);
+                ActualizarCB(CB_ComprasCliente, db.getConexion().prepareStatement("SELECT id,nombre FROM clientes"));
             }       
         }catch(Exception e){
             e.printStackTrace();
@@ -1287,6 +1305,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(JD_Modificar_Cliente_BG, "Se modifico con exito");
                 PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT id,nombre FROM clientes");
                 ActualizarCB(CB_Cliente_MC, ps2);
+                ActualizarCB(CB_ComprasCliente, db.getConexion().prepareStatement("SELECT id,nombre FROM clientes"));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -1358,18 +1377,25 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             if(CB_Inventario.getItemCount() > 0){
                 String si = CB_Inventario.getItemAt(CB_Inventario.getSelectedIndex());
                 int idtienda = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
-                
-                PreparedStatement ps = db.getConexion().prepareStatement("SELECT (?)");
-                ps.setInt(1, idtienda);
-                ps.executeQuery();
-                JOptionPane.showMessageDialog(JD_Eliminar_Tienda, "Se elimino con exito");
-                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas");
-                ActualizarCB(CB_Tienda_ET, ps2);                       
+                inventario_tienda(idtienda);
+                //mejores_veinte_productos_tienda(idtienda);
             }   
         }catch(Exception e){
             e.printStackTrace();
         }
     }//GEN-LAST:event_CB_InventarioItemStateChanged
+
+    private void CB_ComprasClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_ComprasClienteItemStateChanged
+        try{
+            if(CB_ComprasCliente.getItemCount() > 0){
+                String si = CB_ComprasCliente.getItemAt(CB_ComprasCliente.getSelectedIndex());
+                int idcliente = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                compras_por_cliente(idcliente);
+            }               
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_CB_ComprasClienteItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -1402,7 +1428,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JButton BT_Modificar_MP;
     private javax.swing.JComboBox<String> CB_Cliente_EC;
     private javax.swing.JComboBox<String> CB_Cliente_MC;
-    private javax.swing.JComboBox<String> CB_ComprasPorCliente_BuscarPor;
+    private javax.swing.JComboBox<String> CB_ComprasCliente;
     private javax.swing.JComboBox<String> CB_Embalaje_CP;
     private javax.swing.JComboBox<String> CB_Embalaje_MP;
     private javax.swing.JComboBox<String> CB_HistorialVentas;
@@ -1430,8 +1456,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JDialog JD_Modificar_Producto;
     private javax.swing.JDialog JD_Modificar_Tienda;
     private javax.swing.JLabel JD_Modificar_Tienda_BG;
-    private javax.swing.JList<String> JL_TiendasMasVentas;
-    private javax.swing.JScrollPane JL_TiendasMasVentas_Scrollpane;
     private javax.swing.JList<String> JL_TiposMasVendidos;
     private javax.swing.JScrollPane JL_TiposMasVendidos_Scrollpane;
     private javax.swing.JPanel Panel_ComprasPorCliente;
@@ -1453,7 +1477,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JTable TB_VentaPais;
     private javax.swing.JScrollPane TB_VentaPais_Scrollpane;
     private javax.swing.JTextField TF_CIUDAD_CT;
-    private javax.swing.JTextField TF_ComprasPorCliente;
     private javax.swing.JTextField TF_Correo_CC;
     private javax.swing.JTextField TF_Correo_MC;
     private javax.swing.JTextField TF_DIRECCION_CT;
@@ -1470,6 +1493,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Size_CP;
     private javax.swing.JTextField TF_Size_MP;
     private javax.swing.JTextField TF_UPC_CP;
+    private javax.swing.JTable T_MejoresTiendas;
     private javax.swing.JPanel Tab_Administrar;
     private javax.swing.JPanel Tab_Cliente;
     private javax.swing.JPanel Tab_HistorialVentas;
@@ -1531,6 +1555,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1555,4 +1580,94 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         }
     }
 
+    private void cinco_mejores_tiendas(){
+        try{
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT * FROM mejores_cinco_tiendas");
+            ResultSet rs = ps.executeQuery();
+            
+            String[] titles = {"#", "ID", "Nombre", "Venta" };
+            DefaultTableModel tm = new DefaultTableModel(new String[][] {}, titles);
+            while(rs.next()){
+                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT nombre WHERE id="+rs.getInt("idTienda"));
+                ResultSet rs2 = ps2.executeQuery(); rs2.next();
+                String nombre = rs2.getString("nombre");
+                String[] data = {
+                    rs.getInt("Numero")+"",
+                    rs.getString("idTienda"),
+                    nombre,
+                    rs.getDouble("idTienda")+""
+                };
+                tm.addRow(data);
+            }
+            T_MejoresTiendas.setModel(tm);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    private void mejores_veinte_productos_tienda(int idtienda){
+        try{
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT mejores_veinte_productos_tienda(?)");
+            ps.setInt(1, idtienda);
+            ResultSet rs = ps.executeQuery();
+            String[] titles = {"UPC", "Nombre", "Cantidad Vendida"};
+            DefaultTableModel model = new DefaultTableModel(new String[][]{}, titles);
+            while(rs.next()){
+                String[] row = {
+                    rs.getString("upc"),
+                    rs.getString("nombre"),
+                    rs.getInt("cantidadVendida")+""
+                };
+                model.addRow(row);
+            }
+            TB_ProdMasVendidos.setModel(model);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    private void inventario_tienda(int idtienda){
+        try{
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT upcproducto,nombre,cantidad,precio FROM "
+                    + "inventario_tienda WHERE idtienda="+idtienda);
+            ResultSet rs = ps.executeQuery();
+            String[] titles = {"UPC","Nombre","Cantidad","Precio"};
+            DefaultTableModel model = new DefaultTableModel(new String[][]{},titles);
+            while(rs.next()){
+                String[] row = {
+                    rs.getString("upcproducto"),
+                    rs.getString("nombre"),
+                    rs.getString("cantidad"),
+                    rs.getString("precio")
+                };
+                model.addRow(row);
+            }
+            TB_Inventario.setModel(model);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    private void compras_por_cliente(int idcliente){
+        try{
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT fecha,numerofactura,tienda,total,cliente FROM compras_por_cliente WHERE idcliente="+idcliente);
+            ResultSet rs = ps.executeQuery();
+            String[] titles = {"Cliente","# Factura","Tienda","Fecha","Total"};
+            DefaultTableModel model = new DefaultTableModel(new String[][]{},titles);
+            while(rs.next()){
+                String[] row = {
+                    rs.getString("cliente"),
+                    rs.getString("numerofactura"),
+                    rs.getString("tienda"),
+                    rs.getString("fecha"),
+                    rs.getString("total")
+                };
+                model.addRow(row);
+            }
+            TB_ComprasPorCliente.setModel(model);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
 }
