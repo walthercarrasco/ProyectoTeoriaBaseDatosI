@@ -7,19 +7,24 @@ package Main;
 
 import java.util.Calendar;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+import java.sql.*;
 
 /**
  *
  * @author emile
  */
 public class Interfaz_Admin extends javax.swing.JFrame {
+    
+    private ConexionDB db = new ConexionDB();
 
     /**
      * Creates new form Interfaz_Vendedor
      */
     public Interfaz_Admin() {
+        db.conectar();
         initComponents();
     }
 
@@ -34,7 +39,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         JD_Crear_Tienda = new javax.swing.JDialog();
         jLabel11 = new javax.swing.JLabel();
-        TF_Nombre_CT = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         BT_Crear_CT = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
@@ -45,6 +49,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
+        TF_DIRECCION_CT = new javax.swing.JTextField();
+        TF_Nombre_CT = new javax.swing.JTextField();
+        TF_PAIS_CT = new javax.swing.JTextField();
+        TF_CIUDAD_CT2 = new javax.swing.JTextField();
+        TF_ESTADO_CT = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         JD_Modificar_Tienda = new javax.swing.JDialog();
         jLabel22 = new javax.swing.JLabel();
@@ -91,7 +100,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         CB_Cliente_EC = new javax.swing.JComboBox<>();
         JD_Crear_Producto = new javax.swing.JDialog();
         jLabel17 = new javax.swing.JLabel();
-        TF_Nombre_CP = new javax.swing.JTextField();
+        TF_UPC_CP = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         BT_Crear_CP = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
@@ -100,6 +109,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         TF_Size_CP = new javax.swing.JTextField();
         TF_Marca_CP = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        TF_Nombre_CP = new javax.swing.JTextField();
         JD_Modificar_Producto = new javax.swing.JDialog();
         jLabel29 = new javax.swing.JLabel();
         TF_Nombre_MP = new javax.swing.JTextField();
@@ -192,12 +203,16 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Crear Tienda");
         JD_Crear_Tienda.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
-        JD_Crear_Tienda.getContentPane().add(TF_Nombre_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 290, -1));
 
         jLabel14.setText("Horario");
         JD_Crear_Tienda.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, 20));
 
         BT_Crear_CT.setText("Crear");
+        BT_Crear_CT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_Crear_CTMousePressed(evt);
+            }
+        });
         JD_Crear_Tienda.getContentPane().add(BT_Crear_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 110, -1));
 
         jLabel20.setText("Nombre");
@@ -229,6 +244,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         jLabel53.setText("Estado:");
         JD_Crear_Tienda.getContentPane().add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, 20));
+        JD_Crear_Tienda.getContentPane().add(TF_DIRECCION_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 290, -1));
+        JD_Crear_Tienda.getContentPane().add(TF_Nombre_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 290, -1));
+        JD_Crear_Tienda.getContentPane().add(TF_PAIS_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 290, -1));
+        JD_Crear_Tienda.getContentPane().add(TF_CIUDAD_CT2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
+        JD_Crear_Tienda.getContentPane().add(TF_ESTADO_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 290, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -327,6 +347,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Crear_Cliente.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, 20));
 
         BT_Crear_CC.setText("Crear");
+        BT_Crear_CC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_Crear_CCMousePressed(evt);
+            }
+        });
         JD_Crear_Cliente.getContentPane().add(BT_Crear_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
         JD_Crear_Cliente.getContentPane().add(JD_Crear_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
@@ -383,28 +408,37 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Crear Producto");
-        JD_Crear_Producto.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
-        JD_Crear_Producto.getContentPane().add(TF_Nombre_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 290, -1));
+        JD_Crear_Producto.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 620, -1));
+        JD_Crear_Producto.getContentPane().add(TF_UPC_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 290, -1));
 
         jLabel18.setText("Embalaje");
         JD_Crear_Producto.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, 20));
 
         BT_Crear_CP.setText("Crear");
+        BT_Crear_CP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_Crear_CPMousePressed(evt);
+            }
+        });
         JD_Crear_Producto.getContentPane().add(BT_Crear_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 110, -1));
 
-        jLabel27.setText("Nombre");
-        JD_Crear_Producto.getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, 20));
+        jLabel27.setText("UPC:");
+        JD_Crear_Producto.getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, 20));
 
         jLabel28.setText("Tamaño");
         JD_Crear_Producto.getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, 20));
 
-        CB_Embalaje_CP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CB_Embalaje_CP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Papel", "Carton", "Metal", "Plastico", "Vidrio" }));
         JD_Crear_Producto.getContentPane().add(CB_Embalaje_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 190, -1));
         JD_Crear_Producto.getContentPane().add(TF_Size_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 190, -1));
         JD_Crear_Producto.getContentPane().add(TF_Marca_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 190, -1));
 
         jLabel19.setText("Marca");
         JD_Crear_Producto.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, 20));
+
+        jLabel54.setText("Nombre");
+        JD_Crear_Producto.getContentPane().add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, 20));
+        JD_Crear_Producto.getContentPane().add(TF_Nombre_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 290, -1));
 
         JD_Modificar_Producto.setMinimumSize(new java.awt.Dimension(600, 430));
         JD_Modificar_Producto.setResizable(false);
@@ -1032,6 +1066,63 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_ComprasPorCliente_BuscarPorActionPerformed
 
+    private void BT_Crear_CTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Crear_CTMousePressed
+        try{
+            if(TF_Nombre_CT.getText().isBlank() || TF_Nombre_CT.getText().isEmpty()){
+                JOptionPane.showMessageDialog(JD_Crear_Tienda, "Ingrese un nombre a la Tienda");
+                throw new Exception();
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BT_Crear_CTMousePressed
+
+    private void BT_Crear_CCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Crear_CCMousePressed
+        try{
+            if(TF_Nombre_CC.getText().isBlank() || TF_Nombre_CC.getText().isEmpty()){
+                JOptionPane.showMessageDialog(JD_Crear_Cliente, "Ingrese nombre a la Tienda");
+                throw new Exception();
+            }
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT insert_cliente(?,?)");
+            ps.setString(1, TF_Nombre_CC.getText());
+            ps.setString(2, TF_Correo_CC.getText());
+            ps.executeQuery();
+            TF_Nombre_CC.setText("");
+            TF_Correo_CC.setText("");
+            JOptionPane.showMessageDialog(JD_Crear_Cliente, "Cliente creado!", 
+                    "Existoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
+    }//GEN-LAST:event_BT_Crear_CCMousePressed
+
+    private void BT_Crear_CPMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Crear_CPMousePressed
+        try{
+            if(TF_UPC_CP.getText().isBlank() || TF_UPC_CP.getText().isEmpty() 
+                    || TF_Nombre_CP.getText().isBlank() || TF_Nombre_CP.getText().isEmpty()){
+                JOptionPane.showMessageDialog(JD_Crear_Producto, "Ingrese UPC o Nombre del producto");
+                throw new Exception();
+            }
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT insert_producto(?,?,?,?,?)");
+            ps.setString(1, TF_UPC_CP.getText());
+            ps.setString(2, TF_Nombre_CP.getText());
+            ps.setString(3, TF_Size_CP.getText());
+            ps.setString(4, CB_Embalaje_CP.getSelectedItem().toString());
+            ps.setString(5, TF_Marca_CP.getText());
+            ps.executeQuery();
+            TF_UPC_CP.setText("");
+            TF_Nombre_CP.setText("");
+            TF_Size_CP.setText("");
+            TF_Marca_CP.setText("");
+            CB_Embalaje_CP.setSelectedIndex(0);
+            JOptionPane.showMessageDialog(JD_Crear_Producto, "Producto creado!", 
+                    "Existoso", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            e.printStackTrace();
+        }           
+    }//GEN-LAST:event_BT_Crear_CPMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -1113,9 +1204,12 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JScrollPane TB_ProdMasVendidos_Scrollpane;
     private javax.swing.JTable TB_VentaPais;
     private javax.swing.JScrollPane TB_VentaPais_Scrollpane;
+    private javax.swing.JTextField TF_CIUDAD_CT2;
     private javax.swing.JTextField TF_ComprasPorCliente;
     private javax.swing.JTextField TF_Correo_CC;
     private javax.swing.JTextField TF_Correo_MC;
+    private javax.swing.JTextField TF_DIRECCION_CT;
+    private javax.swing.JTextField TF_ESTADO_CT;
     private javax.swing.JTextField TF_Marca_CP;
     private javax.swing.JTextField TF_Marca_MP;
     private javax.swing.JTextField TF_Nombre_CC;
@@ -1124,8 +1218,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Nombre_MC;
     private javax.swing.JTextField TF_Nombre_MP;
     private javax.swing.JTextField TF_Nombre_MT;
+    private javax.swing.JTextField TF_PAIS_CT;
     private javax.swing.JTextField TF_Size_CP;
     private javax.swing.JTextField TF_Size_MP;
+    private javax.swing.JTextField TF_UPC_CP;
     private javax.swing.JPanel Tab_Administrar;
     private javax.swing.JPanel Tab_Cliente;
     private javax.swing.JPanel Tab_HistorialVentas;
@@ -1181,6 +1277,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
