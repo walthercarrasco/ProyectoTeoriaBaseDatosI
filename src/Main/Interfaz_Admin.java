@@ -252,7 +252,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Decor_Panel_Cliente = new javax.swing.JLabel();
 
         JD_Crear_Tienda.setMinimumSize(new java.awt.Dimension(600, 520));
-        JD_Crear_Tienda.setPreferredSize(new java.awt.Dimension(600, 520));
         JD_Crear_Tienda.setResizable(false);
         JD_Crear_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -328,7 +327,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Crear_Tienda_BG1.setPreferredSize(new java.awt.Dimension(600, 400));
         JD_Crear_Tienda.getContentPane().add(JD_Crear_Tienda_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 340));
 
-        JD_Modificar_Tienda.setPreferredSize(new java.awt.Dimension(600, 550));
         JD_Modificar_Tienda.setResizable(false);
         JD_Modificar_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -401,7 +399,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Modificar_Tienda.getContentPane().add(JD_Modificar_Tienda_BG2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 600, 340));
 
         JD_Eliminar_Tienda.setMinimumSize(new java.awt.Dimension(600, 300));
-        JD_Eliminar_Tienda.setPreferredSize(new java.awt.Dimension(600, 300));
         JD_Eliminar_Tienda.setResizable(false);
         JD_Eliminar_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -508,7 +505,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         JD_Eliminar_Cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         JD_Eliminar_Cliente.setMinimumSize(new java.awt.Dimension(600, 300));
-        JD_Eliminar_Cliente.setPreferredSize(new java.awt.Dimension(600, 300));
         JD_Eliminar_Cliente.setResizable(false);
         JD_Eliminar_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -537,7 +533,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Eliminar_Cliente.getContentPane().add(JD_Eliminar_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
         JD_Crear_Producto.setMinimumSize(new java.awt.Dimension(600, 410));
-        JD_Crear_Producto.setPreferredSize(new java.awt.Dimension(600, 410));
         JD_Crear_Producto.setResizable(false);
         JD_Crear_Producto.setSize(new java.awt.Dimension(0, 0));
         JD_Crear_Producto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -706,6 +701,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         BT_Crear_CV.setText("Crear");
         BT_Crear_CV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BT_Crear_CV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_Crear_CVMousePressed(evt);
+            }
+        });
         JD_Crear_Vendedor.getContentPane().add(BT_Crear_CV, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 110, -1));
 
         JD_Crear_Vendedor_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
@@ -730,9 +730,19 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Modificar_Vendedor.getContentPane().add(TF_Nombre_MV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 290, -1));
 
         BT_Modificar_MV.setText("Modificar");
+        BT_Modificar_MV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_Modificar_MVMousePressed(evt);
+            }
+        });
         JD_Modificar_Vendedor.getContentPane().add(BT_Modificar_MV, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 110, -1));
 
         CB_Vendedor_MV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CB_Vendedor_MV.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_Vendedor_MVItemStateChanged(evt);
+            }
+        });
         JD_Modificar_Vendedor.getContentPane().add(CB_Vendedor_MV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 290, -1));
 
         JD_Modificar_Vendedor_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Modificar_BG.png"))); // NOI18N
@@ -754,6 +764,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         BT_Eliminar_EV.setText("Eliminar");
         BT_Eliminar_EV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BT_Eliminar_EV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_Eliminar_EVMousePressed(evt);
+            }
+        });
         JD_Eliminar_Vendedor.getContentPane().add(BT_Eliminar_EV, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
 
         CB_Vendedor_EV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -1666,12 +1681,90 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_A_BT_Crear_VendedoresMousePressed
 
     private void A_BT_Modificar_VendedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Modificar_VendedoresMousePressed
+        try{
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT id,nombre FROM proveedores");
+            ActualizarCB(CB_Vendedor_MV, ps);
+        }catch(Exception e){
+            e.printStackTrace();
+        }     
         Abrir_JDialog(JD_Modificar_Vendedor);
     }//GEN-LAST:event_A_BT_Modificar_VendedoresMousePressed
 
     private void A_BT_Eliminar_VendedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Eliminar_VendedoresMousePressed
+        try{
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT id,nombre FROM proveedores");
+            ActualizarCB(CB_Vendedor_EV, ps);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         Abrir_JDialog(JD_Eliminar_Vendedor);
     }//GEN-LAST:event_A_BT_Eliminar_VendedoresMousePressed
+
+    private void BT_Crear_CVMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Crear_CVMousePressed
+        try{
+            if(TF_Nombre_CV.getText().isBlank() || TF_Nombre_CV.getText().isEmpty()){
+                JOptionPane.showMessageDialog(JD_Crear_Vendedor, "Ingrese un nombre valido",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                throw new Exception();
+            }
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT insert_proveedor(?)");
+            ps.setString(1, TF_Nombre_CV.getText());
+            ps.executeQuery();
+            TF_Nombre_CV.setText("");
+            JOptionPane.showMessageDialog(JD_Crear_Vendedor, "Se creo exitosamente");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BT_Crear_CVMousePressed
+
+    private void CB_Vendedor_MVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_Vendedor_MVItemStateChanged
+        try{
+            if(CB_Vendedor_MV.getItemCount() > 0){
+                String si = CB_Vendedor_MV.getItemAt(CB_Vendedor_MV.getSelectedIndex());
+                int idproveedor = Integer.parseInt(si.substring(0, si.indexOf('|')-1));                
+                ResultSet rs = db.getConexion().createStatement().executeQuery("SELECT nombre FROM proveedores WHERE"
+                        + " id="+idproveedor);
+                rs.next();
+                TF_Nombre_MV.setText(rs.getString("nombre"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_CB_Vendedor_MVItemStateChanged
+
+    private void BT_Eliminar_EVMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Eliminar_EVMousePressed
+        try{
+            if(CB_Vendedor_EV.getItemCount() > 0){
+                String si = CB_Vendedor_EV.getItemAt(CB_Vendedor_EV.getSelectedIndex());
+                int idproveedor = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT delete_proveedor(?)");
+                ps.setInt(1, idproveedor);
+                ps.executeQuery();
+                JOptionPane.showMessageDialog(JD_Eliminar_Vendedor, "Se elimino con exito");
+                ActualizarCB(CB_Vendedor_EV, db.getConexion().prepareStatement("SELECT id,nombre FROM proveedores"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
+    }//GEN-LAST:event_BT_Eliminar_EVMousePressed
+
+    private void BT_Modificar_MVMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Modificar_MVMousePressed
+        try{
+            if(CB_Vendedor_MV.getItemCount() > 0){
+                String si = CB_Vendedor_MV.getItemAt(CB_Vendedor_MV.getSelectedIndex());
+                int idproveedor = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT update_proveedor(?,?)");
+                ps.setInt(1, idproveedor);
+                ps.setString(2, TF_Nombre_MV.getText());
+                ps.executeQuery();
+                TF_Nombre_MV.setText("");
+                JOptionPane.showMessageDialog(JD_Eliminar_Vendedor, "Se modifico con exito");
+                ActualizarCB(CB_Vendedor_MV, db.getConexion().prepareStatement("SELECT id,nombre FROM proveedores"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }          
+    }//GEN-LAST:event_BT_Modificar_MVMousePressed
 
     /**
      * @param args the command line arguments
