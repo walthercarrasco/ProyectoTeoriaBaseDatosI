@@ -12,8 +12,10 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +27,8 @@ import javax.swing.table.DefaultTableModel;
 public class Interfaz_Admin extends javax.swing.JFrame {
     
     private ConexionDB db = new ConexionDB();
-
+    private ArrayList<Integer> idcategorias = new ArrayList<>();
+    
     /**
      * Creates new form Interfaz_Vendedor
      */
@@ -36,6 +39,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             cinco_mejores_tiendas();
             ActualizarCB(CB_Inventario, db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas"));
             ActualizarCB(CB_ComprasCliente, db.getConexion().prepareStatement("SELECT id,nombre FROM clientes"));
+            ActualizarCB(CB_Categorias_CP, db.getConexion().prepareStatement("SELECT id,categoria as nombre FROM categorias"));
+            CB_Bitacoras.setSelectedIndex(1);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -77,8 +82,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel61 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
         BT_Modificar_MT = new javax.swing.JButton();
         CB_Tienda_MT = new javax.swing.JComboBox<>();
         TF_Nombre_MT = new javax.swing.JTextField();
@@ -86,8 +89,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         TF_Ciudad_MT = new javax.swing.JTextField();
         TF_Estado_MT = new javax.swing.JTextField();
         TF_Direccion_MT = new javax.swing.JTextField();
-        SP_HorarioApertura_MT = new javax.swing.JSpinner();
-        SP_HorarioCierre_MT = new javax.swing.JSpinner();
         JD_Modificar_Tienda_BG1 = new javax.swing.JLabel();
         JD_Modificar_Tienda_BG2 = new javax.swing.JLabel();
         JD_Eliminar_Tienda = new javax.swing.JDialog();
@@ -133,6 +134,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         TF_Size_CP = new javax.swing.JTextField();
         TF_Marca_CP = new javax.swing.JTextField();
         TF_Nombre_CP = new javax.swing.JTextField();
+        B_AddCategoria = new javax.swing.JButton();
+        CB_Categorias_CP = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
         JD_Crear_Producto_BG2 = new javax.swing.JLabel();
         JD_Crear_Producto_BG1 = new javax.swing.JLabel();
         JD_Modificar_Producto = new javax.swing.JDialog();
@@ -250,6 +254,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         CB_ComprasCliente = new javax.swing.JComboBox<>();
         Decor_Panel_Cliente = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TB_Bitacoras = new javax.swing.JTable();
+        CB_Bitacoras = new javax.swing.JComboBox<>();
 
         JD_Crear_Tienda.setMinimumSize(new java.awt.Dimension(600, 520));
         JD_Crear_Tienda.setResizable(false);
@@ -360,37 +368,27 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel25.setText("Direccion");
         JD_Modificar_Tienda.getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, 20));
 
-        jLabel26.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel26.setText("Horario");
-        JD_Modificar_Tienda.getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, 20));
-
-        jLabel35.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel35.setText("-");
-        JD_Modificar_Tienda.getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 40, 20));
-
         BT_Modificar_MT.setText("Modificar");
         BT_Modificar_MT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        JD_Modificar_Tienda.getContentPane().add(BT_Modificar_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 110, -1));
+        BT_Modificar_MT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_Modificar_MTMousePressed(evt);
+            }
+        });
+        JD_Modificar_Tienda.getContentPane().add(BT_Modificar_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 110, -1));
 
         CB_Tienda_MT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CB_Tienda_MT.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_Tienda_MTItemStateChanged(evt);
+            }
+        });
         JD_Modificar_Tienda.getContentPane().add(CB_Tienda_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
         JD_Modificar_Tienda.getContentPane().add(TF_Nombre_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
         JD_Modificar_Tienda.getContentPane().add(TF_Pais_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
         JD_Modificar_Tienda.getContentPane().add(TF_Ciudad_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 290, -1));
         JD_Modificar_Tienda.getContentPane().add(TF_Estado_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 290, -1));
         JD_Modificar_Tienda.getContentPane().add(TF_Direccion_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 290, -1));
-
-        SP_HorarioApertura_MT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672552800000L), null, null, java.util.Calendar.HOUR));
-        SP_HorarioApertura_MT.setToolTipText("");
-        SP_HorarioApertura_MT.setEditor(new JSpinner.DateEditor(SP_HorarioApertura_CT, "hh:mm a"));
-        JD_Modificar_Tienda.getContentPane().add(SP_HorarioApertura_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 90, -1));
-        new SpinnerDateModel(new java.util.Date(), null, null, Calendar.HOUR);
-
-        SP_HorarioCierre_MT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672596000000L), null, null, java.util.Calendar.DAY_OF_MONTH));
-        SP_HorarioCierre_MT.setEditor(new JSpinner.DateEditor(SP_HorarioCierre_CT, "hh:mm a")
-        );
-        JD_Modificar_Tienda.getContentPane().add(SP_HorarioCierre_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 90, -1));
 
         JD_Modificar_Tienda_BG1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Modificar_BG.png"))); // NOI18N
         JD_Modificar_Tienda.getContentPane().add(JD_Modificar_Tienda_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, -1));
@@ -532,9 +530,15 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Eliminar_Cliente_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Eliminar_BG.png"))); // NOI18N
         JD_Eliminar_Cliente.getContentPane().add(JD_Eliminar_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
-        JD_Crear_Producto.setMinimumSize(new java.awt.Dimension(600, 410));
+        JD_Crear_Producto.setMinimumSize(new java.awt.Dimension(600, 500));
+        JD_Crear_Producto.setPreferredSize(new java.awt.Dimension(600, 410));
         JD_Crear_Producto.setResizable(false);
         JD_Crear_Producto.setSize(new java.awt.Dimension(0, 0));
+        JD_Crear_Producto.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                JD_Crear_ProductoWindowClosing(evt);
+            }
+        });
         JD_Crear_Producto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel17.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
@@ -556,8 +560,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Crear_Producto.getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, 20));
 
         jLabel19.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel19.setText("Marca");
-        JD_Crear_Producto.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, 20));
+        jLabel19.setText("Categorias");
+        JD_Crear_Producto.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, 20));
 
         jLabel54.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel54.setText("Nombre");
@@ -571,7 +575,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 BT_Crear_CPMousePressed(evt);
             }
         });
-        JD_Crear_Producto.getContentPane().add(BT_Crear_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 110, 20));
+        JD_Crear_Producto.getContentPane().add(BT_Crear_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 110, 20));
 
         CB_Embalaje_CP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Papel", "Carton", "Metal", "Plastico", "Vidrio" }));
         JD_Crear_Producto.getContentPane().add(CB_Embalaje_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 190, 20));
@@ -579,15 +583,30 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Crear_Producto.getContentPane().add(TF_Marca_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 190, 20));
         JD_Crear_Producto.getContentPane().add(TF_Nombre_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 290, -1));
 
+        B_AddCategoria.setText("Agregar a Categoria");
+        B_AddCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                B_AddCategoriaMousePressed(evt);
+            }
+        });
+        JD_Crear_Producto.getContentPane().add(B_AddCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, -1, -1));
+
+        CB_Categorias_CP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JD_Crear_Producto.getContentPane().add(CB_Categorias_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 180, -1));
+
+        jLabel20.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel20.setText("Marca");
+        JD_Crear_Producto.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, 20));
+
         JD_Crear_Producto_BG2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
         JD_Crear_Producto_BG2.setMaximumSize(new java.awt.Dimension(600, 341));
         JD_Crear_Producto_BG2.setMinimumSize(new java.awt.Dimension(600, 341));
-        JD_Crear_Producto.getContentPane().add(JD_Crear_Producto_BG2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 271, -1, 140));
+        JD_Crear_Producto.getContentPane().add(JD_Crear_Producto_BG2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 271, -1, 180));
 
         JD_Crear_Producto_BG1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
         JD_Crear_Producto_BG1.setMaximumSize(new java.awt.Dimension(600, 341));
         JD_Crear_Producto_BG1.setMinimumSize(new java.awt.Dimension(600, 341));
-        JD_Crear_Producto.getContentPane().add(JD_Crear_Producto_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        JD_Crear_Producto.getContentPane().add(JD_Crear_Producto_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
 
         JD_Modificar_Producto.setMinimumSize(new java.awt.Dimension(600, 470));
         JD_Modificar_Producto.setResizable(false);
@@ -1355,6 +1374,33 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Tabs.addTab("Cliente", Tab_Cliente);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        TB_Bitacoras.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(TB_Bitacoras);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 1100, 670));
+
+        CB_Bitacoras.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cientes", "Tiendas", "Productos", "Proveedores" }));
+        CB_Bitacoras.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_BitacorasItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(CB_Bitacoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 420, -1));
+
+        Tabs.addTab("Bitacoras", jPanel1);
+
         getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 830));
 
         pack();
@@ -1396,6 +1442,12 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_A_BT_Eliminar_TiendasMousePressed
 
     private void A_BT_Modificar_TiendasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Modificar_TiendasMousePressed
+        try{
+           PreparedStatement ps = db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas");
+            ActualizarCB(CB_Tienda_MT, ps);
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
         Abrir_JDialog(JD_Modificar_Tienda);
     }//GEN-LAST:event_A_BT_Modificar_TiendasMousePressed
 
@@ -1503,6 +1555,23 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             ps.setString(4, CB_Embalaje_CP.getSelectedItem().toString());
             ps.setString(5, TF_Marca_CP.getText());
             ps.executeQuery();
+            String upc = TF_UPC_CP.getText();
+            if(idcategorias.size() > 0){
+                for(int i = idcategorias.size()-1; i >= 0 ;i--){
+                    PreparedStatement ps3 = db.getConexion().prepareStatement("INSERT INTO productocategorizado"
+                            + "(upcproducto,idcategoria) VALUES (?,?)");
+                    ps3.setString(1, upc);
+                    ps3.setInt(2, idcategorias.get(i));
+                    ps3.executeUpdate();
+                    idcategorias.remove(i);
+                }
+            }else{
+                PreparedStatement ps3 = db.getConexion().prepareStatement("INSERT INTO productocategorizado"
+                        + "(upcproducto,idcategoria) VALUES (?,?)");
+                ps3.setString(1, upc);
+                ps3.setInt(2, 14);
+                ps3.executeUpdate();
+            }
             TF_UPC_CP.setText("");
             TF_Nombre_CP.setText("");
             TF_Size_CP.setText("");
@@ -1766,6 +1835,94 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         }          
     }//GEN-LAST:event_BT_Modificar_MVMousePressed
 
+    private void B_AddCategoriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_AddCategoriaMousePressed
+        try{
+            String si = CB_Categorias_CP.getItemAt(CB_Categorias_CP.getSelectedIndex());
+            int idcat = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+            if(!idcategorias.contains(idcat)){
+                idcategorias.add(idcat);
+                JOptionPane.showMessageDialog(JD_Crear_Producto, "Se agrego a la categoria");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_B_AddCategoriaMousePressed
+
+    private void JD_Crear_ProductoWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_JD_Crear_ProductoWindowClosing
+        if(idcategorias.size() > 0){
+            idcategorias.removeAll(idcategorias);
+        }
+    }//GEN-LAST:event_JD_Crear_ProductoWindowClosing
+
+    private void CB_Tienda_MTItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_Tienda_MTItemStateChanged
+        try{
+            if(CB_Tienda_MT.getItemCount() > 0){
+                String si = CB_Tienda_MT.getItemAt(CB_Tienda_MT.getSelectedIndex());
+                int idtienda = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT nombre,idubicacion FROM tiendas"
+                        + " WHERE id="+idtienda);
+                ResultSet rs = ps.executeQuery();
+                rs.next();
+                int idubicacion = rs.getInt("idubicacion");
+                TF_Nombre_MT.setText(rs.getString("nombre"));
+                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT * FROM ubicaciones WHERE id="+idubicacion);
+                ResultSet rs2 = ps2.executeQuery();
+                rs2.next();
+                TF_Pais_MT.setText(rs2.getString("pais"));
+                TF_Estado_MT.setText(rs2.getString("estado"));
+                TF_Ciudad_MT.setText(rs2.getString("ciudad"));
+                TF_Direccion_MT.setText(rs2.getString("direccion"));
+            }       
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
+    }//GEN-LAST:event_CB_Tienda_MTItemStateChanged
+
+    private void BT_Modificar_MTMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Modificar_MTMousePressed
+        try{
+            if(CB_Tienda_MT.getItemCount() > 0){
+                String si = CB_Tienda_MT.getItemAt(CB_Tienda_MT.getSelectedIndex());
+                int idtienda = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT update_tienda_nombre(?,?)");
+                ps.setInt(1, idtienda);
+                ps.setString(2, TF_Nombre_MT.getText());
+                ps.executeQuery();
+                ResultSet rs = db.getConexion().createStatement().executeQuery("SELECT idubicacion FROM tiendas WHERE id="+idtienda);
+                rs.next();
+                int idubicacion = rs.getInt(1);
+                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT update_ubicacion(?,?,?,?,?)");
+                ps2.setInt(1, idubicacion);
+                ps2.setString(2, TF_Direccion_MT.getText());
+                ps2.setString(3, TF_Ciudad_MT.getText());
+                ps2.setString(4, TF_Estado_MT.getText());
+                ps2.setString(5, TF_Pais_MT.getText());
+                ps2.executeQuery();
+                JOptionPane.showMessageDialog(JD_Modificar_Tienda, "Se modifico exitosamente");
+                ActualizarCB(CB_Tienda_MT, db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas"));
+            }       
+        }catch(Exception e){
+            e.printStackTrace();
+        }          
+    }//GEN-LAST:event_BT_Modificar_MTMousePressed
+
+    private void CB_BitacorasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_BitacorasItemStateChanged
+        try{
+            PreparedStatement ps;
+            if(CB_Bitacoras.getSelectedIndex() == 0){
+                ps = db.getConexion().prepareStatement("SELECT * FROM bitacora_cliente");
+            }else if(CB_Bitacoras.getSelectedIndex() == 1){
+                ps = db.getConexion().prepareStatement("SELECT * FROM bitacora_tienda");
+            }else if(CB_Bitacoras.getSelectedIndex() == 2){
+                ps = db.getConexion().prepareStatement("SELECT * FROM bitacora_producto");
+            }else{
+                ps = db.getConexion().prepareStatement("SELECT * FROM bitacora_vendedor");
+            }
+            ActualizarBitacora(ps);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_CB_BitacorasItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -1803,6 +1960,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JButton BT_Modificar_MP;
     private javax.swing.JButton BT_Modificar_MT;
     private javax.swing.JButton BT_Modificar_MV;
+    private javax.swing.JButton B_AddCategoria;
+    private javax.swing.JComboBox<String> CB_Bitacoras;
+    private javax.swing.JComboBox<String> CB_Categorias_CP;
     private javax.swing.JComboBox<String> CB_Cliente_EC;
     private javax.swing.JComboBox<String> CB_Cliente_MC;
     private javax.swing.JComboBox<String> CB_ComprasCliente;
@@ -1856,9 +2016,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_Inventario;
     private javax.swing.JPanel Panel_VentaPais;
     private javax.swing.JSpinner SP_HorarioApertura_CT;
-    private javax.swing.JSpinner SP_HorarioApertura_MT;
     private javax.swing.JSpinner SP_HorarioCierre_CT;
-    private javax.swing.JSpinner SP_HorarioCierre_MT;
+    private javax.swing.JTable TB_Bitacoras;
     private javax.swing.JTable TB_ComprasPorCliente;
     private javax.swing.JScrollPane TB_ComprasPorCliente_Scrollpane;
     private javax.swing.JTable TB_HistorialVentas;
@@ -1910,11 +2069,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -1924,7 +2083,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
@@ -1966,7 +2124,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -2082,4 +2242,26 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         }
     }
     
+    private void ActualizarBitacora(PreparedStatement ps){
+        try{
+            ResultSet rs = ps.executeQuery();
+            ResultSetMetaData metaData = rs.getMetaData();
+            int numColumnas = metaData.getColumnCount();
+            ArrayList<String> titles = new ArrayList<>();
+            for (int i = 1; i <= numColumnas; i++)
+                titles.add(metaData.getColumnName(i));
+            DefaultTableModel model = new DefaultTableModel(new Object[][]{},titles.toArray());
+            while(rs.next()){
+                ArrayList<String> data = new ArrayList<>();
+                for (int i = 1; i <= numColumnas; i++)
+                    data.add(rs.getString(i));
+                Object[] row = data.toArray();
+                model.addRow(row);
+            }
+            TB_Bitacoras.setModel(model);
+        }catch(Exception e){
+            e.printStackTrace();
+
+        }
+    }
 }
