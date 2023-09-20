@@ -730,6 +730,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Panel_Inventario.setBackground(new java.awt.Color(69, 69, 86));
         Panel_Inventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        CB_Inventario.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_InventarioItemStateChanged(evt);
+            }
+        });
         Panel_Inventario.add(CB_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 380, -1));
 
         TB_Inventario.setModel(new javax.swing.table.DefaultTableModel(
@@ -1348,6 +1353,24 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BT_Modificar_MPMousePressed
 
+    private void CB_InventarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_InventarioItemStateChanged
+        try{
+            if(CB_Inventario.getItemCount() > 0){
+                String si = CB_Inventario.getItemAt(CB_Inventario.getSelectedIndex());
+                int idtienda = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT (?)");
+                ps.setInt(1, idtienda);
+                ps.executeQuery();
+                JOptionPane.showMessageDialog(JD_Eliminar_Tienda, "Se elimino con exito");
+                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas");
+                ActualizarCB(CB_Tienda_ET, ps2);                       
+            }   
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_CB_InventarioItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -1513,7 +1536,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 
-    public void Abrir_JDialog(JDialog JD) {
+    private void Abrir_JDialog(JDialog JD) {
         JD.setModal(true);
         JD.pack();
         JD.setLocationRelativeTo(null);//this Frame
