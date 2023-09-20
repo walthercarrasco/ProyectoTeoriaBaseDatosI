@@ -52,36 +52,44 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         JD_Crear_Tienda = new javax.swing.JDialog();
         jLabel11 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
         BT_Crear_CT = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         SP_HorarioApertura_CT = new javax.swing.JSpinner();
         SP_HorarioCierre_CT = new javax.swing.JSpinner();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        TF_DIRECCION_CT = new javax.swing.JTextField();
+        TF_Direccion_CT = new javax.swing.JTextField();
         TF_Nombre_CT = new javax.swing.JTextField();
-        TF_PAIS_CT = new javax.swing.JTextField();
-        TF_CIUDAD_CT = new javax.swing.JTextField();
-        TF_ESTADO_CT = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        TF_Pais_CT = new javax.swing.JTextField();
+        TF_Ciudad_CT = new javax.swing.JTextField();
+        TF_Estado_CT = new javax.swing.JTextField();
+        JD_Crear_Tienda_BG2 = new javax.swing.JLabel();
+        JD_Crear_Tienda_BG1 = new javax.swing.JLabel();
         JD_Modificar_Tienda = new javax.swing.JDialog();
         jLabel22 = new javax.swing.JLabel();
-        TF_Nombre_MT = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        BT_Crear_CC2 = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
-        CB_Ubicacion_MT = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        BT_Modificar_MT = new javax.swing.JButton();
+        CB_Tienda_MT = new javax.swing.JComboBox<>();
+        TF_Nombre_MT = new javax.swing.JTextField();
+        TF_Pais_MT = new javax.swing.JTextField();
+        TF_Ciudad_MT = new javax.swing.JTextField();
+        TF_Estado_MT = new javax.swing.JTextField();
+        TF_Direccion_MT = new javax.swing.JTextField();
         SP_HorarioApertura_MT = new javax.swing.JSpinner();
         SP_HorarioCierre_MT = new javax.swing.JSpinner();
-        jLabel26 = new javax.swing.JLabel();
-        CB_Tienda_MT = new javax.swing.JComboBox<>();
-        jLabel35 = new javax.swing.JLabel();
-        JD_Modificar_Tienda_BG = new javax.swing.JLabel();
+        JD_Modificar_Tienda_BG1 = new javax.swing.JLabel();
+        JD_Modificar_Tienda_BG2 = new javax.swing.JLabel();
         JD_Eliminar_Tienda = new javax.swing.JDialog();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -90,58 +98,86 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Eliminar_Tienda_BG = new javax.swing.JLabel();
         JD_Crear_Cliente = new javax.swing.JDialog();
         jLabel4 = new javax.swing.JLabel();
-        TF_Correo_CC = new javax.swing.JTextField();
-        TF_Nombre_CC = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        TF_Correo_CC = new javax.swing.JTextField();
+        TF_Nombre_CC = new javax.swing.JTextField();
         BT_Crear_CC = new javax.swing.JButton();
         JD_Crear_Cliente_BG = new javax.swing.JLabel();
         JD_Modificar_Cliente = new javax.swing.JDialog();
         jLabel7 = new javax.swing.JLabel();
-        TF_Correo_MC = new javax.swing.JTextField();
-        TF_Nombre_MC = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        TF_Correo_MC = new javax.swing.JTextField();
+        TF_Nombre_MC = new javax.swing.JTextField();
         BT_Modificar_MC = new javax.swing.JButton();
         CB_Cliente_MC = new javax.swing.JComboBox<>();
-        jLabel36 = new javax.swing.JLabel();
         JD_Modificar_Cliente_BG = new javax.swing.JLabel();
         JD_Eliminar_Cliente = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         BT_Eliminar_EC = new javax.swing.JButton();
         CB_Cliente_EC = new javax.swing.JComboBox<>();
+        JD_Eliminar_Cliente_BG = new javax.swing.JLabel();
         JD_Crear_Producto = new javax.swing.JDialog();
         jLabel17 = new javax.swing.JLabel();
-        TF_UPC_CP = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        BT_Crear_CP = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        TF_UPC_CP = new javax.swing.JTextField();
+        BT_Crear_CP = new javax.swing.JButton();
         CB_Embalaje_CP = new javax.swing.JComboBox<>();
         TF_Size_CP = new javax.swing.JTextField();
         TF_Marca_CP = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
         TF_Nombre_CP = new javax.swing.JTextField();
+        JD_Crear_Producto_BG2 = new javax.swing.JLabel();
+        JD_Crear_Producto_BG1 = new javax.swing.JLabel();
         JD_Modificar_Producto = new javax.swing.JDialog();
         jLabel29 = new javax.swing.JLabel();
-        TF_Nombre_MP = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        BT_Modificar_MP = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        TF_Nombre_MP = new javax.swing.JTextField();
+        BT_Modificar_MP = new javax.swing.JButton();
         CB_Embalaje_MP = new javax.swing.JComboBox<>();
         TF_Size_MP = new javax.swing.JTextField();
         TF_Marca_MP = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
         CB_Producto_MP = new javax.swing.JComboBox<>();
-        jLabel34 = new javax.swing.JLabel();
+        TF_UPC_MP = new javax.swing.JTextField();
+        JD_Modificar_Producto_BG2 = new javax.swing.JLabel();
+        JD_Modificar_Producto_BG1 = new javax.swing.JLabel();
         JD_Eliminar_Producto = new javax.swing.JDialog();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         BT_Eliminar_EP = new javax.swing.JButton();
         CB_Producto_EP = new javax.swing.JComboBox<>();
+        JD_Eliminar_Producto_BG = new javax.swing.JLabel();
+        JD_Crear_Vendedor = new javax.swing.JDialog();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        TF_Nombre_CV = new javax.swing.JTextField();
+        BT_Crear_CV = new javax.swing.JButton();
+        JD_Crear_Vendedor_BG = new javax.swing.JLabel();
+        JD_Modificar_Vendedor = new javax.swing.JDialog();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        TF_Nombre_MV = new javax.swing.JTextField();
+        BT_Modificar_MV = new javax.swing.JButton();
+        CB_Vendedor_MV = new javax.swing.JComboBox<>();
+        JD_Modificar_Vendedor_BG = new javax.swing.JLabel();
+        JD_Eliminar_Vendedor = new javax.swing.JDialog();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        BT_Eliminar_EV = new javax.swing.JButton();
+        CB_Vendedor_EV = new javax.swing.JComboBox<>();
+        JD_Eliminar_Vendedor_BG = new javax.swing.JLabel();
         Tabs = new javax.swing.JTabbedPane();
         Tab_Administrar = new javax.swing.JPanel();
         A_Productos = new javax.swing.JPanel();
@@ -165,6 +201,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         A_BT_Modificar_Clientes = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         A_Clientes_BG = new javax.swing.JLabel();
+        A_Vendedores = new javax.swing.JPanel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel58 = new javax.swing.JLabel();
+        A_BT_Crear_Vendedores = new javax.swing.JButton();
+        A_BT_Modificar_Vendedores = new javax.swing.JButton();
+        A_BT_Eliminar_Vendedores = new javax.swing.JButton();
+        A_Vendedores_BG = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         Tab_Inventario = new javax.swing.JPanel();
         Decor_Panel_Inventario = new javax.swing.JLabel();
@@ -208,132 +251,172 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         CB_ComprasCliente = new javax.swing.JComboBox<>();
         Decor_Panel_Cliente = new javax.swing.JLabel();
 
+        JD_Crear_Tienda.setMinimumSize(new java.awt.Dimension(600, 520));
+        JD_Crear_Tienda.setPreferredSize(new java.awt.Dimension(600, 520));
         JD_Crear_Tienda.setResizable(false);
         JD_Crear_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 255, 204));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Crear Tienda");
         JD_Crear_Tienda.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
 
-        jLabel14.setText("Horario");
-        JD_Crear_Tienda.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, 20));
+        jLabel69.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel69.setText("Nombre");
+        JD_Crear_Tienda.getContentPane().add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, 20));
+
+        jLabel70.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel70.setText("País");
+        JD_Crear_Tienda.getContentPane().add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, 20));
+
+        jLabel71.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel71.setText("Ciudad");
+        JD_Crear_Tienda.getContentPane().add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, 20));
+
+        jLabel72.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel72.setText("Estado");
+        JD_Crear_Tienda.getContentPane().add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, 20));
+
+        jLabel73.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel73.setText("Direccion");
+        JD_Crear_Tienda.getContentPane().add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, 20));
+
+        jLabel74.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel74.setText("Horario");
+        JD_Crear_Tienda.getContentPane().add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, 20));
+
+        jLabel75.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel75.setText("-");
+        JD_Crear_Tienda.getContentPane().add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 40, 20));
 
         BT_Crear_CT.setText("Crear");
+        BT_Crear_CT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Crear_CT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BT_Crear_CTMousePressed(evt);
             }
         });
-        JD_Crear_Tienda.getContentPane().add(BT_Crear_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 110, -1));
-
-        jLabel20.setText("Nombre");
-        JD_Crear_Tienda.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, 20));
-
-        jLabel21.setText("Direccion:");
-        JD_Crear_Tienda.getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, 20));
+        JD_Crear_Tienda.getContentPane().add(BT_Crear_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 110, -1));
 
         SP_HorarioApertura_CT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672552800000L), null, null, java.util.Calendar.HOUR));
         SP_HorarioApertura_CT.setToolTipText("");
         SP_HorarioApertura_CT.setEditor(new JSpinner.DateEditor(SP_HorarioApertura_CT, "hh:mm a"));
-        JD_Crear_Tienda.getContentPane().add(SP_HorarioApertura_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 90, -1));
+        JD_Crear_Tienda.getContentPane().add(SP_HorarioApertura_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 90, -1));
         new SpinnerDateModel(new java.util.Date(), null, null, Calendar.HOUR);
 
         SP_HorarioCierre_CT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672596000000L), null, null, java.util.Calendar.DAY_OF_MONTH));
         SP_HorarioCierre_CT.setEditor(new JSpinner.DateEditor(SP_HorarioCierre_CT, "hh:mm a")
         );
-        JD_Crear_Tienda.getContentPane().add(SP_HorarioCierre_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 90, -1));
-
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("-");
-        JD_Crear_Tienda.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 40, 20));
-
-        jLabel51.setText("País:");
-        JD_Crear_Tienda.getContentPane().add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, 20));
-
-        jLabel52.setText("Ciudad:");
-        JD_Crear_Tienda.getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, 20));
-
-        jLabel53.setText("Estado:");
-        JD_Crear_Tienda.getContentPane().add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, 20));
-        JD_Crear_Tienda.getContentPane().add(TF_DIRECCION_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 290, -1));
+        JD_Crear_Tienda.getContentPane().add(SP_HorarioCierre_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 90, -1));
+        JD_Crear_Tienda.getContentPane().add(TF_Direccion_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 290, -1));
         JD_Crear_Tienda.getContentPane().add(TF_Nombre_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 290, -1));
-        JD_Crear_Tienda.getContentPane().add(TF_PAIS_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 290, -1));
-        JD_Crear_Tienda.getContentPane().add(TF_CIUDAD_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
-        JD_Crear_Tienda.getContentPane().add(TF_ESTADO_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 290, -1));
+        JD_Crear_Tienda.getContentPane().add(TF_Pais_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 290, -1));
+        JD_Crear_Tienda.getContentPane().add(TF_Ciudad_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 290, -1));
+        JD_Crear_Tienda.getContentPane().add(TF_Estado_CT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 290, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
-        );
+        JD_Crear_Tienda_BG2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
+        JD_Crear_Tienda_BG2.setMaximumSize(new java.awt.Dimension(600, 400));
+        JD_Crear_Tienda_BG2.setMinimumSize(new java.awt.Dimension(600, 400));
+        JD_Crear_Tienda_BG2.setPreferredSize(new java.awt.Dimension(600, 400));
+        JD_Crear_Tienda.getContentPane().add(JD_Crear_Tienda_BG2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, 340));
 
-        JD_Crear_Tienda.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 440));
+        JD_Crear_Tienda_BG1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
+        JD_Crear_Tienda_BG1.setMaximumSize(new java.awt.Dimension(600, 400));
+        JD_Crear_Tienda_BG1.setMinimumSize(new java.awt.Dimension(600, 400));
+        JD_Crear_Tienda_BG1.setPreferredSize(new java.awt.Dimension(600, 400));
+        JD_Crear_Tienda.getContentPane().add(JD_Crear_Tienda_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 340));
 
+        JD_Modificar_Tienda.setPreferredSize(new java.awt.Dimension(600, 550));
         JD_Modificar_Tienda.setResizable(false);
         JD_Modificar_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(204, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Modificar Tienda");
-        JD_Modificar_Tienda.getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
-        JD_Modificar_Tienda.getContentPane().add(TF_Nombre_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
+        JD_Modificar_Tienda.getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, -1));
 
-        jLabel23.setText("Horario");
-        JD_Modificar_Tienda.getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, 20));
-
-        BT_Crear_CC2.setText("Crear");
-        JD_Modificar_Tienda.getContentPane().add(BT_Crear_CC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 110, -1));
-
+        jLabel24.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel24.setText("Tienda");
         JD_Modificar_Tienda.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, 20));
 
-        CB_Ubicacion_MT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        JD_Modificar_Tienda.getContentPane().add(CB_Ubicacion_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 190, -1));
+        jLabel23.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel23.setText("Nombre");
+        JD_Modificar_Tienda.getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, 20));
 
-        jLabel25.setText("Ubicación");
-        JD_Modificar_Tienda.getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, 20));
+        jLabel60.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel60.setText("País");
+        JD_Modificar_Tienda.getContentPane().add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, 20));
 
-        SP_HorarioApertura_MT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672552800000L), null, null, java.util.Calendar.HOUR));
-        SP_HorarioApertura_MT.setToolTipText("");
-        SP_HorarioApertura_MT.setEditor(new JSpinner.DateEditor(SP_HorarioApertura_MT, "hh:mm a"));
-        JD_Modificar_Tienda.getContentPane().add(SP_HorarioApertura_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 90, -1));
-        new SpinnerDateModel(new java.util.Date(), null, null, Calendar.HOUR);
+        jLabel61.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel61.setText("Ciudad");
+        JD_Modificar_Tienda.getContentPane().add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, 20));
 
-        SP_HorarioCierre_MT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672596000000L), null, null, java.util.Calendar.DAY_OF_MONTH));
-        SP_HorarioCierre_MT.setEditor(new JSpinner.DateEditor(SP_HorarioCierre_MT, "hh:mm a")
-        );
-        JD_Modificar_Tienda.getContentPane().add(SP_HorarioCierre_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 90, -1));
+        jLabel65.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel65.setText("Estado");
+        JD_Modificar_Tienda.getContentPane().add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, 20));
 
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("-");
-        JD_Modificar_Tienda.getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 40, 20));
+        jLabel25.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel25.setText("Direccion");
+        JD_Modificar_Tienda.getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, 20));
+
+        jLabel26.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel26.setText("Horario");
+        JD_Modificar_Tienda.getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, 20));
+
+        jLabel35.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("-");
+        JD_Modificar_Tienda.getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 40, 20));
+
+        BT_Modificar_MT.setText("Modificar");
+        BT_Modificar_MT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JD_Modificar_Tienda.getContentPane().add(BT_Modificar_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 110, -1));
 
         CB_Tienda_MT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         JD_Modificar_Tienda.getContentPane().add(CB_Tienda_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
+        JD_Modificar_Tienda.getContentPane().add(TF_Nombre_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
+        JD_Modificar_Tienda.getContentPane().add(TF_Pais_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
+        JD_Modificar_Tienda.getContentPane().add(TF_Ciudad_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 290, -1));
+        JD_Modificar_Tienda.getContentPane().add(TF_Estado_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 290, -1));
+        JD_Modificar_Tienda.getContentPane().add(TF_Direccion_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 290, -1));
 
-        jLabel35.setText("Nombre");
-        JD_Modificar_Tienda.getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, 20));
-        JD_Modificar_Tienda.getContentPane().add(JD_Modificar_Tienda_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 380));
+        SP_HorarioApertura_MT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672552800000L), null, null, java.util.Calendar.HOUR));
+        SP_HorarioApertura_MT.setToolTipText("");
+        SP_HorarioApertura_MT.setEditor(new JSpinner.DateEditor(SP_HorarioApertura_CT, "hh:mm a"));
+        JD_Modificar_Tienda.getContentPane().add(SP_HorarioApertura_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 90, -1));
+        new SpinnerDateModel(new java.util.Date(), null, null, Calendar.HOUR);
+
+        SP_HorarioCierre_MT.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(1672596000000L), null, null, java.util.Calendar.DAY_OF_MONTH));
+        SP_HorarioCierre_MT.setEditor(new JSpinner.DateEditor(SP_HorarioCierre_CT, "hh:mm a")
+        );
+        JD_Modificar_Tienda.getContentPane().add(SP_HorarioCierre_MT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 90, -1));
+
+        JD_Modificar_Tienda_BG1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Modificar_BG.png"))); // NOI18N
+        JD_Modificar_Tienda.getContentPane().add(JD_Modificar_Tienda_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, -1));
+
+        JD_Modificar_Tienda_BG2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Modificar_BG.png"))); // NOI18N
+        JD_Modificar_Tienda.getContentPane().add(JD_Modificar_Tienda_BG2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 600, 340));
 
         JD_Eliminar_Tienda.setMinimumSize(new java.awt.Dimension(600, 300));
+        JD_Eliminar_Tienda.setPreferredSize(new java.awt.Dimension(600, 300));
         JD_Eliminar_Tienda.setResizable(false);
         JD_Eliminar_Tienda.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 191, 191));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Eliminar Tienda");
         JD_Eliminar_Tienda.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
 
+        jLabel16.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel16.setText("Tienda");
-        JD_Eliminar_Tienda.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, 20));
+        JD_Eliminar_Tienda.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, 20));
 
         BT_Eliminar_ET.setText("Eliminar");
+        BT_Eliminar_ET.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Eliminar_ET.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BT_Eliminar_ETMousePressed(evt);
@@ -344,51 +427,67 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         CB_Tienda_ET.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         JD_Eliminar_Tienda.getContentPane().add(CB_Tienda_ET, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 220, -1));
 
-        JD_Eliminar_Tienda_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Eliminar_Tienda_BG.png"))); // NOI18N
-        JD_Eliminar_Tienda.getContentPane().add(JD_Eliminar_Tienda_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
+        JD_Eliminar_Tienda_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Eliminar_BG.png"))); // NOI18N
+        JD_Eliminar_Tienda_BG.setMaximumSize(new java.awt.Dimension(600, 300));
+        JD_Eliminar_Tienda_BG.setMinimumSize(new java.awt.Dimension(600, 300));
+        JD_Eliminar_Tienda.getContentPane().add(JD_Eliminar_Tienda_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
         JD_Crear_Cliente.setResizable(false);
         JD_Crear_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 255, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Crear Cliente");
         JD_Crear_Cliente.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
+
+        jLabel5.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel5.setText("Correo Electrónico");
+        JD_Crear_Cliente.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, 20));
+
+        jLabel6.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel6.setText("Nombre");
+        JD_Crear_Cliente.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, 20));
         JD_Crear_Cliente.getContentPane().add(TF_Correo_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 290, -1));
         JD_Crear_Cliente.getContentPane().add(TF_Nombre_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 290, -1));
 
-        jLabel5.setText("Correo Electrónico");
-        JD_Crear_Cliente.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, 20));
-
-        jLabel6.setText("Nombre");
-        JD_Crear_Cliente.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, 20));
-
         BT_Crear_CC.setText("Crear");
+        BT_Crear_CC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Crear_CC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BT_Crear_CCMousePressed(evt);
             }
         });
         JD_Crear_Cliente.getContentPane().add(BT_Crear_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
+
+        JD_Crear_Cliente_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
         JD_Crear_Cliente.getContentPane().add(JD_Crear_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
         JD_Modificar_Cliente.setResizable(false);
         JD_Modificar_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Modificar Cliente");
-        JD_Modificar_Cliente.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
-        JD_Modificar_Cliente.getContentPane().add(TF_Correo_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
-        JD_Modificar_Cliente.getContentPane().add(TF_Nombre_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
+        JD_Modificar_Cliente.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, -1));
 
+        jLabel8.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel8.setText("Correo Electrónico");
-        JD_Modificar_Cliente.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, 20));
+        JD_Modificar_Cliente.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 20));
 
+        jLabel9.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel9.setText("Nombre");
         JD_Modificar_Cliente.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, 20));
 
+        jLabel36.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel36.setText("Cliente");
+        JD_Modificar_Cliente.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, 20));
+        JD_Modificar_Cliente.getContentPane().add(TF_Correo_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
+        JD_Modificar_Cliente.getContentPane().add(TF_Nombre_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
+
         BT_Modificar_MC.setText("Modificar");
+        BT_Modificar_MC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Modificar_MC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BT_Modificar_MCMousePressed(evt);
@@ -404,22 +503,24 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         });
         JD_Modificar_Cliente.getContentPane().add(CB_Cliente_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
 
-        jLabel36.setText("Cliente");
-        JD_Modificar_Cliente.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, 20));
+        JD_Modificar_Cliente_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Modificar_BG.png"))); // NOI18N
         JD_Modificar_Cliente.getContentPane().add(JD_Modificar_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 340));
 
         JD_Eliminar_Cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         JD_Eliminar_Cliente.setMinimumSize(new java.awt.Dimension(600, 300));
+        JD_Eliminar_Cliente.setPreferredSize(new java.awt.Dimension(600, 300));
         JD_Eliminar_Cliente.setResizable(false);
         JD_Eliminar_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 191, 191));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Eliminar Cliente");
         JD_Eliminar_Cliente.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
 
+        jLabel12.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel12.setText("Cliente");
-        JD_Eliminar_Cliente.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, 20));
+        JD_Eliminar_Cliente.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, 20));
 
         BT_Eliminar_EC.setText("Eliminar");
         BT_Eliminar_EC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -432,81 +533,116 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         CB_Cliente_EC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         JD_Eliminar_Cliente.getContentPane().add(CB_Cliente_EC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 220, -1));
 
-        JD_Crear_Producto.setMinimumSize(new java.awt.Dimension(600, 390));
+        JD_Eliminar_Cliente_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Eliminar_BG.png"))); // NOI18N
+        JD_Eliminar_Cliente.getContentPane().add(JD_Eliminar_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+
+        JD_Crear_Producto.setMinimumSize(new java.awt.Dimension(600, 410));
+        JD_Crear_Producto.setPreferredSize(new java.awt.Dimension(600, 410));
         JD_Crear_Producto.setResizable(false);
         JD_Crear_Producto.setSize(new java.awt.Dimension(0, 0));
         JD_Crear_Producto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(204, 255, 204));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Crear Producto");
-        JD_Crear_Producto.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 620, -1));
+        JD_Crear_Producto.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 600, -1));
+
+        jLabel18.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel18.setText("Embalaje");
+        JD_Crear_Producto.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, 20));
+
+        jLabel27.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel27.setText("UPC");
+        JD_Crear_Producto.getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, 20));
+
+        jLabel28.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel28.setText("Tamaño");
+        JD_Crear_Producto.getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, 20));
+
+        jLabel19.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel19.setText("Marca");
+        JD_Crear_Producto.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, 20));
+
+        jLabel54.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel54.setText("Nombre");
+        JD_Crear_Producto.getContentPane().add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, 20));
         JD_Crear_Producto.getContentPane().add(TF_UPC_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 290, -1));
 
-        jLabel18.setText("Embalaje");
-        JD_Crear_Producto.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, 20));
-
         BT_Crear_CP.setText("Crear");
+        BT_Crear_CP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Crear_CP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BT_Crear_CPMousePressed(evt);
             }
         });
-        JD_Crear_Producto.getContentPane().add(BT_Crear_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 110, -1));
-
-        jLabel27.setText("UPC:");
-        JD_Crear_Producto.getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, 20));
-
-        jLabel28.setText("Tamaño");
-        JD_Crear_Producto.getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, 20));
+        JD_Crear_Producto.getContentPane().add(BT_Crear_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 110, 20));
 
         CB_Embalaje_CP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Papel", "Carton", "Metal", "Plastico", "Vidrio" }));
-        JD_Crear_Producto.getContentPane().add(CB_Embalaje_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 190, -1));
-        JD_Crear_Producto.getContentPane().add(TF_Size_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 190, -1));
-        JD_Crear_Producto.getContentPane().add(TF_Marca_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 190, -1));
+        JD_Crear_Producto.getContentPane().add(CB_Embalaje_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 190, 20));
+        JD_Crear_Producto.getContentPane().add(TF_Size_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 190, 20));
+        JD_Crear_Producto.getContentPane().add(TF_Marca_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 190, 20));
+        JD_Crear_Producto.getContentPane().add(TF_Nombre_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 290, -1));
 
-        jLabel19.setText("Marca");
-        JD_Crear_Producto.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, 20));
+        JD_Crear_Producto_BG2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
+        JD_Crear_Producto_BG2.setMaximumSize(new java.awt.Dimension(600, 341));
+        JD_Crear_Producto_BG2.setMinimumSize(new java.awt.Dimension(600, 341));
+        JD_Crear_Producto.getContentPane().add(JD_Crear_Producto_BG2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 271, -1, 140));
 
-        jLabel54.setText("Nombre");
-        JD_Crear_Producto.getContentPane().add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, 20));
-        JD_Crear_Producto.getContentPane().add(TF_Nombre_CP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 290, -1));
+        JD_Crear_Producto_BG1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
+        JD_Crear_Producto_BG1.setMaximumSize(new java.awt.Dimension(600, 341));
+        JD_Crear_Producto_BG1.setMinimumSize(new java.awt.Dimension(600, 341));
+        JD_Crear_Producto.getContentPane().add(JD_Crear_Producto_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        JD_Modificar_Producto.setMinimumSize(new java.awt.Dimension(600, 430));
+        JD_Modificar_Producto.setMinimumSize(new java.awt.Dimension(600, 470));
         JD_Modificar_Producto.setResizable(false);
         JD_Modificar_Producto.setSize(new java.awt.Dimension(0, 0));
         JD_Modificar_Producto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(204, 255, 255));
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel29.setText("Modificar Producto");
-        JD_Modificar_Producto.getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
-        JD_Modificar_Producto.getContentPane().add(TF_Nombre_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
+        JD_Modificar_Producto.getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, -1));
 
+        jLabel30.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel30.setText("Embalaje");
-        JD_Modificar_Producto.getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, 20));
+        JD_Modificar_Producto.getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, 20));
+
+        jLabel31.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel31.setText("Producto");
+        JD_Modificar_Producto.getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 70, 20));
+
+        jLabel32.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel32.setText("Tamaño");
+        JD_Modificar_Producto.getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, 20));
+
+        jLabel33.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel33.setText("Marca");
+        JD_Modificar_Producto.getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, 20));
+
+        jLabel34.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel34.setText("Nombre");
+        JD_Modificar_Producto.getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, 20));
+
+        jLabel66.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel66.setText("UPC");
+        JD_Modificar_Producto.getContentPane().add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, 20));
+        JD_Modificar_Producto.getContentPane().add(TF_Nombre_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
 
         BT_Modificar_MP.setText("Modificar");
+        BT_Modificar_MP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Modificar_MP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BT_Modificar_MPMousePressed(evt);
             }
         });
-        JD_Modificar_Producto.getContentPane().add(BT_Modificar_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 110, -1));
-
-        jLabel31.setText("Producto");
-        JD_Modificar_Producto.getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 50, 20));
-
-        jLabel32.setText("Tamaño");
-        JD_Modificar_Producto.getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, 20));
+        JD_Modificar_Producto.getContentPane().add(BT_Modificar_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 110, -1));
 
         CB_Embalaje_MP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Papel", "Carton", "Metal", "Plastico", "Vidrio" }));
-        JD_Modificar_Producto.getContentPane().add(CB_Embalaje_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 190, -1));
-        JD_Modificar_Producto.getContentPane().add(TF_Size_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 190, -1));
-        JD_Modificar_Producto.getContentPane().add(TF_Marca_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 190, -1));
-
-        jLabel33.setText("Marca");
-        JD_Modificar_Producto.getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, 20));
+        JD_Modificar_Producto.getContentPane().add(CB_Embalaje_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 190, -1));
+        JD_Modificar_Producto.getContentPane().add(TF_Size_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 190, -1));
+        JD_Modificar_Producto.getContentPane().add(TF_Marca_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 190, -1));
 
         CB_Producto_MP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CB_Producto_MP.addItemListener(new java.awt.event.ItemListener() {
@@ -515,23 +651,30 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             }
         });
         JD_Modificar_Producto.getContentPane().add(CB_Producto_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
+        JD_Modificar_Producto.getContentPane().add(TF_UPC_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
 
-        jLabel34.setText("Nombre");
-        JD_Modificar_Producto.getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, 20));
+        JD_Modificar_Producto_BG2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Modificar_BG.png"))); // NOI18N
+        JD_Modificar_Producto.getContentPane().add(JD_Modificar_Producto_BG2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 291, -1, 180));
+
+        JD_Modificar_Producto_BG1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Modificar_BG.png"))); // NOI18N
+        JD_Modificar_Producto.getContentPane().add(JD_Modificar_Producto_BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         JD_Eliminar_Producto.setMinimumSize(new java.awt.Dimension(600, 300));
         JD_Eliminar_Producto.setResizable(false);
         JD_Eliminar_Producto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 191, 191));
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel37.setText("Eliminar Producto");
         JD_Eliminar_Producto.getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
 
+        jLabel38.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel38.setText("Producto");
         JD_Eliminar_Producto.getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, 20));
 
         BT_Eliminar_EP.setText("Eliminar");
+        BT_Eliminar_EP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Eliminar_EP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BT_Eliminar_EPMousePressed(evt);
@@ -542,26 +685,108 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         CB_Producto_EP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         JD_Eliminar_Producto.getContentPane().add(CB_Producto_EP, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 220, -1));
 
+        JD_Eliminar_Producto_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Eliminar_BG.png"))); // NOI18N
+        JD_Eliminar_Producto.getContentPane().add(JD_Eliminar_Producto_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+
+        JD_Crear_Vendedor.setResizable(false);
+        JD_Crear_Vendedor.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel55.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(204, 255, 204));
+        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel55.setText("Crear Vendedor");
+        JD_Crear_Vendedor.getContentPane().add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
+
+        jLabel56.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(204, 255, 204));
+        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel56.setText("Nombre");
+        JD_Crear_Vendedor.getContentPane().add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 70, 20));
+        JD_Crear_Vendedor.getContentPane().add(TF_Nombre_CV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
+
+        BT_Crear_CV.setText("Crear");
+        BT_Crear_CV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JD_Crear_Vendedor.getContentPane().add(BT_Crear_CV, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 110, -1));
+
+        JD_Crear_Vendedor_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
+        JD_Crear_Vendedor.getContentPane().add(JD_Crear_Vendedor_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+
+        JD_Modificar_Vendedor.setResizable(false);
+        JD_Modificar_Vendedor.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel57.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel57.setText("Modificar Vendedor");
+        JD_Modificar_Vendedor.getContentPane().add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, -1));
+
+        jLabel59.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel59.setText("Vendedor");
+        JD_Modificar_Vendedor.getContentPane().add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, 20));
+
+        jLabel62.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel62.setText("Nombre");
+        JD_Modificar_Vendedor.getContentPane().add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, 20));
+        JD_Modificar_Vendedor.getContentPane().add(TF_Nombre_MV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 290, -1));
+
+        BT_Modificar_MV.setText("Modificar");
+        JD_Modificar_Vendedor.getContentPane().add(BT_Modificar_MV, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 110, -1));
+
+        CB_Vendedor_MV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JD_Modificar_Vendedor.getContentPane().add(CB_Vendedor_MV, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 290, -1));
+
+        JD_Modificar_Vendedor_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Modificar_BG.png"))); // NOI18N
+        JD_Modificar_Vendedor.getContentPane().add(JD_Modificar_Vendedor_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+
+        JD_Eliminar_Vendedor.setMinimumSize(new java.awt.Dimension(600, 300));
+        JD_Eliminar_Vendedor.setResizable(false);
+        JD_Eliminar_Vendedor.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel63.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(255, 191, 191));
+        jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel63.setText("Eliminar Vendedor");
+        JD_Eliminar_Vendedor.getContentPane().add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
+
+        jLabel64.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jLabel64.setText("Vendedor");
+        JD_Eliminar_Vendedor.getContentPane().add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, 20));
+
+        BT_Eliminar_EV.setText("Eliminar");
+        BT_Eliminar_EV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JD_Eliminar_Vendedor.getContentPane().add(BT_Eliminar_EV, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
+
+        CB_Vendedor_EV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JD_Eliminar_Vendedor.getContentPane().add(CB_Vendedor_EV, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 220, -1));
+
+        JD_Eliminar_Vendedor_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Eliminar_BG.png"))); // NOI18N
+        JD_Eliminar_Vendedor_BG.setMinimumSize(new java.awt.Dimension(600, 300));
+        JD_Eliminar_Vendedor_BG.setPreferredSize(new java.awt.Dimension(600, 300));
+        JD_Eliminar_Vendedor.getContentPane().add(JD_Eliminar_Vendedor_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(90, 50));
-        setMinimumSize(new java.awt.Dimension(1446, 830));
-        setPreferredSize(new java.awt.Dimension(1446, 830));
+        setMinimumSize(new java.awt.Dimension(1447, 830));
         setResizable(false);
+        setSize(new java.awt.Dimension(1447, 830));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tabs.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         Tabs.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         Tab_Administrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        A_Productos.setBackground(new java.awt.Color(153, 0, 0));
+        A_Productos.setBackground(new java.awt.Color(204, 102, 0));
+        A_Productos.setPreferredSize(new java.awt.Dimension(1360, 190));
+        A_Productos.setRequestFocusEnabled(false);
         A_Productos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 40)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 221, 170));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Productos");
         jLabel1.setToolTipText("");
-        A_Productos.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1360, 50));
+        A_Productos.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1360, 30));
 
         A_BT_Crear_Productos.setBackground(new java.awt.Color(29, 91, 49));
         A_BT_Crear_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -573,7 +798,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Crear_ProductosMousePressed(evt);
             }
         });
-        A_Productos.add(A_BT_Crear_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 280, 90));
+        A_Productos.add(A_BT_Crear_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 280, 70));
 
         A_BT_Modificar_Productos.setBackground(new java.awt.Color(40, 77, 119));
         A_BT_Modificar_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -585,7 +810,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Modificar_ProductosMousePressed(evt);
             }
         });
-        A_Productos.add(A_BT_Modificar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 280, 90));
+        A_Productos.add(A_BT_Modificar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 280, 70));
 
         A_BT_Eliminar_Productos.setBackground(new java.awt.Color(99, 32, 39));
         A_BT_Eliminar_Productos.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -597,27 +822,28 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Eliminar_ProductosMousePressed(evt);
             }
         });
-        A_Productos.add(A_BT_Eliminar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 280, 90));
+        A_Productos.add(A_BT_Eliminar_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, 280, 70));
 
         jSeparator3.setBackground(new java.awt.Color(170, 86, 0));
         jSeparator3.setForeground(new java.awt.Color(198, 144, 102));
         jSeparator3.setOpaque(true);
         A_Productos.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
 
-        A_Productos_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Productos_BG.jpg"))); // NOI18N
-        A_Productos.add(A_Productos_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
+        A_Productos_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Productos_BG.png"))); // NOI18N
+        A_Productos.add(A_Productos_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1350, 190));
 
-        Tab_Administrar.add(A_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1360, 270));
+        Tab_Administrar.add(A_Productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 1360, 190));
 
-        A_Tiendas.setBackground(new java.awt.Color(102, 102, 0));
+        A_Tiendas.setBackground(new java.awt.Color(86, 35, 35));
+        A_Tiendas.setPreferredSize(new java.awt.Dimension(1360, 190));
         A_Tiendas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 40)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(216, 170, 170));
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 200, 200));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Tiendas");
         jLabel2.setToolTipText("");
-        A_Tiendas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1360, -1));
+        A_Tiendas.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1360, -1));
 
         A_BT_Eliminar_Tiendas.setBackground(new java.awt.Color(99, 32, 39));
         A_BT_Eliminar_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -629,7 +855,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Eliminar_TiendasMousePressed(evt);
             }
         });
-        A_Tiendas.add(A_BT_Eliminar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 280, 90));
+        A_Tiendas.add(A_BT_Eliminar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, 280, 70));
 
         A_BT_Modificar_Tiendas.setBackground(new java.awt.Color(40, 77, 119));
         A_BT_Modificar_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -641,7 +867,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Modificar_TiendasMousePressed(evt);
             }
         });
-        A_Tiendas.add(A_BT_Modificar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 280, 90));
+        A_Tiendas.add(A_BT_Modificar_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 280, 70));
 
         A_BT_Crear_Tiendas.setBackground(new java.awt.Color(29, 91, 49));
         A_BT_Crear_Tiendas.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -653,27 +879,28 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Crear_TiendasMousePressed(evt);
             }
         });
-        A_Tiendas.add(A_BT_Crear_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 280, 90));
+        A_Tiendas.add(A_BT_Crear_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 280, 70));
 
         jSeparator2.setBackground(new java.awt.Color(86, 35, 35));
         jSeparator2.setForeground(new java.awt.Color(198, 139, 139));
         jSeparator2.setOpaque(true);
         A_Tiendas.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
 
-        A_Tiendas_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Tiendas_BG.jpg"))); // NOI18N
-        A_Tiendas.add(A_Tiendas_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
+        A_Tiendas_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Tiendas_BG.png"))); // NOI18N
+        A_Tiendas.add(A_Tiendas_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1350, 190));
 
-        Tab_Administrar.add(A_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
+        Tab_Administrar.add(A_Tiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 190));
 
-        A_Clientes.setBackground(new java.awt.Color(0, 153, 0));
+        A_Clientes.setBackground(new java.awt.Color(45, 41, 32));
+        A_Clientes.setPreferredSize(new java.awt.Dimension(1350, 190));
         A_Clientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 40)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(234, 216, 200));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Clientes");
         jLabel3.setToolTipText("");
-        A_Clientes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1350, -1));
+        A_Clientes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1360, -1));
 
         A_BT_Eliminar_Clientes.setBackground(new java.awt.Color(99, 32, 39));
         A_BT_Eliminar_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -685,7 +912,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Eliminar_ClientesMousePressed(evt);
             }
         });
-        A_Clientes.add(A_BT_Eliminar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 280, 90));
+        A_Clientes.add(A_BT_Eliminar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, 280, 70));
 
         A_BT_Crear_Clientes.setBackground(new java.awt.Color(29, 91, 49));
         A_BT_Crear_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -697,7 +924,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Crear_ClientesMousePressed(evt);
             }
         });
-        A_Clientes.add(A_BT_Crear_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 280, 90));
+        A_Clientes.add(A_BT_Crear_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 280, 70));
 
         A_BT_Modificar_Clientes.setBackground(new java.awt.Color(40, 77, 119));
         A_BT_Modificar_Clientes.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
@@ -709,22 +936,78 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 A_BT_Modificar_ClientesMousePressed(evt);
             }
         });
-        A_Clientes.add(A_BT_Modificar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 280, 90));
+        A_Clientes.add(A_BT_Modificar_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 280, 70));
 
         jSeparator1.setBackground(new java.awt.Color(45, 41, 32));
         jSeparator1.setForeground(new java.awt.Color(198, 179, 139));
         jSeparator1.setOpaque(true);
         A_Clientes.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
 
-        A_Clientes_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Clientes_BG.jpg"))); // NOI18N
-        A_Clientes.add(A_Clientes_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 270));
+        A_Clientes_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Clientes_BG.png"))); // NOI18N
+        A_Clientes.add(A_Clientes_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1350, 190));
 
-        Tab_Administrar.add(A_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 1360, 270));
+        Tab_Administrar.add(A_Clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 1360, 190));
+
+        A_Vendedores.setBackground(new java.awt.Color(0, 170, 79));
+        A_Vendedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSeparator4.setBackground(new java.awt.Color(0, 170, 79));
+        jSeparator4.setForeground(new java.awt.Color(140, 198, 102));
+        jSeparator4.setOpaque(true);
+        A_Vendedores.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 240, 10));
+
+        jLabel58.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel58.setForeground(new java.awt.Color(226, 255, 216));
+        jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel58.setText("Vendedores");
+        jLabel58.setToolTipText("");
+        A_Vendedores.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1360, 30));
+
+        A_BT_Crear_Vendedores.setBackground(new java.awt.Color(29, 91, 49));
+        A_BT_Crear_Vendedores.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        A_BT_Crear_Vendedores.setText("Crear");
+        A_BT_Crear_Vendedores.setBorderPainted(false);
+        A_BT_Crear_Vendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        A_BT_Crear_Vendedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                A_BT_Crear_VendedoresMousePressed(evt);
+            }
+        });
+        A_Vendedores.add(A_BT_Crear_Vendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 280, 70));
+
+        A_BT_Modificar_Vendedores.setBackground(new java.awt.Color(40, 77, 119));
+        A_BT_Modificar_Vendedores.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        A_BT_Modificar_Vendedores.setText("Modificar");
+        A_BT_Modificar_Vendedores.setBorderPainted(false);
+        A_BT_Modificar_Vendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        A_BT_Modificar_Vendedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                A_BT_Modificar_VendedoresMousePressed(evt);
+            }
+        });
+        A_Vendedores.add(A_BT_Modificar_Vendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 280, 70));
+
+        A_BT_Eliminar_Vendedores.setBackground(new java.awt.Color(99, 32, 39));
+        A_BT_Eliminar_Vendedores.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
+        A_BT_Eliminar_Vendedores.setText("Eliminar");
+        A_BT_Eliminar_Vendedores.setBorderPainted(false);
+        A_BT_Eliminar_Vendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        A_BT_Eliminar_Vendedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                A_BT_Eliminar_VendedoresMousePressed(evt);
+            }
+        });
+        A_Vendedores.add(A_BT_Eliminar_Vendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, 280, 70));
+
+        A_Vendedores_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/A_Vendedores_BG.png"))); // NOI18N
+        A_Vendedores.add(A_Vendedores_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1350, 190));
+
+        Tab_Administrar.add(A_Vendedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 1360, 190));
 
         jLabel49.setBackground(new java.awt.Color(61, 26, 31));
         jLabel49.setForeground(new java.awt.Color(151, 169, 187));
         jLabel49.setOpaque(true);
-        Tab_Administrar.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1360, 310));
+        Tab_Administrar.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 1360, 50));
 
         Tabs.addTab("Administrar", Tab_Administrar);
 
@@ -735,7 +1018,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Decor_Panel_Inventario.setText("Inventario");
         Tab_Inventario.add(Decor_Panel_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 100));
 
-        Panel_Inventario.setBackground(new java.awt.Color(69, 69, 86));
+        Panel_Inventario.setBackground(new java.awt.Color(73, 73, 86));
         Panel_Inventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CB_Inventario.addItemListener(new java.awt.event.ItemListener() {
@@ -743,7 +1026,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 CB_InventarioItemStateChanged(evt);
             }
         });
-        Panel_Inventario.add(CB_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 380, -1));
+        Panel_Inventario.add(CB_Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 400, -1));
 
         TB_Inventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -825,7 +1108,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Panel_Inventario.add(JL_TiposMasVendidos_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 210, 140));
 
         jLabel40.setText("Tienda");
-        Panel_Inventario.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 60, 20));
+        Panel_Inventario.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 50, 20));
 
         jLabel41.setBackground(new java.awt.Color(61, 72, 74));
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -854,7 +1137,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Tab_HistorialVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Panel_HistorialVentas.setBackground(new java.awt.Color(153, 0, 51));
+        Panel_HistorialVentas.setBackground(new java.awt.Color(117, 79, 91));
         Panel_HistorialVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CB_HistorialVentas.addActionListener(new java.awt.event.ActionListener() {
@@ -862,7 +1145,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 CB_HistorialVentasActionPerformed(evt);
             }
         });
-        Panel_HistorialVentas.add(CB_HistorialVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 380, -1));
+        Panel_HistorialVentas.add(CB_HistorialVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 400, -1));
 
         TB_HistorialVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -884,7 +1167,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Panel_HistorialVentas.add(TB_HistorialVentas_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 930, 580));
 
         jLabel45.setText("Tienda");
-        Panel_HistorialVentas.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 40, 20));
+        Panel_HistorialVentas.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 50, 20));
 
         jLabel39.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -925,7 +1208,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Tab_VentasPais.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Panel_VentaPais.setBackground(new java.awt.Color(91, 79, 43));
+        Panel_VentaPais.setBackground(new java.awt.Color(91, 84, 66));
         Panel_VentaPais.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CB_VentaPais.addActionListener(new java.awt.event.ActionListener() {
@@ -971,7 +1254,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Panel_VentaPais.add(TB_VentaPais_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 1320, 580));
 
         jLabel48.setText("País");
-        Panel_VentaPais.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 40, 20));
+        Panel_VentaPais.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 40, 20));
 
         jLabel50.setBackground(new java.awt.Color(61, 72, 74));
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -991,12 +1274,12 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Tab_Cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Panel_ComprasPorCliente.setBackground(new java.awt.Color(0, 102, 102));
+        Panel_ComprasPorCliente.setBackground(new java.awt.Color(64, 102, 102));
         Panel_ComprasPorCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setText("Cliente:");
-        Panel_ComprasPorCliente.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 70, 30));
+        jLabel44.setText("Cliente");
+        Panel_ComprasPorCliente.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 70, 20));
 
         TB_ComprasPorCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1046,7 +1329,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 CB_ComprasClienteItemStateChanged(evt);
             }
         });
-        Panel_ComprasPorCliente.add(CB_ComprasCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 230, -1));
+        Panel_ComprasPorCliente.add(CB_ComprasCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 230, -1));
 
         Tab_Cliente.add(Panel_ComprasPorCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1360, 730));
 
@@ -1057,26 +1340,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         Tabs.addTab("Cliente", Tab_Cliente);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1446, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(Tabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(Tabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 830));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1164,10 +1428,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 throw new Exception();
             }
             PreparedStatement ps = db.getConexion().prepareStatement("SELECT insert_ubicacion(?,?,?,?)");
-            ps.setString(1, TF_DIRECCION_CT.getText());
-            ps.setString(2, TF_CIUDAD_CT.getText());
-            ps.setString(3, TF_ESTADO_CT.getText());
-            ps.setString(4, TF_PAIS_CT.getText());
+            ps.setString(1, TF_Direccion_CT.getText());
+            ps.setString(2, TF_Ciudad_CT.getText());
+            ps.setString(3, TF_Estado_CT.getText());
+            ps.setString(4, TF_Pais_CT.getText());
             ResultSet rs = ps.executeQuery();rs.next();
             int idubicacion = rs.getInt(1);
             PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT insert_tienda(?,?,?)");
@@ -1178,10 +1442,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             ps2.setString(2, TF_Nombre_CT.getText());
             ps2.setString(3, horario);
             ps2.executeQuery();
-            TF_DIRECCION_CT.setText("");
-            TF_CIUDAD_CT.setText("");
-            TF_ESTADO_CT.setText("");
-            TF_PAIS_CT.setText("");
+            TF_Direccion_CT.setText("");
+            TF_Ciudad_CT.setText("");
+            TF_Estado_CT.setText("");
+            TF_Pais_CT.setText("");
             JOptionPane.showMessageDialog(JD_Crear_Tienda, "Se agrego la Tienda!",
                     "Exitoso", JOptionPane.INFORMATION_MESSAGE);
             ActualizarCB(CB_Inventario, db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas"));
@@ -1397,6 +1661,18 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CB_ComprasClienteItemStateChanged
 
+    private void A_BT_Crear_VendedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Crear_VendedoresMousePressed
+        Abrir_JDialog(JD_Crear_Vendedor);
+    }//GEN-LAST:event_A_BT_Crear_VendedoresMousePressed
+
+    private void A_BT_Modificar_VendedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Modificar_VendedoresMousePressed
+        Abrir_JDialog(JD_Modificar_Vendedor);
+    }//GEN-LAST:event_A_BT_Modificar_VendedoresMousePressed
+
+    private void A_BT_Eliminar_VendedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_A_BT_Eliminar_VendedoresMousePressed
+        Abrir_JDialog(JD_Eliminar_Vendedor);
+    }//GEN-LAST:event_A_BT_Eliminar_VendedoresMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -1405,27 +1681,35 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JButton A_BT_Crear_Clientes;
     private javax.swing.JButton A_BT_Crear_Productos;
     private javax.swing.JButton A_BT_Crear_Tiendas;
+    private javax.swing.JButton A_BT_Crear_Vendedores;
     private javax.swing.JButton A_BT_Eliminar_Clientes;
     private javax.swing.JButton A_BT_Eliminar_Productos;
     private javax.swing.JButton A_BT_Eliminar_Tiendas;
+    private javax.swing.JButton A_BT_Eliminar_Vendedores;
     private javax.swing.JButton A_BT_Modificar_Clientes;
     private javax.swing.JButton A_BT_Modificar_Productos;
     private javax.swing.JButton A_BT_Modificar_Tiendas;
+    private javax.swing.JButton A_BT_Modificar_Vendedores;
     private javax.swing.JPanel A_Clientes;
     private javax.swing.JLabel A_Clientes_BG;
     private javax.swing.JPanel A_Productos;
     private javax.swing.JLabel A_Productos_BG;
     private javax.swing.JPanel A_Tiendas;
     private javax.swing.JLabel A_Tiendas_BG;
+    private javax.swing.JPanel A_Vendedores;
+    private javax.swing.JLabel A_Vendedores_BG;
     private javax.swing.JButton BT_Crear_CC;
-    private javax.swing.JButton BT_Crear_CC2;
     private javax.swing.JButton BT_Crear_CP;
     private javax.swing.JButton BT_Crear_CT;
+    private javax.swing.JButton BT_Crear_CV;
     private javax.swing.JButton BT_Eliminar_EC;
     private javax.swing.JButton BT_Eliminar_EP;
     private javax.swing.JButton BT_Eliminar_ET;
+    private javax.swing.JButton BT_Eliminar_EV;
     private javax.swing.JButton BT_Modificar_MC;
     private javax.swing.JButton BT_Modificar_MP;
+    private javax.swing.JButton BT_Modificar_MT;
+    private javax.swing.JButton BT_Modificar_MV;
     private javax.swing.JComboBox<String> CB_Cliente_EC;
     private javax.swing.JComboBox<String> CB_Cliente_MC;
     private javax.swing.JComboBox<String> CB_ComprasCliente;
@@ -1437,7 +1721,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CB_Producto_MP;
     private javax.swing.JComboBox<String> CB_Tienda_ET;
     private javax.swing.JComboBox<String> CB_Tienda_MT;
-    private javax.swing.JComboBox<String> CB_Ubicacion_MT;
+    private javax.swing.JComboBox<String> CB_Vendedor_EV;
+    private javax.swing.JComboBox<String> CB_Vendedor_MV;
     private javax.swing.JComboBox<String> CB_VentaPais;
     private javax.swing.JLabel Decor_Panel_Cliente;
     private javax.swing.JLabel Decor_Panel_Inventario;
@@ -1446,16 +1731,31 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JDialog JD_Crear_Cliente;
     private javax.swing.JLabel JD_Crear_Cliente_BG;
     private javax.swing.JDialog JD_Crear_Producto;
+    private javax.swing.JLabel JD_Crear_Producto_BG1;
+    private javax.swing.JLabel JD_Crear_Producto_BG2;
     private javax.swing.JDialog JD_Crear_Tienda;
+    private javax.swing.JLabel JD_Crear_Tienda_BG1;
+    private javax.swing.JLabel JD_Crear_Tienda_BG2;
+    private javax.swing.JDialog JD_Crear_Vendedor;
+    private javax.swing.JLabel JD_Crear_Vendedor_BG;
     private javax.swing.JDialog JD_Eliminar_Cliente;
+    private javax.swing.JLabel JD_Eliminar_Cliente_BG;
     private javax.swing.JDialog JD_Eliminar_Producto;
+    private javax.swing.JLabel JD_Eliminar_Producto_BG;
     private javax.swing.JDialog JD_Eliminar_Tienda;
     private javax.swing.JLabel JD_Eliminar_Tienda_BG;
+    private javax.swing.JDialog JD_Eliminar_Vendedor;
+    private javax.swing.JLabel JD_Eliminar_Vendedor_BG;
     private javax.swing.JDialog JD_Modificar_Cliente;
     private javax.swing.JLabel JD_Modificar_Cliente_BG;
     private javax.swing.JDialog JD_Modificar_Producto;
+    private javax.swing.JLabel JD_Modificar_Producto_BG1;
+    private javax.swing.JLabel JD_Modificar_Producto_BG2;
     private javax.swing.JDialog JD_Modificar_Tienda;
-    private javax.swing.JLabel JD_Modificar_Tienda_BG;
+    private javax.swing.JLabel JD_Modificar_Tienda_BG1;
+    private javax.swing.JLabel JD_Modificar_Tienda_BG2;
+    private javax.swing.JDialog JD_Modificar_Vendedor;
+    private javax.swing.JLabel JD_Modificar_Vendedor_BG;
     private javax.swing.JList<String> JL_TiposMasVendidos;
     private javax.swing.JScrollPane JL_TiposMasVendidos_Scrollpane;
     private javax.swing.JPanel Panel_ComprasPorCliente;
@@ -1476,23 +1776,30 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JScrollPane TB_ProdMasVendidos_Scrollpane;
     private javax.swing.JTable TB_VentaPais;
     private javax.swing.JScrollPane TB_VentaPais_Scrollpane;
-    private javax.swing.JTextField TF_CIUDAD_CT;
+    private javax.swing.JTextField TF_Ciudad_CT;
+    private javax.swing.JTextField TF_Ciudad_MT;
     private javax.swing.JTextField TF_Correo_CC;
     private javax.swing.JTextField TF_Correo_MC;
-    private javax.swing.JTextField TF_DIRECCION_CT;
-    private javax.swing.JTextField TF_ESTADO_CT;
+    private javax.swing.JTextField TF_Direccion_CT;
+    private javax.swing.JTextField TF_Direccion_MT;
+    private javax.swing.JTextField TF_Estado_CT;
+    private javax.swing.JTextField TF_Estado_MT;
     private javax.swing.JTextField TF_Marca_CP;
     private javax.swing.JTextField TF_Marca_MP;
     private javax.swing.JTextField TF_Nombre_CC;
     private javax.swing.JTextField TF_Nombre_CP;
     private javax.swing.JTextField TF_Nombre_CT;
+    private javax.swing.JTextField TF_Nombre_CV;
     private javax.swing.JTextField TF_Nombre_MC;
     private javax.swing.JTextField TF_Nombre_MP;
     private javax.swing.JTextField TF_Nombre_MT;
-    private javax.swing.JTextField TF_PAIS_CT;
+    private javax.swing.JTextField TF_Nombre_MV;
+    private javax.swing.JTextField TF_Pais_CT;
+    private javax.swing.JTextField TF_Pais_MT;
     private javax.swing.JTextField TF_Size_CP;
     private javax.swing.JTextField TF_Size_MP;
     private javax.swing.JTextField TF_UPC_CP;
+    private javax.swing.JTextField TF_UPC_MP;
     private javax.swing.JTable T_MejoresTiendas;
     private javax.swing.JPanel Tab_Administrar;
     private javax.swing.JPanel Tab_Cliente;
@@ -1504,16 +1811,12 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1546,19 +1849,35 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     // End of variables declaration//GEN-END:variables
 
     private void Abrir_JDialog(JDialog JD) {
