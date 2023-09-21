@@ -41,6 +41,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             ActualizarCB(CB_ComprasCliente, db.getConexion().prepareStatement("SELECT id,nombre FROM clientes"));
             ActualizarCB(CB_Categorias_CP, db.getConexion().prepareStatement("SELECT id,categoria as nombre FROM categorias"));
             CB_Bitacoras.setSelectedIndex(1);
+            LLenarCBPais();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -1279,6 +1280,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Panel_VentaPais.setBackground(new java.awt.Color(91, 84, 66));
         Panel_VentaPais.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        CB_VentaPais.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_VentaPaisItemStateChanged(evt);
+            }
+        });
         CB_VentaPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CB_VentaPaisActionPerformed(evt);
@@ -1987,6 +1993,34 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CB_BitacorasItemStateChanged
 
+    private void CB_VentaPaisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_VentaPaisItemStateChanged
+        try{
+            String pais = CB_VentaPais.getSelectedItem().toString();
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT * FROM mejores_pp WHERE pais=? LIMIT 20");
+            ps.setString(1, pais);
+            ResultSet rs = ps.executeQuery();
+            String[] titles = {"UPC", "Ventas Totales", "Nombre"};
+            DefaultTableModel model = new DefaultTableModel(new String[][]{},titles);
+            while(rs.next()){
+                String upc = rs.getString(1);
+                String ventas_totales = rs.getString(2);
+                PreparedStatement p = db.getConexion().prepareStatement("SELECT nombre FROM productos WHERE upc=?");
+                p.setString(1, upc);
+                ResultSet r = p.executeQuery();
+                r.next();
+                Object[] row = {
+                    upc,
+                    ventas_totales,
+                    r.getString(1)
+                };
+                model.addRow(row);
+            }
+            TB_VentaPais.setModel(model);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_CB_VentaPaisItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -2222,7 +2256,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             String[] titles = {"#", "ID", "Nombre", "Venta" };
             DefaultTableModel tm = new DefaultTableModel(new String[][] {}, titles);
             while(rs.next()){
-                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT nombre WHERE id="+rs.getInt("idTienda"));
+                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT nombre FROM tiendas WHERE id="+rs.getInt("idTienda"));
                 ResultSet rs2 = ps2.executeQuery(); rs2.next();
                 String nombre = rs2.getString("nombre");
                 String[] data = {
@@ -2324,6 +2358,18 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
 
+        }
+    }
+    
+    private void LLenarCBPais(){
+        try{
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT DISTINCT pais FROM ubicaciones");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                CB_VentaPais.addItem(rs.getString(1));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 }
