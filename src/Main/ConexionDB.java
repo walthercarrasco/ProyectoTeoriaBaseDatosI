@@ -13,11 +13,11 @@ import java.sql.SQLException;
  */
 public class ConexionDB {
     
-    private static final String nombre = "ProyectoLocal";
-    private static final String usuario = "walther";
-    private static final String password = "holamundo";
+    private static final String nombre = "BaseTDBGrupo4";
+    private static final String usuario = "postgres";
+    private static final String password = "W1a6l2t0h0e4r";
     private static final String port = "5432";
-    private static final String ip = "localhost";
+    private static final String ip = "database-proyectotbdgrupo4.chpwxv1ywobu.us-east-1.rds.amazonaws.com";
     private static final String driver = "postgresql";
     private Connection conexion = null;
     
@@ -52,8 +52,8 @@ public class ConexionDB {
     public boolean conectar(){
         boolean rs = true;
         try{
-            String url = "jdbc:"+driver+"://"+ip+":"+port+"/"+nombre;
-            conexion = DriverManager.getConnection(url,usuario,password);
+            String url = "jdbc:" + driver + "://" + ip + ":" + port + "/" + nombre;
+            conexion = DriverManager.getConnection(url, usuario, password);
         }catch(SQLException e){
             e.printStackTrace();
             return false;
