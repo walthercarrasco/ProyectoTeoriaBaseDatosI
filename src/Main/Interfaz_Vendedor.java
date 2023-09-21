@@ -5,18 +5,7 @@
  */
 package Main;
 
-import java.util.Calendar;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.JComboBox;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,21 +13,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Interfaz_Vendedor extends javax.swing.JFrame {
     
-    private ConexionDB db = new ConexionDB();
-
     /**
      * Creates new form Interfaz_Vendedor
      */
     public Interfaz_Vendedor() {
-        db.conectar();
-        initComponents();
-        try{
-            cinco_mejores_tiendas();
-            ActualizarCB(CB_Inventario, db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas"));
-            ActualizarCB(CB_ComprasCliente, db.getConexion().prepareStatement("SELECT id,nombre FROM clientes"));
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        
     }
 
     /**
@@ -50,14 +29,14 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JD_Crear_Cliente = new javax.swing.JDialog();
+        JD_Agregar_Producto = new javax.swing.JDialog();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        BT_Crear_CC = new javax.swing.JButton();
-        CB_Producto_AP = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
-        JD_Crear_Cliente_BG = new javax.swing.JLabel();
+        BT_Agregar = new javax.swing.JButton();
+        CB_Producto = new javax.swing.JComboBox<>();
+        SP_Cantidad = new javax.swing.JSpinner();
+        JD_Agregar_Producto_BG = new javax.swing.JLabel();
         TB_Carrito_Scrollpane = new javax.swing.JScrollPane();
         TB_Carrito = new javax.swing.JTable();
         jLabel46 = new javax.swing.JLabel();
@@ -73,38 +52,38 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
         JL_ISV = new javax.swing.JLabel();
         JL_Subtotal = new javax.swing.JLabel();
 
-        JD_Crear_Cliente.setResizable(false);
-        JD_Crear_Cliente.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        JD_Agregar_Producto.setResizable(false);
+        JD_Agregar_Producto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 255, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Agregar Producto");
-        JD_Crear_Cliente.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
+        JD_Agregar_Producto.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, -1));
 
         jLabel6.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel6.setText("Cantidad");
-        JD_Crear_Cliente.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, 20));
+        JD_Agregar_Producto.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel7.setText("Producto");
-        JD_Crear_Cliente.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, 20));
+        JD_Agregar_Producto.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, 20));
 
-        BT_Crear_CC.setText("Agregar");
-        BT_Crear_CC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BT_Crear_CC.addMouseListener(new java.awt.event.MouseAdapter() {
+        BT_Agregar.setText("Agregar");
+        BT_Agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BT_Agregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                BT_Crear_CCMousePressed(evt);
+                BT_AgregarMousePressed(evt);
             }
         });
-        JD_Crear_Cliente.getContentPane().add(BT_Crear_CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
+        JD_Agregar_Producto.getContentPane().add(BT_Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 110, -1));
 
-        CB_Producto_AP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        JD_Crear_Cliente.getContentPane().add(CB_Producto_AP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 230, -1));
-        JD_Crear_Cliente.getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
+        CB_Producto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JD_Agregar_Producto.getContentPane().add(CB_Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 230, -1));
+        JD_Agregar_Producto.getContentPane().add(SP_Cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
 
-        JD_Crear_Cliente_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
-        JD_Crear_Cliente.getContentPane().add(JD_Crear_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+        JD_Agregar_Producto_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
+        JD_Agregar_Producto.getContentPane().add(JD_Agregar_Producto_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(90, 50));
@@ -225,25 +204,9 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BT_Crear_CCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Crear_CCMousePressed
-        try{
-            if(TF_Nombre_CC.getText().isBlank() || TF_Nombre_CC.getText().isEmpty()){
-                JOptionPane.showMessageDialog(JD_Crear_Cliente, "Ingrese nombre a la Tienda");
-                throw new Exception();
-            }
-            PreparedStatement ps = db.getConexion().prepareStatement("SELECT insert_cliente(?,?)");
-            ps.setString(1, TF_Nombre_CC.getText());
-            ps.setString(2, TF_Correo_CC.getText());
-            ps.executeQuery();
-            TF_Nombre_CC.setText("");
-            TF_Correo_CC.setText("");
-            JOptionPane.showMessageDialog(JD_Crear_Cliente, "Cliente creado!", 
-                    "Existoso", JOptionPane.INFORMATION_MESSAGE);
-            ActualizarCB(CB_ComprasCliente, db.getConexion().prepareStatement("SELECT id,nombre FROM clientes"));
-        }catch(Exception e){
-            e.printStackTrace();
-        }        
-    }//GEN-LAST:event_BT_Crear_CCMousePressed
+    private void BT_AgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_AgregarMousePressed
+        
+    }//GEN-LAST:event_BT_AgregarMousePressed
 
     private void TB_CarritoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_CarritoMouseReleased
         boolean Marcado = false;
@@ -266,17 +229,18 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BT_Agregar;
     private javax.swing.JButton BT_AgregarProducto;
-    private javax.swing.JButton BT_Crear_CC;
     private javax.swing.JButton BT_EliminarProducto;
     private javax.swing.JButton BT_RealizarVenta;
     private javax.swing.JComboBox<String> CB_Cliente;
-    private javax.swing.JComboBox<String> CB_Producto_AP;
-    private javax.swing.JDialog JD_Crear_Cliente;
-    private javax.swing.JLabel JD_Crear_Cliente_BG;
+    private javax.swing.JComboBox<String> CB_Producto;
+    private javax.swing.JDialog JD_Agregar_Producto;
+    private javax.swing.JLabel JD_Agregar_Producto_BG;
     private javax.swing.JLabel JL_ISV;
     private javax.swing.JLabel JL_Subtotal;
     private javax.swing.JLabel JL_Total;
+    private javax.swing.JSpinner SP_Cantidad;
     private javax.swing.JTable TB_Carrito;
     private javax.swing.JScrollPane TB_Carrito_Scrollpane;
     private javax.swing.JLabel jLabel1;
@@ -287,7 +251,6 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 
     private void Abrir_JDialog(JDialog JD) {
@@ -296,107 +259,4 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
         JD.setLocationRelativeTo(null);//this Frame
         JD.setVisible(true);
     }
-    
-    private void ActualizarCB(JComboBox jc, PreparedStatement ps){
-        try{
-            jc.removeAllItems();
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                jc.addItem(rs.getString("id") + " | " + rs.getString("nombre"));
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    private void cinco_mejores_tiendas(){
-        try{
-            PreparedStatement ps = db.getConexion().prepareStatement("SELECT * FROM mejores_cinco_tiendas");
-            ResultSet rs = ps.executeQuery();
-            
-            String[] titles = {"#", "ID", "Nombre", "Venta" };
-            DefaultTableModel tm = new DefaultTableModel(new String[][] {}, titles);
-            while(rs.next()){
-                PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT nombre WHERE id="+rs.getInt("idTienda"));
-                ResultSet rs2 = ps2.executeQuery(); rs2.next();
-                String nombre = rs2.getString("nombre");
-                String[] data = {
-                    rs.getInt("Numero")+"",
-                    rs.getString("idTienda"),
-                    nombre,
-                    rs.getDouble("idTienda")+""
-                };
-                tm.addRow(data);
-            }
-            T_MejoresTiendas.setModel(tm);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    
-    private void mejores_veinte_productos_tienda(int idtienda){
-        try{
-            PreparedStatement ps = db.getConexion().prepareStatement("SELECT mejores_veinte_productos_tienda(?)");
-            ps.setInt(1, idtienda);
-            ResultSet rs = ps.executeQuery();
-            String[] titles = {"UPC", "Nombre", "Cantidad Vendida"};
-            DefaultTableModel model = new DefaultTableModel(new String[][]{}, titles);
-            while(rs.next()){
-                String[] row = {
-                    rs.getString("upc"),
-                    rs.getString("nombre"),
-                    rs.getInt("cantidadVendida")+""
-                };
-                model.addRow(row);
-            }
-            TB_ProdMasVendidos.setModel(model);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    
-    private void inventario_tienda(int idtienda){
-        try{
-            PreparedStatement ps = db.getConexion().prepareStatement("SELECT upcproducto,nombre,cantidad,precio FROM "
-                    + "inventario_tienda WHERE idtienda="+idtienda);
-            ResultSet rs = ps.executeQuery();
-            String[] titles = {"UPC","Nombre","Cantidad","Precio"};
-            DefaultTableModel model = new DefaultTableModel(new String[][]{},titles);
-            while(rs.next()){
-                String[] row = {
-                    rs.getString("upcproducto"),
-                    rs.getString("nombre"),
-                    rs.getString("cantidad"),
-                    rs.getString("precio")
-                };
-                model.addRow(row);
-            }
-            TB_Inventario.setModel(model);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    
-    private void compras_por_cliente(int idcliente){
-        try{
-            PreparedStatement ps = db.getConexion().prepareStatement("SELECT fecha,numerofactura,tienda,total,cliente FROM compras_por_cliente WHERE idcliente="+idcliente);
-            ResultSet rs = ps.executeQuery();
-            String[] titles = {"Cliente","# Factura","Tienda","Fecha","Total"};
-            DefaultTableModel model = new DefaultTableModel(new String[][]{},titles);
-            while(rs.next()){
-                String[] row = {
-                    rs.getString("cliente"),
-                    rs.getString("numerofactura"),
-                    rs.getString("tienda"),
-                    rs.getString("fecha"),
-                    rs.getString("total")
-                };
-                model.addRow(row);
-            }
-            TB_ComprasPorCliente.setModel(model);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    
 }
