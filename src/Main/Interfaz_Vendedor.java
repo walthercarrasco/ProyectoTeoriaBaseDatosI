@@ -6,6 +6,12 @@
 package Main;
 
 import javax.swing.JDialog;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,13 +19,44 @@ import javax.swing.JDialog;
  */
 public class Interfaz_Vendedor extends javax.swing.JFrame {
     
+    ConexionDB db = new ConexionDB();
+    private int idtienda;
     /**
      * Creates new form Interfaz_Vendedor
      */
     public Interfaz_Vendedor() {
-        
+        initComponents();
+        db.conectar();
+        ActualizarJB();
+        ActualizarJBT();
     }
 
+    private void ActualizarJB(){
+        try{
+            CB_Cliente.removeAllItems();
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT id,nombre FROM clientes");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                CB_Cliente.addItem(rs.getString("id") + " | " + rs.getString("nombre"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    private void ActualizarJBT(){
+        try{
+            CB_Tienda.removeAllItems();
+            PreparedStatement ps = db.getConexion().prepareStatement("SELECT id,nombre FROM tiendas");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                CB_Tienda.addItem(rs.getString("id") + " | " + rs.getString("nombre"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,12 +82,14 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         BT_EliminarProducto = new javax.swing.JButton();
+        CB_Tienda = new javax.swing.JComboBox<>();
         CB_Cliente = new javax.swing.JComboBox<>();
         BT_RealizarVenta = new javax.swing.JButton();
         BT_AgregarProducto = new javax.swing.JButton();
         JL_Total = new javax.swing.JLabel();
         JL_ISV = new javax.swing.JLabel();
         JL_Subtotal = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         JD_Agregar_Producto.setResizable(false);
         JD_Agregar_Producto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,6 +119,8 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
 
         CB_Producto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         JD_Agregar_Producto.getContentPane().add(CB_Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 230, -1));
+
+        SP_Cantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         JD_Agregar_Producto.getContentPane().add(SP_Cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
 
         JD_Agregar_Producto_BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Crear_BG.png"))); // NOI18N
@@ -94,10 +135,7 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
 
         TB_Carrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "✓", "UPC", "Producto", "Cantidad", "Precio"
@@ -148,8 +186,8 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
         jLabel46.setOpaque(true);
         getContentPane().add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 930, 20));
 
-        jLabel1.setText("Cliente a venderle");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 480, -1, 30));
+        jLabel1.setText("Tienda:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 550, -1, 30));
 
         jLabel2.setText("Total: ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 770, 50, 20));
@@ -165,7 +203,21 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
         BT_EliminarProducto.setText("Eliminar Productos");
         BT_EliminarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_EliminarProducto.setEnabled(false);
+        BT_EliminarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_EliminarProductoMousePressed(evt);
+            }
+        });
         getContentPane().add(BT_EliminarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 290, 270, 60));
+
+        CB_Tienda.setBackground(new java.awt.Color(40, 71, 71));
+        CB_Tienda.setBorder(null);
+        CB_Tienda.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_TiendaItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(CB_Tienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 550, 210, 30));
 
         CB_Cliente.setBackground(new java.awt.Color(40, 71, 71));
         CB_Cliente.setBorder(null);
@@ -177,6 +229,11 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
         BT_RealizarVenta.setText("Realizar Venta");
         BT_RealizarVenta.setBorderPainted(false);
         BT_RealizarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BT_RealizarVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_RealizarVentaMousePressed(evt);
+            }
+        });
         getContentPane().add(BT_RealizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 380, 270, 60));
 
         BT_AgregarProducto.setBackground(new java.awt.Color(29, 91, 49));
@@ -184,6 +241,11 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
         BT_AgregarProducto.setText("Agregar Producto");
         BT_AgregarProducto.setBorderPainted(false);
         BT_AgregarProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BT_AgregarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_AgregarProductoMousePressed(evt);
+            }
+        });
         getContentPane().add(BT_AgregarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 200, 270, 60));
 
         JL_Total.setBackground(new java.awt.Color(51, 51, 51));
@@ -201,28 +263,189 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
         JL_Subtotal.setOpaque(true);
         getContentPane().add(JL_Subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 740, 100, 20));
 
+        jLabel8.setText("Cliente a venderle");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 480, -1, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_AgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_AgregarMousePressed
-        
+        try{
+            if(CB_Producto.getItemCount() > 0){
+                String si = CB_Producto.getItemAt(CB_Producto.getSelectedIndex());
+                String upc = si.substring(0, si.indexOf('|')-1);
+                String nombre = si.substring( si.indexOf('|')+1);
+                int cantidad = (Integer)SP_Cantidad.getValue();
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT precio*? as total FROM inventarioportienda WHERE upcproducto=? AND "
+                        + "idtienda=?");
+                ps.setInt(1, cantidad);
+                ps.setString(2, upc);
+                ps.setInt(3, idtienda);
+                ResultSet rs = ps.executeQuery();
+                rs.next();
+                Object[] row = {
+                    false,
+                    upc,
+                    nombre,
+                    cantidad,
+                    rs.getDouble("total")
+                };
+                ((DefaultTableModel)TB_Carrito.getModel()).addRow(row);
+                JD_Agregar_Producto.setVisible(false);
+                double d = Double.parseDouble(JL_Total.getText()) + rs.getDouble("total");
+                JL_Subtotal.setText(d+"");
+                JL_Total.setText(d+"");
+            }            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_BT_AgregarMousePressed
 
     private void TB_CarritoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_CarritoMouseReleased
         boolean Marcado = false;
-
         for (int i = 0; i < TB_Carrito.getRowCount(); i++) {
             if(TB_Carrito.getValueAt(i, 0) != null && (boolean)TB_Carrito.getValueAt(i, 0) == true){
                 Marcado = true;
             }
         }
-
         if(Marcado == true){
             BT_EliminarProducto.setEnabled(true);
         }else{
             BT_EliminarProducto.setEnabled(false);
         }
     }//GEN-LAST:event_TB_CarritoMouseReleased
+
+    private void BT_AgregarProductoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_AgregarProductoMousePressed
+        Abrir_JDialog(JD_Agregar_Producto);
+    }//GEN-LAST:event_BT_AgregarProductoMousePressed
+
+    private void CB_TiendaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_TiendaItemStateChanged
+        try{
+            CB_Producto.removeAllItems();
+            if(CB_Tienda.getItemCount() > 0){
+                String si = CB_Tienda.getItemAt(CB_Tienda.getSelectedIndex());
+                int id = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                idtienda = id;
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT upcproducto,nombre FROM "
+                        + "inventario_tienda WHERE idtienda="+id);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()){
+                    CB_Producto.addItem(rs.getString("upcproducto") + " | " + rs.getString("nombre"));
+                }
+            }
+            BT_EliminarProducto.setEnabled(false);
+            TB_Carrito.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object [][] {
+                    },
+                    new String [] {
+                        "✓", "UPC", "Producto", "Cantidad", "Precio"
+                    }
+                ) {
+                    Class[] types = new Class [] {
+                        java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                    };
+                    boolean[] canEdit = new boolean [] {
+                        true, false, false, false, false
+                    };
+                    public Class getColumnClass(int columnIndex) {
+                        return types [columnIndex];
+                    }
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit [columnIndex];
+                    }
+                });
+        }catch(Exception e){
+            e.printStackTrace();
+        }        
+    }//GEN-LAST:event_CB_TiendaItemStateChanged
+
+    private void BT_EliminarProductoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_EliminarProductoMousePressed
+        try{
+            if(BT_EliminarProducto.isEnabled()){
+                DefaultTableModel model = (DefaultTableModel)TB_Carrito.getModel();
+                int rowCount = model.getRowCount();
+                ArrayList<Integer> indicesAEliminar = new ArrayList<>();
+                for (int i = rowCount - 1; i >= 0; i--) {
+                    boolean eliminar = (boolean)model.getValueAt(i, 0);
+                    if (eliminar) {
+                        indicesAEliminar.add(i);
+                    }
+                }
+                for (int index : indicesAEliminar) {
+                    model.removeRow(index);
+                }
+                TB_Carrito.setModel(model);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BT_EliminarProductoMousePressed
+
+    private void BT_RealizarVentaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_RealizarVentaMousePressed
+        if(TB_Carrito.getRowCount() > 0){
+            try{
+                String si = CB_Cliente.getItemAt(CB_Cliente.getSelectedIndex());
+                int idcliente = Integer.parseInt(si.substring(0, si.indexOf('|')-1));
+                PreparedStatement ps = db.getConexion().prepareStatement("SELECT insert_factura(?,?,?,?)");
+                ps.setInt(1, idcliente);
+                ps.setInt(2, idtienda);
+                ps.setDouble(3, Double.parseDouble(JL_Subtotal.getText()));
+                ps.setDouble(4, Double.parseDouble(JL_Total.getText()));
+                ResultSet rs = ps.executeQuery();
+                rs.next();
+                int idfactura = rs.getInt(1);
+                DefaultTableModel model = (DefaultTableModel)TB_Carrito.getModel();
+                for(int i = 0; i < model.getRowCount(); i++){
+                    int cantidad = (Integer)model.getValueAt(i, 3);
+                    double precio = (Double)model.getValueAt(i, 4);
+                    String upc = (String)model.getValueAt(i, 1);
+                    PreparedStatement ps2 = db.getConexion().prepareStatement("SELECT insert_detallefactura(?,?,?,?)");
+                    ps2.setInt(1, idfactura);
+                    ps2.setString(2, upc);
+                    ps2.setDouble(3, precio);
+                    ps2.setInt(4, cantidad);
+                    ps2.executeQuery();
+                    
+                    PreparedStatement p = db.getConexion().prepareStatement("SELECT cantidad FROM inventarioportienda WHERE"
+                            + " idtienda=? AND upcproducto=?");
+                    p.setInt(1, idtienda);
+                    p.setString(2, upc);
+                    ResultSet r = p.executeQuery();
+                    r.next();
+                    int actual = r.getInt("cantidad");
+                    
+                    PreparedStatement ps3 = db.getConexion().prepareStatement("SELECT update_inventario_por_tienda_cantidad(?,?,?)");
+                    ps3.setInt(1, idtienda);
+                    ps3.setString(2, upc);
+                    ps3.setInt(3, actual-cantidad);
+                    ps3.executeQuery();
+                }
+                TB_Carrito.setModel(new javax.swing.table.DefaultTableModel(
+                            new Object [][] {
+                            },
+                            new String [] {
+                                "✓", "UPC", "Producto", "Cantidad", "Precio"
+                            }
+                        ) {
+                            Class[] types = new Class [] {
+                                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                            };
+                            boolean[] canEdit = new boolean [] {
+                                true, false, false, false, false
+                            };
+                            public Class getColumnClass(int columnIndex) {
+                                return types [columnIndex];
+                            }
+                            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                                return canEdit [columnIndex];
+                            }
+                });
+                JOptionPane.showMessageDialog(this, "Se realizo la compra con exito");
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_BT_RealizarVentaMousePressed
 
     /**
      * @param args the command line arguments
@@ -235,6 +458,7 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
     private javax.swing.JButton BT_RealizarVenta;
     private javax.swing.JComboBox<String> CB_Cliente;
     private javax.swing.JComboBox<String> CB_Producto;
+    private javax.swing.JComboBox<String> CB_Tienda;
     private javax.swing.JDialog JD_Agregar_Producto;
     private javax.swing.JLabel JD_Agregar_Producto_BG;
     private javax.swing.JLabel JL_ISV;
@@ -251,6 +475,7 @@ public class Interfaz_Vendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 
     private void Abrir_JDialog(JDialog JD) {

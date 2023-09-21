@@ -5,9 +5,8 @@
  */
 package Main;
 
-import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
-import javax.swing.UIManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +14,7 @@ import javax.swing.UIManager;
  */
 public class DB_Login extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form NewJFrame
      */
@@ -85,7 +85,6 @@ public class DB_Login extends javax.swing.JFrame {
         TF_Usuario.setText("Ingrese su nombre de usuario");
         TF_Usuario.setActionCommand("<Not Set>");
         TF_Usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(33, 33, 33)));
-        TF_Usuario.setOpaque(true);
         TF_Usuario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TF_UsuarioFocusGained(evt);
@@ -136,7 +135,6 @@ public class DB_Login extends javax.swing.JFrame {
         PF_Password.setFont(new java.awt.Font("Microsoft JhengHei", 0, 16)); // NOI18N
         PF_Password.setForeground(java.awt.Color.white);
         PF_Password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(33, 33, 33)));
-        PF_Password.setOpaque(true);
         PF_Password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 PF_PasswordFocusGained(evt);
@@ -165,7 +163,6 @@ public class DB_Login extends javax.swing.JFrame {
 
         BT_VerPassword.setBackground(new java.awt.Color(33, 33, 33));
         BT_VerPassword.setFont(new java.awt.Font("Microsoft JhengHei", 0, 18)); // NOI18N
-        BT_VerPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Eye Icon.png"))); // NOI18N
         BT_VerPassword.setToolTipText("Ver Contraseña");
         BT_VerPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(33, 33, 33)));
         BT_VerPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -233,13 +230,9 @@ public class DB_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_BT_IngresarMouseExited
 
     private void BT_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_IngresarActionPerformed
-        /*
-        Personal_Interfaz_Admin Interfaz = new Personal_Interfaz_Admin();
-        Interfaz.setVisible(true);
-
-        this.setVisible(false);
-        this.dispose();        
-        */
+        String pass = PF_Password.getText();
+        String usuario = TF_Usuario.getText();
+        LoginUsuario(pass, usuario);
     }//GEN-LAST:event_BT_IngresarActionPerformed
 
     private void PF_PasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PF_PasswordFocusGained
@@ -277,22 +270,6 @@ public class DB_Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_PF_PasswordActionPerformed
 
-    /*
-    public static void main(String args[]) {
-        try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        /* Create and display the form *
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Personal_DB_Login().setVisible(true);
-            }
-        });
-    }
-    */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_Ingresar;
@@ -311,8 +288,34 @@ public class DB_Login extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
-private void T_Visible_Inventario() {
-
+    
+    private void LoginUsuario(String pass, String usuario){
+        try{
+            ConexionDB db = new ConexionDB();
+            db.conectar();
+            java.sql.PreparedStatement ps = db.getConexion().prepareStatement("SELECT * FROM usuarios WHERE "
+                    + "usuario=? AND contraseña=?");
+            ps.setString(1, usuario);
+            ps.setString(2, pass);
+            java.sql.ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+               boolean admin = rs.getBoolean("admin");
+               if(admin){
+                    db.desconectar();
+                    this.setVisible(false);
+                    new Interfaz_Admin().setVisible(true);
+               }else{
+                    db.desconectar();
+                    this.setVisible(false);
+                    new Interfaz_Vendedor().setVisible(true);
+               }
+            }else{
+                JOptionPane.showMessageDialog(this, "No se encontro Usuario y contraseña");
+            }
+            db.desconectar();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

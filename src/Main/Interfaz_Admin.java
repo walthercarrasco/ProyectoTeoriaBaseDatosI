@@ -146,14 +146,12 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jLabel66 = new javax.swing.JLabel();
         TF_Nombre_MP = new javax.swing.JTextField();
         BT_Modificar_MP = new javax.swing.JButton();
         CB_Embalaje_MP = new javax.swing.JComboBox<>();
         TF_Size_MP = new javax.swing.JTextField();
         TF_Marca_MP = new javax.swing.JTextField();
         CB_Producto_MP = new javax.swing.JComboBox<>();
-        TF_UPC_MP = new javax.swing.JTextField();
         JD_Modificar_Producto_BG2 = new javax.swing.JLabel();
         JD_Modificar_Producto_BG1 = new javax.swing.JLabel();
         JD_Eliminar_Producto = new javax.swing.JDialog();
@@ -637,10 +635,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel34.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
         jLabel34.setText("Nombre");
         JD_Modificar_Producto.getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, 20));
-
-        jLabel66.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jLabel66.setText("UPC");
-        JD_Modificar_Producto.getContentPane().add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, 20));
         JD_Modificar_Producto.getContentPane().add(TF_Nombre_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 290, -1));
 
         BT_Modificar_MP.setText("Modificar");
@@ -664,7 +658,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             }
         });
         JD_Modificar_Producto.getContentPane().add(CB_Producto_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 290, -1));
-        JD_Modificar_Producto.getContentPane().add(TF_UPC_MP, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 290, -1));
 
         JD_Modificar_Producto_BG2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/JD_Modificar_BG.png"))); // NOI18N
         JD_Modificar_Producto.getContentPane().add(JD_Modificar_Producto_BG2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 291, -1, 180));
@@ -2122,7 +2115,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Size_CP;
     private javax.swing.JTextField TF_Size_MP;
     private javax.swing.JTextField TF_UPC_CP;
-    private javax.swing.JTextField TF_UPC_MP;
     private javax.swing.JTable T_MejoresTiendas;
     private javax.swing.JPanel Tab_Administrar;
     private javax.swing.JPanel Tab_Cliente;
@@ -2184,7 +2176,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
