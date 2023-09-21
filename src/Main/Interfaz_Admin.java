@@ -531,7 +531,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         JD_Eliminar_Cliente.getContentPane().add(JD_Eliminar_Cliente_BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
 
         JD_Crear_Producto.setMinimumSize(new java.awt.Dimension(600, 500));
-        JD_Crear_Producto.setPreferredSize(new java.awt.Dimension(600, 410));
         JD_Crear_Producto.setResizable(false);
         JD_Crear_Producto.setSize(new java.awt.Dimension(0, 0));
         JD_Crear_Producto.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -1094,6 +1093,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         TB_Inventario.getTableHeader().setReorderingAllowed(false);
         TB_Inventario.setUpdateSelectionOnSort(false);
         TB_Inventario_Scrollpane.setViewportView(TB_Inventario);
+        if (TB_Inventario.getColumnModel().getColumnCount() > 0) {
+            TB_Inventario.getColumnModel().getColumn(0).setResizable(false);
+            TB_Inventario.getColumnModel().getColumn(1).setResizable(false);
+            TB_Inventario.getColumnModel().getColumn(2).setResizable(false);
+            TB_Inventario.getColumnModel().getColumn(3).setResizable(false);
+            TB_Inventario.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         Panel_Inventario.add(TB_Inventario_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 750, 580));
 
@@ -1129,6 +1135,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         TB_ProdMasVendidos.getTableHeader().setReorderingAllowed(false);
         TB_ProdMasVendidos.setUpdateSelectionOnSort(false);
         TB_ProdMasVendidos_Scrollpane.setViewportView(TB_ProdMasVendidos);
+        if (TB_ProdMasVendidos.getColumnModel().getColumnCount() > 0) {
+            TB_ProdMasVendidos.getColumnModel().getColumn(0).setResizable(false);
+            TB_ProdMasVendidos.getColumnModel().getColumn(1).setResizable(false);
+            TB_ProdMasVendidos.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         Panel_Inventario.add(TB_ProdMasVendidos_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 340, 560));
 
@@ -1191,12 +1202,27 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         TB_HistorialVentas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
         TB_HistorialVentas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         TB_HistorialVentas.setShowGrid(true);
+        TB_HistorialVentas.getTableHeader().setReorderingAllowed(false);
         TB_HistorialVentas.setUpdateSelectionOnSort(false);
         TB_HistorialVentas_Scrollpane.setViewportView(TB_HistorialVentas);
+        if (TB_HistorialVentas.getColumnModel().getColumnCount() > 0) {
+            TB_HistorialVentas.getColumnModel().getColumn(0).setResizable(false);
+            TB_HistorialVentas.getColumnModel().getColumn(1).setResizable(false);
+            TB_HistorialVentas.getColumnModel().getColumn(2).setResizable(false);
+            TB_HistorialVentas.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         Panel_HistorialVentas.add(TB_HistorialVentas_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 930, 580));
 
@@ -1225,9 +1251,24 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         T_MejoresTiendas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        T_MejoresTiendas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(T_MejoresTiendas);
+        if (T_MejoresTiendas.getColumnModel().getColumnCount() > 0) {
+            T_MejoresTiendas.getColumnModel().getColumn(0).setResizable(false);
+            T_MejoresTiendas.getColumnModel().getColumn(1).setResizable(false);
+            T_MejoresTiendas.getColumnModel().getColumn(2).setResizable(false);
+            T_MejoresTiendas.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         Panel_HistorialVentas.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 110, 340, -1));
 
@@ -1284,6 +1325,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         TB_VentaPais.getTableHeader().setReorderingAllowed(false);
         TB_VentaPais.setUpdateSelectionOnSort(false);
         TB_VentaPais_Scrollpane.setViewportView(TB_VentaPais);
+        if (TB_VentaPais.getColumnModel().getColumnCount() > 0) {
+            TB_VentaPais.getColumnModel().getColumn(0).setResizable(false);
+            TB_VentaPais.getColumnModel().getColumn(1).setResizable(false);
+            TB_VentaPais.getColumnModel().getColumn(2).setResizable(false);
+            TB_VentaPais.getColumnModel().getColumn(3).setResizable(false);
+            TB_VentaPais.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         Panel_VentaPais.add(TB_VentaPais_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 1320, 580));
 
@@ -1347,6 +1395,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         TB_ComprasPorCliente.getTableHeader().setReorderingAllowed(false);
         TB_ComprasPorCliente.setUpdateSelectionOnSort(false);
         TB_ComprasPorCliente_Scrollpane.setViewportView(TB_ComprasPorCliente);
+        if (TB_ComprasPorCliente.getColumnModel().getColumnCount() > 0) {
+            TB_ComprasPorCliente.getColumnModel().getColumn(0).setResizable(false);
+            TB_ComprasPorCliente.getColumnModel().getColumn(1).setResizable(false);
+            TB_ComprasPorCliente.getColumnModel().getColumn(2).setResizable(false);
+            TB_ComprasPorCliente.getColumnModel().getColumn(3).setResizable(false);
+            TB_ComprasPorCliente.getColumnModel().getColumn(4).setResizable(false);
+            TB_ComprasPorCliente.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         Panel_ComprasPorCliente.add(TB_ComprasPorCliente_Scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1320, 550));
 
@@ -1386,8 +1442,23 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TB_Bitacoras.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(TB_Bitacoras);
+        if (TB_Bitacoras.getColumnModel().getColumnCount() > 0) {
+            TB_Bitacoras.getColumnModel().getColumn(0).setResizable(false);
+            TB_Bitacoras.getColumnModel().getColumn(1).setResizable(false);
+            TB_Bitacoras.getColumnModel().getColumn(2).setResizable(false);
+            TB_Bitacoras.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 1100, 670));
 
